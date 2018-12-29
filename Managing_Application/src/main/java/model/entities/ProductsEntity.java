@@ -1,4 +1,6 @@
-package model;
+package model.entities;
+
+import model.ProductCategory;
 
 import javax.persistence.*;
 
@@ -6,8 +8,9 @@ import javax.persistence.*;
 @Table(name = "products", schema = "music_store", catalog = "")
 public class ProductsEntity {
     private int productId;
-    private Object category;
     private double price;
+    @Enumerated(EnumType.STRING)
+    private ProductCategory category;
 
     @Id
     @Column(name = "product_id")
@@ -21,11 +24,11 @@ public class ProductsEntity {
 
     @Basic
     @Column(name = "category")
-    public Object getCategory() {
+    public ProductCategory getCategory() {
         return category;
     }
 
-    public void setCategory(Object category) {
+    public void setCategory(ProductCategory category) {
         this.category = category;
     }
 

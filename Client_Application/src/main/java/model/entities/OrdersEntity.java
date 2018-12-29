@@ -1,4 +1,8 @@
-package model;
+package model.entities;
+
+import model.Payment;
+import model.Status;
+import model.TransactionDocument;
 
 import javax.persistence.*;
 
@@ -9,9 +13,12 @@ public class OrdersEntity {
     private String customerName;
     private String customerAdress;
     private String phoneNumber;
-    private Object currentStatus;
-    private Object payment;
-    private Object transactionDocument;
+    @Enumerated(EnumType.STRING)
+    private Status currentStatus;
+    @Enumerated(EnumType.STRING)
+    private Payment payment;
+    @Enumerated(EnumType.STRING)
+    private TransactionDocument transactionDocument;
 
     @Id
     @Column(name = "order_id")
@@ -55,31 +62,31 @@ public class OrdersEntity {
 
     @Basic
     @Column(name = "current_status")
-    public Object getCurrentStatus() {
+    public Status getCurrentStatus() {
         return currentStatus;
     }
 
-    public void setCurrentStatus(Object currentStatus) {
+    public void setCurrentStatus(Status currentStatus) {
         this.currentStatus = currentStatus;
     }
 
     @Basic
     @Column(name = "payment")
-    public Object getPayment() {
+    public Payment getPayment() {
         return payment;
     }
 
-    public void setPayment(Object payment) {
+    public void setPayment(Payment payment) {
         this.payment = payment;
     }
 
     @Basic
     @Column(name = "transaction_document")
-    public Object getTransactionDocument() {
+    public TransactionDocument getTransactionDocument() {
         return transactionDocument;
     }
 
-    public void setTransactionDocument(Object transactionDocument) {
+    public void setTransactionDocument(TransactionDocument transactionDocument) {
         this.transactionDocument = transactionDocument;
     }
 

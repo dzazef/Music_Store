@@ -1,4 +1,4 @@
-package model;
+package model.entities;
 
 import javax.persistence.*;
 
@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class AlbumsEntity {
     private int albumId;
     private Integer duration;
-    private Object releaseYear;
+    private Integer releaseYear;
     private String title;
     private Integer songsCount;
     private String imageLink;
@@ -35,11 +35,11 @@ public class AlbumsEntity {
 
     @Basic
     @Column(name = "release_year")
-    public Object getReleaseYear() {
+    public Integer getReleaseYear() {
         return releaseYear;
     }
 
-    public void setReleaseYear(Object releaseYear) {
+    public void setReleaseYear(Integer releaseYear) {
         this.releaseYear = releaseYear;
     }
 

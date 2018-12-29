@@ -1,4 +1,6 @@
-package model;
+package model.entities;
+
+import model.AccesLevel;
 
 import javax.persistence.*;
 
@@ -7,7 +9,8 @@ import javax.persistence.*;
 public class UsersEntity {
     private String userId;
     private String password;
-    private Object accessLevel;
+    @Enumerated(EnumType.ORDINAL)
+    private AccesLevel accessLevel;
 
     @Id
     @Column(name = "user_id")
@@ -31,11 +34,11 @@ public class UsersEntity {
 
     @Basic
     @Column(name = "access_level")
-    public Object getAccessLevel() {
+    public AccesLevel getAccessLevel() {
         return accessLevel;
     }
 
-    public void setAccessLevel(Object accessLevel) {
+    public void setAccessLevel(AccesLevel accessLevel) {
         this.accessLevel = accessLevel;
     }
 

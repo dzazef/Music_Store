@@ -1,4 +1,6 @@
-package model;
+package model.entities;
+
+import model.Status;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -8,8 +10,10 @@ import java.sql.Timestamp;
 public class StatusLogsEntity {
     private int logId;
     private Timestamp dateTime;
-    private Object statusOld;
-    private Object statusNew;
+    @Enumerated(EnumType.STRING)
+    private Status statusOld;
+    @Enumerated(EnumType.STRING)
+    private Status statusNew;
 
     @Id
     @Column(name = "log_id")
@@ -33,21 +37,21 @@ public class StatusLogsEntity {
 
     @Basic
     @Column(name = "status_old")
-    public Object getStatusOld() {
+    public Status getStatusOld() {
         return statusOld;
     }
 
-    public void setStatusOld(Object statusOld) {
+    public void setStatusOld(Status statusOld) {
         this.statusOld = statusOld;
     }
 
     @Basic
     @Column(name = "status_new")
-    public Object getStatusNew() {
+    public Status getStatusNew() {
         return statusNew;
     }
 
-    public void setStatusNew(Object statusNew) {
+    public void setStatusNew(Status statusNew) {
         this.statusNew = statusNew;
     }
 
