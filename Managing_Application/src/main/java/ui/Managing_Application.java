@@ -18,7 +18,6 @@ public class Managing_Application extends Application {
         primaryStage.getIcons().add(new Image(Managing_Application.class.getResourceAsStream("../graphics/icon.png")));
         LoginView.initialize();
         stage.show();
-        Platform.runLater(() -> stage.setResizable(false));  //ale java 11 jest zjebana xD
     }
 
     public static Stage getStage() {

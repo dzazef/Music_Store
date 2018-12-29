@@ -1,7 +1,7 @@
 package ui;//    compile group: 'com.sun.xl.bind', name: 'jaxb-impl', version: '2.3.1'
 
 
-import models.DeliveryEntity;
+import model.DeliveryEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

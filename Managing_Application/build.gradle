@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.5'
 }
 
 version '1.0-SNAPSHOT'
@@ -17,6 +18,9 @@ dependencies {
 
 mainClassName = 'ui.Managing_Application'
 
+javafx {
+    modules = ['javafx.controls', 'javafx.fxml']
+}
 dependencies {
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.13'
     compile group: 'org.hibernate', name: 'hibernate-core', version: '5.3.6.Final'

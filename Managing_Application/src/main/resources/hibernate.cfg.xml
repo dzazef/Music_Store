@@ -6,8 +6,7 @@
     <session-factory>
         <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/music_store</property>
-        <property name="hibernate.connection.username">test</property>
-        <property name="hibernate.connection.password">test</property>
+        <property name="hibernate.connection.username">root</property>
         <!--<property name="hibernate.connection.pool_size">1</property>-->
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
