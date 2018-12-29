@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.LoginViewController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<?import java.net.URL?>
+<Pane fx:id="loginPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="693.0" prefWidth="928.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.LoginViewController">
+   <children>
+      <ImageView fitHeight="700.0" fitWidth="950.0" layoutY="-4.0" opacity="0.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../graphics/background.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="379.0" layoutY="97.0" text="Witaj!" textFill="#464646">
+         <font>
+            <Font name="Lato Light Italic" size="64.0" />
+         </font>
+      </Label>
+      <TextField layoutX="338.0" layoutY="305.0" prefHeight="42.0" prefWidth="237.0" promptText="Login" />
+      <PasswordField layoutX="338.0" layoutY="356.0" prefHeight="48.0" prefWidth="237.0" promptText="Password" />
+      <ImageView fitHeight="80.0" fitWidth="237.0" layoutX="338.0" layoutY="413.0" onMouseClicked="#handleLogIn" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../graphics/zaloguj_button.png" />
+         </image>
+      </ImageView>
+   </children>
+    <stylesheets>
+        <URL value="@../css/style.css" />
+    </stylesheets>
+</Pane>

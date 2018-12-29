@@ -1,24 +1,30 @@
-package ui;
+package ui;//    compile group: 'com.sun.xl.bind', name: 'jaxb-impl', version: '2.3.1'
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
 
-import java.io.IOException;
+import models.DeliveryEntity;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 
-public class Client_Application extends Application {
-
-    @Override
-    public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/WelcomeView.fxml"));
-        primaryStage.setTitle("Client Application");
-        primaryStage.setScene(new Scene(root, 300, 275));
-        primaryStage.show();
-    }
-
+@SuppressWarnings("Duplicates")
+public class Client_Application {
     public static void main(String[] args) {
-        launch(args);
+        try {
+            SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
+                    .addAnnotatedClass(DeliveryEntity.class).buildSessionFactory();
+            Session session = factory.openSession();
+            DeliveryEntity deliveryEntity = new DeliveryEntity();
+            deliveryEntity.setDeliveryTime(10);
+            deliveryEntity.setName("kotgg");
+            deliveryEntity.setPrice(10f);
+            session.beginTransaction();
+            session.save(deliveryEntity);
+            session.getTransaction().commit();
+            session.close();
+            factory.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 }

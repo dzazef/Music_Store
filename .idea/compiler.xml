@@ -2,8 +2,12 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
+      <module name="Client_Application.main" target="1.8" />
+      <module name="Client_Application.test" target="1.8" />
       <module name="Client_Application_main" target="1.8" />
       <module name="Client_Application_test" target="1.8" />
+      <module name="Managing_Application.main" target="1.8" />
+      <module name="Managing_Application.test" target="1.8" />
       <module name="Managing_Application_main" target="1.8" />
       <module name="Managing_Application_test" target="1.8" />
     </bytecodeTargetLevel>
