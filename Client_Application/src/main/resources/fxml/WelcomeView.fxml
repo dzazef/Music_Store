@@ -1,14 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.WelcomeViewController"
-            prefHeight="400.0" prefWidth="600.0">
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<BorderPane fx:id="mainPane" minHeight="500" minWidth="600" prefHeight="500.0"
+            prefWidth="700.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ui.controllers.WelcomeViewController" stylesheets="/css/welcomeViewStyle.css">
 
-</AnchorPane>
+<!--<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="471.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">-->
+   <top>
+       <VBox spacing="7" fx:id="topVBox" BorderPane.alignment="TOP_CENTER">
+           <HBox fx:id="hBoxForLogoAndHBoxWithButtons" prefWidth="${topVBox.prefWidth}">
+               <ImageView fx:id="logoImageView" fitHeight="${topVBox.prefHeight}" fitWidth="220.0"
+                          pickOnBounds="true" preserveRatio="true"/>
+               <HBox fx:id="topButtonsHBox" maxHeight="93.0" prefHeight="100.0" >
+                   <Button fx:id="albumsButton" mnemonicParsing="false" prefHeight="${topButtonsHBox.prefHeight}" prefWidth="125.0"
+                           text="ALBUMS"/>
+                   <Button fx:id="instrumentsButton" mnemonicParsing="false" prefHeight="${topButtonsHBox.prefHeight}" prefWidth="125.0"
+                           text="INSTRUMENTS"/>
+                   <Button fx:id="accessoriesButton" mnemonicParsing="false" prefHeight="${topButtonsHBox.prefHeight}" prefWidth="125.0"
+                           text="ACCESSORIES"/>
+               </HBox>
+           </HBox>
+
+           <HBox spacing="10" fx:id="searchPanel" maxHeight="33.0"  alignment="TOP_LEFT" >
+               <padding>
+                   <Insets left="50.0" />
+               </padding>
+               <Label fx:id="searchLabel" text="SEARCH:"/>
+               <ChoiceBox value="All" fx:id="searchFilterChoiceBox" prefHeight="25.0" prefWidth="100.0">
+                       <String fx:value="All" />
+                       <String fx:value="Albums" />
+                       <String fx:value="Instruments" />
+                       <String fx:value="Other" />
+               </ChoiceBox>
+               <TextField fx:id="searchTextField" prefHeight="25.0" prefWidth="300.0"/>
+               <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="lupa"/>
+           </HBox>
+       </VBox>
+   </top>
+   <bottom>
+      <HBox prefHeight="22.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="footer">
+               <padding>
+                  <Insets bottom="5.0" top="5.0" />
+               </padding>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+       <TilePane fx:id="welcomeTilePane" alignment="TOP_CENTER" hgap="10.0" prefHeight="342.0" prefWidth="476.0"
+                 tileAlignment="TOP_LEFT" vgap="10.0" BorderPane.alignment="CENTER">
+           <padding>
+               <Insets bottom="10.0" top="10.0"/>
+           </padding>
+           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE"
+                      strokeWidth="0.0" width="160.0"/>
+           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE"
+                      strokeWidth="0.0" width="160.0"/>
+           <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="145.0" stroke="BLACK" strokeType="INSIDE"
+                      strokeWidth="0.0" width="160.0"/>
+       </TilePane>
+   </center>
+   <left>
+      <VBox prefHeight="337.0" prefWidth="145.0" snapToPixel="false" spacing="10.0" alignment="TOP_CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Button" />
+            <ComboBox accessibleRole="LIST_ITEM" pickOnBounds="false" prefWidth="150.0" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </left>
+   <right>
+      <VBox prefHeight="337.0" prefWidth="14.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
