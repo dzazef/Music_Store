@@ -6,7 +6,9 @@
 }
 .button {
     -fx-background-color: "#FF9999";
-    -fx-border-radius: 20;
+    -fx-background-radius: 50;
+    -fx-font-size: 20;
+    /*-fx-border-radius: 20;*/
 }
 .text-field {
     -fx-background-color: "#5555FF";
