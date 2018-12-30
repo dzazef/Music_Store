@@ -3,10 +3,6 @@ package ui.controllers;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
-import ui.db.SessionFactoryManager;
-import ui.views.MainAppView;
 
 public class LoginViewController {
 
