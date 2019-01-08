@@ -4,7 +4,7 @@ USE music_store;
 CREATE TABLE products
 (
   product_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  category ENUM('album', 'instrument', 'other') DEFAULT 'other' NOT NULL,
+  category VARCHAR(30) NOT NULL,
   price FLOAT NOT NULL
 );
 CREATE UNIQUE INDEX products_product_id_uindex ON products (product_id);
@@ -86,7 +86,7 @@ CREATE TABLE users
 (
   user_id VARCHAR(30) PRIMARY KEY NOT NULL,
   password VARCHAR(30) NOT NULL,
-  access_level ENUM('storekeeper', 'storage_manager', 'manager', 'administrator', 'basic') DEFAULT 'basic' NOT NULL
+  access_level VARCHAR(30) NOT NULL
 );
 CREATE UNIQUE INDEX users_user_id_uindex ON users (user_id);
 
@@ -98,9 +98,9 @@ CREATE TABLE orders
   customer_name VARCHAR(50) NOT NULL,
   customer_adress VARCHAR(80) NOT NULL,
   phone_number VARCHAR(15) NOT NULL,
-  current_status ENUM('waiting_for_payment', 'in_progress', 'prepared_for_sending', 'sent', 'delivered', 'return', 'cancelled') DEFAULT 'waiting_for_payment' NOT NULL,
-  payment ENUM('on_delivery', 'bank_transfer') DEFAULT 'bank_transfer',
-  transaction_document ENUM('invoice', 'receipt') DEFAULT 'receipt',
+  current_status VARCHAR(30) NOT NULL,
+  payment VARCHAR(30) NOT NULL,
+  transaction_document VARCHAR(30) NOT NULL,
   CONSTRAINT orders_delivery_delivery_id_fk FOREIGN KEY (delivery_id) REFERENCES delivery (delivery_id)
 );
 CREATE UNIQUE INDEX orders_order_id_uindex ON orders (order_id);
@@ -122,8 +122,8 @@ CREATE TABLE status_logs
   order_id INT NOT NULL,
   user_id VARCHAR(30) NOT NULL,
   date_time DATETIME NOT NULL,
-  status_old ENUM('waiting_for_payment', 'in_progress', 'prepared_for_sending', 'sent', 'delivered', 'return', 'cancelled'),
-  status_new ENUM('waiting_for_payment', 'in_progress', 'prepared_for_sending', 'sent', 'delivered', 'return', 'cancelled') NOT NULL,
+  status_old VARCHAR(30) NOT NULL,
+  status_new VARCHAR(30) NOT NULL,
   CONSTRAINT status_logs_users_user_id_fk FOREIGN KEY (user_id) REFERENCES users (user_id),
   CONSTRAINT status_logs_orders_order_id_fk FOREIGN KEY (order_id) REFERENCES orders (order_id)
 );
