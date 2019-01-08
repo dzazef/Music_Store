@@ -1,5 +1,6 @@
 USE music_store;
 DELIMITER $$
+DROP PROCEDURE IF EXISTS add_other_product;
 CREATE PROCEDURE add_other_product(price FLOAT,product_name VARCHAR(50),product_type VARCHAR(50),
   producer_name VARCHAR(50))
   BEGIN
