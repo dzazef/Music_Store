@@ -4,6 +4,7 @@ CREATE PROCEDURE add_instrument(price FLOAT,instrument_type VARCHAR(80),instrume
   BEGIN
       DECLARE var_manufacturer_id INT DEFAULT NULL ;
       DECLARE var_manufacturer_name VARCHAR(50) DEFAULT NULL;
+     START TRANSACTION;
       /*inserting into products*/
       INSERT INTO products (category, price) VALUES ('instrument',price);
       SET @product_id = LAST_INSERT_ID();
@@ -19,6 +20,6 @@ CREATE PROCEDURE add_instrument(price FLOAT,instrument_type VARCHAR(80),instrume
       /*add instrument to instruments*/
       INSERT INTO instruments (instrument_id, manufacturer_id, type, name) 
         VALUES(@product_id,var_manufacturer_id,instrument_type,instrument_name);
-
+     COMMIT;
   END $$
 DELIMITER ;
