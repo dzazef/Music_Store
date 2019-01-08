@@ -6,6 +6,7 @@ import javax.persistence.*;
 @Table(name = "albums", schema = "music_store", catalog = "")
 public class AlbumsEntity {
     private int albumId;
+    private int artistId;
     private Integer duration;
     private Integer releaseYear;
     private String title;
@@ -21,6 +22,16 @@ public class AlbumsEntity {
 
     public void setAlbumId(int albumId) {
         this.albumId = albumId;
+    }
+
+    @Basic
+    @Column(name = "artist_id")
+    public int getArtistId() {
+        return artistId;
+    }
+
+    public void setArtistId(int artistId) {
+        this.artistId = artistId;
     }
 
     @Basic
@@ -91,6 +102,7 @@ public class AlbumsEntity {
         AlbumsEntity that = (AlbumsEntity) o;
 
         if (albumId != that.albumId) return false;
+        if (artistId != that.artistId) return false;
         if (duration != null ? !duration.equals(that.duration) : that.duration != null) return false;
         if (releaseYear != null ? !releaseYear.equals(that.releaseYear) : that.releaseYear != null) return false;
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
@@ -104,6 +116,7 @@ public class AlbumsEntity {
     @Override
     public int hashCode() {
         int result = albumId;
+        result = 31 * result + artistId;
         result = 31 * result + (duration != null ? duration.hashCode() : 0);
         result = 31 * result + (releaseYear != null ? releaseYear.hashCode() : 0);
         result = 31 * result + (title != null ? title.hashCode() : 0);

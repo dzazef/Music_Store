@@ -1,7 +1,5 @@
 package model.entities;
 
-import model.Status;
-
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -9,11 +7,11 @@ import java.sql.Timestamp;
 @Table(name = "status_logs", schema = "music_store", catalog = "")
 public class StatusLogsEntity {
     private int logId;
+    private int orderId;
+    private String userId;
     private Timestamp dateTime;
-    @Enumerated(EnumType.STRING)
-    private Status statusOld;
-    @Enumerated(EnumType.STRING)
-    private Status statusNew;
+    private String statusOld;
+    private String statusNew;
 
     @Id
     @Column(name = "log_id")
@@ -23,6 +21,26 @@ public class StatusLogsEntity {
 
     public void setLogId(int logId) {
         this.logId = logId;
+    }
+
+    @Basic
+    @Column(name = "order_id")
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    @Basic
+    @Column(name = "user_id")
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Basic
@@ -37,21 +55,21 @@ public class StatusLogsEntity {
 
     @Basic
     @Column(name = "status_old")
-    public Status getStatusOld() {
+    public String getStatusOld() {
         return statusOld;
     }
 
-    public void setStatusOld(Status statusOld) {
+    public void setStatusOld(String statusOld) {
         this.statusOld = statusOld;
     }
 
     @Basic
     @Column(name = "status_new")
-    public Status getStatusNew() {
+    public String getStatusNew() {
         return statusNew;
     }
 
-    public void setStatusNew(Status statusNew) {
+    public void setStatusNew(String statusNew) {
         this.statusNew = statusNew;
     }
 
@@ -63,6 +81,8 @@ public class StatusLogsEntity {
         StatusLogsEntity that = (StatusLogsEntity) o;
 
         if (logId != that.logId) return false;
+        if (orderId != that.orderId) return false;
+        if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (dateTime != null ? !dateTime.equals(that.dateTime) : that.dateTime != null) return false;
         if (statusOld != null ? !statusOld.equals(that.statusOld) : that.statusOld != null) return false;
         if (statusNew != null ? !statusNew.equals(that.statusNew) : that.statusNew != null) return false;
@@ -73,6 +93,8 @@ public class StatusLogsEntity {
     @Override
     public int hashCode() {
         int result = logId;
+        result = 31 * result + orderId;
+        result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (dateTime != null ? dateTime.hashCode() : 0);
         result = 31 * result + (statusOld != null ? statusOld.hashCode() : 0);
         result = 31 * result + (statusNew != null ? statusNew.hashCode() : 0);
