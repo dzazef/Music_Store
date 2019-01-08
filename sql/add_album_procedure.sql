@@ -1,3 +1,4 @@
+USE music_store;
 DELIMITER $$
 CREATE PROCEDURE add_album(price FLOAT,title VARCHAR(80),duration INT(11),realease_year INT(11),
       songs_count INT(11),img_link VARCHAR(120),tracklist TEXT,

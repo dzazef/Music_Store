@@ -1,5 +1,5 @@
 DROP DATABASE IF EXISTS music_store;
-CREATE DATABASE music_store;
+CREATE DATABASE music_store CHARACTER SET utf8 COLLATE utf8_unicode_ci;
 USE music_store;
 CREATE TABLE products
 (
