@@ -19,11 +19,10 @@ public class SessionFactoryManager {
     public void buildSessionFactory() {
         if (sessionFactory==null) {
             Configuration cfg = new Configuration();
-            cfg.configure("hibernate.cfg.xml");
             System.setProperty("hibernate.connection.password",password);
             System.setProperty("hibernate.connection.username",username);
             cfg.setProperties(System.getProperties());
-            sessionFactory = cfg.
+            sessionFactory = cfg.configure("hibernate.cfg.xml").
                     addAnnotatedClass(AlbumsEntity.class).
                     addAnnotatedClass(ArtistsEntity.class).
                     addAnnotatedClass(DeliveryEntity.class).

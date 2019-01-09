@@ -66,6 +66,7 @@ GRANT SELECT ON music_store.instruments TO 'admin'@'localhost';
 GRANT SELECT ON music_store.other TO 'admin'@'localhost';
 GRANT UPDATE ON music_store.storage TO 'admin'@'localhost';
 GRANT UPDATE ON music_store.orders TO 'admin'@'localhost';
+GRANT UPDATE ON music_store.users TO 'admin'@'localhost'; #TODO: Not in documentation, check
 GRANT UPDATE, INSERT, DELETE ON music_store.products TO 'admin'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.artists TO 'admin'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.albums TO 'admin'@'localhost';

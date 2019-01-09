@@ -19,7 +19,7 @@
           <Font name="Lato Light Italic" size="64.0"/>
         </font>
     </Label>
-    <TextField prefHeight="42.0" maxWidth="237.0" promptText="Login"/>
-    <PasswordField prefHeight="48.0" maxWidth="237.0" promptText="Password"/>
+    <TextField fx:id="username" prefHeight="42.0" maxWidth="237.0" promptText="Login"/>
+    <PasswordField fx:id="password" prefHeight="48.0" maxWidth="237.0" promptText="Password"/>
     <Button fx:id="loginButton" text="Zaloguj się" onMouseClicked="#handleLogIn"/>
 </VBox>

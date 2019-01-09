@@ -11,5 +11,17 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.characterEncoding">utf8</property>
+        <mapping class="model.entities.AlbumsEntity"/>
+        <mapping class="model.entities.ArtistsEntity"/>
+        <mapping class="model.entities.DeliveryEntity"/>
+        <mapping class="model.entities.InstrumentManufacturersEntity"/>
+        <mapping class="model.entities.InstrumentsEntity"/>
+        <mapping class="model.entities.OrdersEntity"/>
+        <mapping class="model.entities.OrdersProductsEntity"/>
+        <mapping class="model.entities.OrdersProductsEntity"/>
+        <mapping class="model.entities.ProductsEntity"/>
+        <mapping class="model.entities.StatusLogsEntity"/>
+        <mapping class="model.entities.StorageEntity"/>
+        <mapping class="model.entities.UsersEntity"/>
     </session-factory>
 </hibernate-configuration>
