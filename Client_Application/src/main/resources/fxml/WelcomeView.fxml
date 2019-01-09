@@ -51,9 +51,9 @@
 
            </HBox>
            <HBox fx:id="buttonsBar" prefWidth="${topVBox.prefWidth}">
-               <Button fx:id="albumsButton" text="ALBUMS"></Button>
-               <Button fx:id="instrumentsButton" text="INSTRUMENTS"></Button>
-               <Button fx:id="othersButton" text="OTHERS"></Button>
+               <Button fx:id="albumsButton" text="ALBUMS" onAction="#albumsButtonClicked"></Button>
+               <Button fx:id="instrumentsButton" text="INSTRUMENTS" onAction="#instrumentsButtonClicked"></Button>
+               <Button fx:id="othersButton" text="OTHERS" onAction="#othersButtonClicked"></Button>
                <Button fx:id="deliveryButton" text="DELIVERY"></Button>
                <Button fx:id="contactButton" text="CONTACT" onAction="#onContactButtonClicked"></Button>
            </HBox>
@@ -85,10 +85,10 @@
                       strokeWidth="0.0" width="160.0"/>
        </TilePane>
    </center>
-    <left>
-        <VBox prefHeight="337.0" prefWidth="14.0" BorderPane.alignment="CENTER" />
-    </left>
-   <right>
-      <VBox prefHeight="337.0" prefWidth="14.0" BorderPane.alignment="CENTER" />
-   </right>
+    <!--<left>-->
+        <!--<VBox prefHeight="337.0" prefWidth="14.0" BorderPane.alignment="CENTER" />-->
+    <!--</left>-->
+   <!--<right>-->
+      <!--<VBox prefHeight="337.0" prefWidth="14.0" BorderPane.alignment="CENTER" />-->
+   <!--</right>-->
 </BorderPane>

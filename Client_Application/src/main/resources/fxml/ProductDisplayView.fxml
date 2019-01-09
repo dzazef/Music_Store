@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.geometry.Insets?>
+<HBox fx:id="mainCartView" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" >
+
+    <VBox fx:id="filtersMenuBox" prefWidth="180"  alignment="TOP_CENTER">
+        <Button fx:id="doFilterButton" text="FILTER" onAction="#doFilter"></Button>
+    </VBox>
+
+        <ScrollPane fx:id="productDisplay">
+            <padding>
+                <Insets left="20.0" right="20.0"></Insets>
+            </padding>
+            <TilePane fx:id="tilePaneWithProducts" hgap="20" vgap="20" >
+            </TilePane>
+        </ScrollPane>
+
+
+
+</HBox>

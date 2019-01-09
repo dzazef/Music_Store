@@ -1,0 +1,8 @@
+.toggle-button {
+     -fx-pref-width: 40.0;
+     -fx-pref-height: 25.0;
+     -fx-background-color: #ff2300;
+ }
+.toggle-button:selected:focused {
+    fx-background-color: #20bd00;
+}

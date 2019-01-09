@@ -6,16 +6,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.shape.Rectangle?>
-<HBox xmlns="http://javafx.com/javafx"
+<HBox fx:id="mainCartView" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml">
-    <VBox fx:id="filtersMenuBox">
-        <TextField></TextField>
-    </VBox>
-    <ScrollPane fx:id="productDisplay" >
-        <TilePane>
-            <Rectangle></Rectangle>
-        </TilePane>
+
+    <ScrollPane fx:id="productDisplay">
+
     </ScrollPane>
+
+
 
 </HBox>

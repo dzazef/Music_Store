@@ -10,6 +10,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.CartManager;
+import model.FilterProductFunctions;
+import model.ProductCategory;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -63,8 +65,53 @@ public class WelcomeViewController {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CartView.fxml"));
             CartViewController cartViewController = new CartViewController(cartManager);
-            mainPane.setCenter(loader.load());
             loader.setController(cartViewController);
+            mainPane.setCenter(loader.load());
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void albumsButtonClicked(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProductDisplayView.fxml"));
+            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.album);
+            loader.setController(productDisplayViewController);
+            mainPane.setCenter(loader.load());
+            productDisplayViewController.addFilterTextField("TITLE", "title");
+            productDisplayViewController.addFilterTextField("GENRE", "genre");
+            productDisplayViewController.addFilterTextField("ARTIST", "name");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void instrumentsButtonClicked(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProductDisplayView.fxml"));
+            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.instrument);
+            loader.setController(productDisplayViewController);
+            mainPane.setCenter(loader.load());
+            productDisplayViewController.addFilterTextField("NAME", "instrument_name");
+            productDisplayViewController.addFilterTextField("MANUFACTURER", "manufacturer_name");
+            productDisplayViewController.addFilterTextField("TYPE", "type");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println(e.getMessage());
+        }
+    }
+
+    public void othersButtonClicked(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProductDisplayView.fxml"));
+            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.other);
+            loader.setController(productDisplayViewController);
+            mainPane.setCenter(loader.load());
+            productDisplayViewController.addFilterTextField("NAME", "name");
+            productDisplayViewController.addFilterTextField("MANUFACTURER", "producer");
+            productDisplayViewController.addFilterTextField("TYPE", "type");
         } catch (IOException e) {
             e.printStackTrace();
             System.err.println(e.getMessage());
