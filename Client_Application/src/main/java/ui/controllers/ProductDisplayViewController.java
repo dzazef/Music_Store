@@ -70,20 +70,25 @@ public class ProductDisplayViewController {
         }
     }
 
+
+
     private void presentOther() {
         List<OtherViewEntity> products = FilterProductFunctions.filterOther(filters);
-        for (OtherViewEntity instrument : products) {
+        for (OtherViewEntity product : products) {
             VBox vBox = new VBox();
             vBox.setPadding(new Insets(0,10,0,10));
 //            ImageView imageView = new ImageView(new Image());
 //            imageView.setFitWidth(160.0);
 //            imageView.setFitHeight(140.0);
-            Label titleLabel = new Label(instrument.getName()+"\nProducer: "+instrument.getProducer()+
-                    "\nType: "+instrument.getType()+"\n"+instrument.getPrice()+"$\n");
-            vBox.getChildren().addAll(titleLabel);
+            Label titleLabel = new Label(product.getName()+"\nProducer: "+product.getProducer()+
+                    "\nType: "+product.getType()+"\n"+product.getPrice()+"$\n");
+            Button addDoCartButton = new Button("ADD DO CART");
+            addDoCartButton.setOnAction((actionEvent) -> addToCart(product.getProductId(),product.getPrice()));
+            vBox.getChildren().addAll(titleLabel,addDoCartButton);
             tilePaneWithProducts.getChildren().addAll(vBox);
         }
     }
+
 
     private void presentInstruments() {
         List<InstrumentViewEntity> instruments = FilterProductFunctions.filterInstruments(filters);
@@ -95,7 +100,9 @@ public class ProductDisplayViewController {
 //            imageView.setFitHeight(140.0);
             Label titleLabel = new Label(instrument.getInstrumentName()+"\nManufacturer: \n"+instrument.getManufacturerName()+
                     "\nType:\n"+instrument.getType()+"\n"+instrument.getPrice()+"$\n");
-            vBox.getChildren().addAll(titleLabel);
+            Button addDoCartButton = new Button("ADD DO CART");
+            addDoCartButton.setOnAction((actionEvent) -> addToCart(instrument.getProductId(),instrument.getPrice()));
+            vBox.getChildren().addAll(titleLabel,addDoCartButton);
             tilePaneWithProducts.getChildren().addAll(vBox);
         }
     }
@@ -108,7 +115,9 @@ public class ProductDisplayViewController {
             imageView.setFitWidth(160.0);
             imageView.setFitHeight(140.0);
             Label titleLabel = new Label(album.getTitle()+" "+album.getPrice()+"$");
-            vBox.getChildren().addAll(imageView,titleLabel);
+            Button addDoCartButton = new Button("ADD DO CART");
+            addDoCartButton.setOnAction((actionEvent) -> addToCart(album.getProductId(),album.getPrice()));
+            vBox.getChildren().addAll(imageView,titleLabel,addDoCartButton);
             tilePaneWithProducts.getChildren().addAll(vBox);
         }
     }
@@ -116,6 +125,14 @@ public class ProductDisplayViewController {
     ProductDisplayViewController(CartManager manager,ProductCategory category) {
         setCartManager(manager);
         setCategory(category);
+    }
+
+    private void addToCart(Integer productId,Double price) {
+        cartManager.addProduct(productId,price);
+    }
+
+    private void removeFromCart(Integer productId) {
+        cartManager.removeProduct(productId);
     }
 
     private void setCartManager(CartManager manager) {
