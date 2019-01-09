@@ -1,5 +1,6 @@
 package ui.controllers;
 
+import javafx.beans.binding.Bindings;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -10,7 +11,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.CartManager;
-import model.FilterProductFunctions;
 import model.ProductCategory;
 
 import java.io.IOException;
@@ -39,7 +39,10 @@ public class WelcomeViewController {
         deliveryButton.prefWidthProperty().bind(topVBox.widthProperty().divide(5));
         contactButton.prefWidthProperty().bind(topVBox.widthProperty().divide(5));
         setCartManager(new CartManager());
-        priceLabel.textProperty().bind(cartManager.total.asString());
+
+        priceLabel.textProperty().bind(Bindings.createStringBinding(
+                () -> String.format("%.2f",cartManager.total.getValue()),cartManager.total
+        ));
     }
 
     public void setCartManager(CartManager cartManager) {
