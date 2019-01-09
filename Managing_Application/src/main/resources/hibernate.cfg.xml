@@ -10,17 +10,5 @@
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <mapping class="model.entities.UsersEntity"/>
-        <mapping class="model.entities.AlbumsEntity"/>
-        <mapping class="model.entities.ArtistsEntity"/>
-        <mapping class="model.entities.DeliveryEntity"/>
-        <mapping class="model.entities.InstrumentManufacturersEntity"/>
-        <mapping class="model.entities.InstrumentsEntity"/>
-        <mapping class="model.entities.OrdersEntity"/>
-        <mapping class="model.entities.OrdersProductsEntity"/>
-        <mapping class="model.entities.OtherEntity"/>
-        <mapping class="model.entities.ProductsEntity"/>
-        <mapping class="model.entities.StatusLogsEntity"/>
-        <mapping class="model.entities.StorageEntity"/>
     </session-factory>
 </hibernate-configuration>
