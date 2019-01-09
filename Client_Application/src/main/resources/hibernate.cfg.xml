@@ -11,6 +11,6 @@
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <mapping class="model.entities.DeliveryEntity" />
+        <property name="hibernate.connection.characterEncoding">utf8</property>
     </session-factory>
 </hibernate-configuration>

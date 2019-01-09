@@ -6,7 +6,6 @@ import javax.persistence.*;
 @Table(name = "instruments", schema = "music_store", catalog = "")
 public class InstrumentsEntity {
     private int instrumentId;
-    private int manufacturerId;
     private String type;
     private String name;
 
@@ -18,16 +17,6 @@ public class InstrumentsEntity {
 
     public void setInstrumentId(int instrumentId) {
         this.instrumentId = instrumentId;
-    }
-
-    @Basic
-    @Column(name = "manufacturer_id")
-    public int getManufacturerId() {
-        return manufacturerId;
-    }
-
-    public void setManufacturerId(int manufacturerId) {
-        this.manufacturerId = manufacturerId;
     }
 
     @Basic
@@ -58,7 +47,6 @@ public class InstrumentsEntity {
         InstrumentsEntity that = (InstrumentsEntity) o;
 
         if (instrumentId != that.instrumentId) return false;
-        if (manufacturerId != that.manufacturerId) return false;
         if (type != null ? !type.equals(that.type) : that.type != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
@@ -68,7 +56,6 @@ public class InstrumentsEntity {
     @Override
     public int hashCode() {
         int result = instrumentId;
-        result = 31 * result + manufacturerId;
         result = 31 * result + (type != null ? type.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;

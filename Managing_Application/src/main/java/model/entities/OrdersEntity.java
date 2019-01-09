@@ -1,18 +1,24 @@
 package model.entities;
 
+import model.Payment;
+import model.Status;
+import model.TransactionDocument;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "orders", schema = "music_store", catalog = "")
 public class OrdersEntity {
     private int orderId;
-    private int deliveryId;
     private String customerName;
     private String customerAdress;
     private String phoneNumber;
-    private String currentStatus;
-    private String payment;
-    private String transactionDocument;
+    @Enumerated(EnumType.STRING)
+    private Status currentStatus;
+    @Enumerated(EnumType.STRING)
+    private Payment payment;
+    @Enumerated(EnumType.STRING)
+    private TransactionDocument transactionDocument;
 
     @Id
     @Column(name = "order_id")
@@ -22,16 +28,6 @@ public class OrdersEntity {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
-    }
-
-    @Basic
-    @Column(name = "delivery_id")
-    public int getDeliveryId() {
-        return deliveryId;
-    }
-
-    public void setDeliveryId(int deliveryId) {
-        this.deliveryId = deliveryId;
     }
 
     @Basic
@@ -66,31 +62,31 @@ public class OrdersEntity {
 
     @Basic
     @Column(name = "current_status")
-    public String getCurrentStatus() {
+    public Status getCurrentStatus() {
         return currentStatus;
     }
 
-    public void setCurrentStatus(String currentStatus) {
+    public void setCurrentStatus(Status currentStatus) {
         this.currentStatus = currentStatus;
     }
 
     @Basic
     @Column(name = "payment")
-    public String getPayment() {
+    public Payment getPayment() {
         return payment;
     }
 
-    public void setPayment(String payment) {
+    public void setPayment(Payment payment) {
         this.payment = payment;
     }
 
     @Basic
     @Column(name = "transaction_document")
-    public String getTransactionDocument() {
+    public TransactionDocument getTransactionDocument() {
         return transactionDocument;
     }
 
-    public void setTransactionDocument(String transactionDocument) {
+    public void setTransactionDocument(TransactionDocument transactionDocument) {
         this.transactionDocument = transactionDocument;
     }
 
@@ -102,7 +98,6 @@ public class OrdersEntity {
         OrdersEntity that = (OrdersEntity) o;
 
         if (orderId != that.orderId) return false;
-        if (deliveryId != that.deliveryId) return false;
         if (customerName != null ? !customerName.equals(that.customerName) : that.customerName != null) return false;
         if (customerAdress != null ? !customerAdress.equals(that.customerAdress) : that.customerAdress != null)
             return false;
@@ -119,7 +114,6 @@ public class OrdersEntity {
     @Override
     public int hashCode() {
         int result = orderId;
-        result = 31 * result + deliveryId;
         result = 31 * result + (customerName != null ? customerName.hashCode() : 0);
         result = 31 * result + (customerAdress != null ? customerAdress.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
