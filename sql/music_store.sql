@@ -85,7 +85,7 @@ CREATE UNIQUE INDEX storage_product_id_uindex ON storage (product_id);
 CREATE TABLE users
 (
   user_id VARCHAR(30) PRIMARY KEY NOT NULL,
-  password VARCHAR(30) NOT NULL,
+  password VARCHAR(100) NOT NULL, #changed to contain passwords hash
   access_level VARCHAR(30) NOT NULL
 );
 CREATE UNIQUE INDEX users_user_id_uindex ON users (user_id);

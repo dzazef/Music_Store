@@ -11,6 +11,11 @@ public class LoginManager {
     private Session session;
     private SessionFactoryManager loginSessionFactory;
     private AccessLevel accessLevel;
+
+    public AccessLevel getAccessLevel() {
+        return accessLevel;
+    }
+
     public void connect() {
         loginSessionFactory = new SessionFactoryManager("admin", "admin");
         loginSessionFactory.buildSessionFactory();
@@ -25,12 +30,17 @@ public class LoginManager {
      */
     public boolean checkUser(String username, String password) {
         TypedQuery<UsersEntity> query = session.
-                createQuery("from UsersEntity where userId like (:username) and password like (:password)", UsersEntity.class)
-                .setParameter("username", username).setParameter("password", password);
+                createQuery("from UsersEntity where userId like (:username)", UsersEntity.class)
+                .setParameter("username", username);
         List<UsersEntity> usersEntityList = query.getResultList();
         if (usersEntityList.size()>0) {
-            accessLevel = usersEntityList.get(0).getAccessLevel();
-            return true;
+//            if (BCrypt.checkpw(password, usersEntityList.get(0).getPassword())) {
+            if(password.equals(usersEntityList.get(0).getPassword())) {
+                accessLevel = usersEntityList.get(0).getAccessLevel();
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

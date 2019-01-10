@@ -8,7 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
 import model.AccessLevel;
-import ui.views.MainAppView;
+import ui.views.TileView;
 
 public class LoginViewController {
 
@@ -30,8 +30,9 @@ public class LoginViewController {
     public void handleLogIn() {
         if (loginManager.checkUser(username.getText(), password.getText())) {
             System.out.println("logowanie udane");
+            AccessLevel acessLevel = loginManager.getAccessLevel();
             loginManager.clean();
-            MainAppView.initialize(4);
+            TileView.initialize(acessLevel);
         } else {
             System.out.println("logowanie nie udane");
             Alert alert = new Alert(Alert.AlertType.ERROR);
