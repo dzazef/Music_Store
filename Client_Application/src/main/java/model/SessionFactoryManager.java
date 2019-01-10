@@ -10,7 +10,7 @@ public class SessionFactoryManager {
     private static SessionFactory sessionFactory;
     public static synchronized void buildSessionFactory() {
         if (sessionFactory == null)
-            System.setProperty("hibernate.connection.password","123");
+            System.setProperty("hibernate.connection.password","client");
             System.setProperty("hibernate.connection.username","client");
             sessionFactory = new Configuration().configure("hibernate.cfg.xml").
                 addAnnotatedClass(AlbumsEntity.class).

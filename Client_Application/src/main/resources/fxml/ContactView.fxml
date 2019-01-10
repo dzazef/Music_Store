@@ -7,6 +7,8 @@
 <?import javafx.scene.layout.*?>
 
 <VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml">
-    <Label text="Contact us!\nphone number: 000 000 000\n"></Label>
+    <Label text="Contact us!" />
+    <Label text="Phone number: 000 000 000"/>
+    <Label text="E-mail: music_store@gamil.com"/>
 
 </VBox>
