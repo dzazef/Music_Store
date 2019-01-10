@@ -1,8 +1,13 @@
 package ui.controllers;
 
+import db.LoginManager;
+import ui.views.LoginView;
+import ui.views.tiles.BrowseOrdersViewController;
+
 public class TileViewController {
     public static void handleBrowseOrders() {
         System.out.println("handleBrowseOrders");
+        BrowseOrdersViewController.initialize();
     }
 
     public static void handleCompleteOrders() {
@@ -47,5 +52,7 @@ public class TileViewController {
 
     public static void handleLogOut() {
         System.out.println("handleLogOut");
+        LoginManager.clean();
+        LoginView.initialize();
     }
 }

@@ -18,6 +18,11 @@ import java.util.List;
 public class TileView {
     private static TilePane tilePane;
     private static Scene scene;
+
+    /**
+     * Method creating TileView.
+     * @param accessLevel Access Level of current user.
+     */
     public static void initialize(AccessLevel accessLevel) {
         tilePane = new TilePane();
         tilePane.setHgap(10);
@@ -29,10 +34,14 @@ public class TileView {
         stage.setScene(scene);
         stage.setTitle("Choose module");
 
-
         tilePane.getChildren().addAll(createButtons(accessLevel));
     }
 
+    /**
+     * Generating tiles.
+     * @param accessLevel Access Level of current user
+     * @return list of buttons (tiles)
+     */
     private static List<Button> createButtons(AccessLevel accessLevel) {
         int id = 0;
         switch (accessLevel) {
@@ -57,6 +66,12 @@ public class TileView {
         return buttonList;
     }
 
+    /**
+     * Method creating single button.
+     * @param value button text
+     * @param event event that is supposed to happen on button click.
+     * @return
+     */
     private static Button makeButton(String value, EventHandler<ActionEvent> event) {
         Button button = new Button(value);
         button.setOnAction(event);

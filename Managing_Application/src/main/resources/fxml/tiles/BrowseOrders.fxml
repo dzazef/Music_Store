@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.views.tiles.BrowseOrdersViewController">
+   <bottom>
+      <HBox alignment="CENTER" prefHeight="40.0" prefWidth="970.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" onAction="#goBack" text="Return">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets></Button>
+         </children></HBox>
+   </bottom>
+   <top>
+      <TableView fx:id="tableBrowseOrders" prefHeight="469.0" prefWidth="970.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="62.0" text="ID" />
+          <TableColumn prefWidth="139.0" text="Name" />
+            <TableColumn prefWidth="140.0" text="Adress" />
+            <TableColumn prefWidth="124.0" text="Phone number" />
+            <TableColumn minWidth="0.0" prefWidth="99.0" text="Delivery" />
+            <TableColumn minWidth="0.0" prefWidth="164.0" text="Status" />
+            <TableColumn minWidth="9.0" prefWidth="120.0" text="Payment" />
+            <TableColumn minWidth="9.0" prefWidth="121.0" text="Document" />
+        </columns>
+      </TableView>
+   </top>
+</BorderPane>

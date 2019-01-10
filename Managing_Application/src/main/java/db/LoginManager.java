@@ -8,15 +8,15 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class LoginManager {
-    private Session session;
-    private SessionFactoryManager loginSessionFactory;
-    private AccessLevel accessLevel;
+    private static Session session;
+    private static SessionFactoryManager loginSessionFactory;
+    private static AccessLevel accessLevel;
 
-    public AccessLevel getAccessLevel() {
+    public static AccessLevel getAccessLevel() {
         return accessLevel;
     }
 
-    public void connect() {
+    public static void connect() {
         loginSessionFactory = new SessionFactoryManager("admin", "admin");
         loginSessionFactory.buildSessionFactory();
         session = loginSessionFactory.getNewSession();
@@ -28,7 +28,7 @@ public class LoginManager {
      * @param password password
      * @return access level.
      */
-    public boolean checkUser(String username, String password) {
+    public static boolean checkUser(String username, String password) {
         TypedQuery<UsersEntity> query = session.
                 createQuery("from UsersEntity where userId like (:username)", UsersEntity.class)
                 .setParameter("username", username);
@@ -45,7 +45,7 @@ public class LoginManager {
             return false;
         }
     }
-    public void clean() {
+    public static void clean() {
         session.close();
         loginSessionFactory.closeFactory();
     }

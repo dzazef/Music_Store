@@ -3,35 +3,34 @@ package ui.controllers;
 import db.LoginManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
 import model.AccessLevel;
 import ui.views.TileView;
 
 public class LoginViewController {
 
     @FXML
-    public Button loginButton;
-    public VBox loginPane;
     public TextField username;
     public PasswordField password;
 
-    public LoginManager loginManager;
-
+    /**
+     * Auto-run on view initialize.
+     * Get a connection with database to check user's login, password and AccessLevel.
+     */
     public void initialize() {
-        loginButton.prefWidthProperty().bind(loginPane.widthProperty().divide(5));
-        loginManager  = new LoginManager();
-        loginManager.connect();
+        LoginManager.connect();
     }
 
+    /**
+     * Method calling module that checks if given values are correct.
+     */
     @FXML
     public void handleLogIn() {
-        if (loginManager.checkUser(username.getText(), password.getText())) {
+        if (LoginManager.checkUser(username.getText(), password.getText())) {
             System.out.println("logowanie udane");
-            AccessLevel acessLevel = loginManager.getAccessLevel();
-            loginManager.clean();
+            AccessLevel acessLevel = LoginManager.getAccessLevel();
+            LoginManager.clean();
             TileView.initialize(acessLevel);
         } else {
             System.out.println("logowanie nie udane");
@@ -41,5 +40,13 @@ public class LoginViewController {
             alert.setContentText("Wrong username or password. Try again!");
             alert.showAndWait();
         }
+    }
+
+    /**
+     * ENTER handler.
+     */
+    @FXML
+    public void onEnter() {
+        handleLogIn();
     }
 }

@@ -1,17 +1,16 @@
-#loginPane {
-    -fx-background-image: url("../graphics/background.jpg");
-    -fx-background-position:center;
-    -fx-background-size: 950 700;
-    -fx-opacity: 0.80;
-}
 #loginButton {
-    -fx-background-color: "#FF9999";
-    -fx-background-radius: 50;
-    -fx-font-size: 20;
-    /*-fx-border-radius: 20;*/
+    -fx-text-fill: #c4c4c4;
+    -fx-background-color: #343434;
+    -fx-background-radius: 20;
+    -fx-font-size: 15;
+}
+#exitButton {
+    -fx-text-fill: #c4c4c4;
+    -fx-background-color: #343434;
+    -fx-background-radius: 20;
+    -fx-font-size: 15;
 }
 .text-field {
-    -fx-background-color: "#5555FF";
 }
 #tile {
     -fx-text-alignment: center;
@@ -20,4 +19,8 @@
     -fx-pref-width: 150;
     -fx-pref-height: 150;
     -fx-wrap-text: true;
+}
+
+#loginPane {
+    -fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(255,255,255,1) 0%, rgba(80,80,80,1) 100%);
 }
