@@ -57,6 +57,7 @@ public class ProductDisplayViewController {
     }
 
     public void doFilter(ActionEvent event) {
+        tilePaneWithProducts.getChildren().clear();
         switch (category) {
             case album:
                 presentAlbums();

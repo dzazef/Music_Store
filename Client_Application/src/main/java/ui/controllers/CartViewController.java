@@ -1,6 +1,7 @@
 package ui.controllers;
 
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -27,13 +28,10 @@ public class CartViewController {
 
     private void showProductsInCart() {
         if (cartManager.getProductsIdsAndPricesMap().isEmpty()) {
-            productsInCart.setVisible(false);
-            Label label = new Label("YOUR CART IS EMPTY!");
-            label.setStyle("-fx-font-size: 45.0");
-            mainCartView.getChildren().add(label);
+            showThatCartIsEmpty();
         }
         else {
-            productsInCart.setVisible(true);
+            scrollPane.setVisible(true);
             Button checkoutButton = new Button("BUY NOW!");
             checkoutButton.setOnAction( (actionEvent) -> proceedToCheckout());
             mainCartView.getChildren().add(0,checkoutButton);
@@ -41,6 +39,8 @@ public class CartViewController {
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
                 HBox hBox = new HBox();
+                hBox.setAlignment(Pos.CENTER_LEFT);
+                hBox.setSpacing(20.0);
                 Label productInfo = new Label(produceProductInfoString((Integer) pair.getKey()));
                 Button removeFromCartButton = new Button("REMOVE FROM CART");
                 removeFromCartButton.setOnAction((actionEvent) -> {
@@ -50,12 +50,23 @@ public class CartViewController {
                     } else {
                         productInfo.setText(produceProductInfoString((Integer) pair.getKey()));
                     }
+                    if (cartManager.getProductsIdsAndPricesMap().isEmpty()) {
+                        mainCartView.getChildren().remove(checkoutButton);
+                        showThatCartIsEmpty();
+                    }
                 });
                 hBox.getChildren().addAll(productInfo, removeFromCartButton);
                 productsInCart.getChildren().add(hBox);
             }
 
         }
+    }
+
+    private void showThatCartIsEmpty() {
+        scrollPane.setVisible(false);
+        Label label = new Label("YOUR CART IS EMPTY!");
+        label.setStyle("-fx-font-size: 45.0");
+        mainCartView.getChildren().add(label);
     }
 
     private String produceProductInfoString(Integer key) {

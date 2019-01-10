@@ -41,6 +41,12 @@ public class CartManager {
     public Integer getProductCountById(Integer id) {
         return productIdAndCountInCart.getOrDefault(id, 0);
     }
+
+    public void resetCart() {
+        productIdAndCountInCart.clear();
+        productsIdsAndPrices.clear();
+        total.setValue(0.0);
+    }
 //    void addProduct(ProductsEntity product) {
 //        products.add(product);
 //        updatePrice(product.getPrice());

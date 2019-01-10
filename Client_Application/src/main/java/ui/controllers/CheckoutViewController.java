@@ -73,6 +73,7 @@ public class CheckoutViewController {
                 mainBox.getChildren().clear();
                 mainBox.getChildren().add(new Label("\"Thank you for purchasing!\nA courier will arrive soon!"));
             }
+            cartManager.resetCart();
         }
     }
 
