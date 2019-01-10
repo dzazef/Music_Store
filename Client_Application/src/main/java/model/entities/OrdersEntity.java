@@ -10,6 +10,7 @@ import javax.persistence.*;
 @Table(name = "orders", schema = "music_store", catalog = "")
 public class OrdersEntity {
     private int orderId;
+    private int deliveryId;
     private String customerName;
     private String customerAdress;
     private String phoneNumber;
@@ -21,6 +22,7 @@ public class OrdersEntity {
     private TransactionDocument transactionDocument;
 
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     public int getOrderId() {
         return orderId;
@@ -28,6 +30,16 @@ public class OrdersEntity {
 
     public void setOrderId(int orderId) {
         this.orderId = orderId;
+    }
+
+    @Basic
+    @Column(name = "delivery_id")
+    public int getDeliveryId() {
+        return deliveryId;
+    }
+
+    public void setDeliveryId(int deliveryId) {
+        this.deliveryId = deliveryId;
     }
 
     @Basic
