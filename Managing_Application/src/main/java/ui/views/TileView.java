@@ -3,9 +3,11 @@ package ui.views;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.TilePane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import model.AccessLevel;
 import ui.Managing_Application;
@@ -24,11 +26,17 @@ public class TileView {
      * @param accessLevel Access Level of current user.
      */
     public static void initialize(AccessLevel accessLevel) {
+        VBox mainBox = new VBox();
+        mainBox.setAlignment(Pos.TOP_CENTER);
+        mainBox.setPadding(new Insets(20,20,20,20));
+        mainBox.setStyle("-fx-background-color: #55555");
+        mainBox.setMinWidth(510.0);
         tilePane = new TilePane();
         tilePane.setHgap(10);
         tilePane.setVgap(10);
         tilePane.setOpaqueInsets(new Insets(50, 50, 50, 50));
-        scene = new Scene(tilePane, 600, 600);
+        mainBox.getChildren().add(tilePane);
+        scene = new Scene(mainBox, 510, 600);
         scene.getStylesheets().add("css/style.css");
         Stage stage = Managing_Application.getStage();
         stage.setScene(scene);

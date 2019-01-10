@@ -42,17 +42,17 @@ public class LoginManager {
             if(password.equals(usersEntityList.get(0).getPassword())) {
                 accessLevel = usersEntityList.get(0).getAccessLevel();
                 //TODO
-                OrdersEntity ordersEntity = new OrdersEntity();
-                ordersEntity.setCurrentStatus(Status.cancelled);
-                ordersEntity.setCustomerAdress("1");
-                ordersEntity.setCustomerName("1");
-                ordersEntity.setDeliveryId(1);
-                ordersEntity.setPayment(Payment.bank_transfer);
-                ordersEntity.setPhoneNumber("123456789");
-                ordersEntity.setTransactionDocument(TransactionDocument.invoice);
-                session.beginTransaction();
-                session.save(ordersEntity);
-                session.getTransaction().commit();
+//                OrdersEntity ordersEntity = new OrdersEntity();
+//                ordersEntity.setCurrentStatus(Status.cancelled);
+//                ordersEntity.setCustomerAdress("1");
+//                ordersEntity.setCustomerName("1");
+//                ordersEntity.setDeliveryId(1);
+//                ordersEntity.setPayment(Payment.bank_transfer);
+//                ordersEntity.setPhoneNumber("123456789");
+//                ordersEntity.setTransactionDocument(TransactionDocument.invoice);
+//                session.beginTransaction();
+//                session.save(ordersEntity);
+//                session.getTransaction().commit();
 
                 return true;
             } else {
