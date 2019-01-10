@@ -16,7 +16,6 @@ public class CheckoutViewController {
     public ChoiceBox<String> paymentChoiceBox;
     public ChoiceBox<TransactionDocument> transactionDocumentChoiceBox;
     public ChoiceBox<String> deliveryChoiceBox;
-    public Button applyButtonClicked;
     public Label totalLabel;
     public TextField clientNameField;
     public TextField clientAddressField;
@@ -46,9 +45,12 @@ public class CheckoutViewController {
             order.setCurrentStatus(Status.in_progress);
             order.setTransactionDocument(transactionDocumentChoiceBox.getValue());
             order.setPayment(Payment.getByValue(paymentChoiceBox.getValue()));
-            //TODO change it!
+            //TODO change it
+            //here we assume that we have Deliver entity
             order.setDeliveryId(12);
-            //DeliveryEntity deliveryEntity = session.load(DeliveryEntity.class,12);
+            DeliveryEntity deliveryEntity = session.load(DeliveryEntity.class,12);
+
+            cartManager.total.setValue(cartManager.total.getValue()+deliveryEntity.getPrice());
 
             order.setCustomerAdress(clientAddressField.getText());
             order.setCustomerName(clientNameField.getText());
@@ -65,7 +67,8 @@ public class CheckoutViewController {
             session.close();
             if (paymentChoiceBox.getValue().equals(Payment.bank_transfer.toString())) {
                 mainBox.getChildren().clear();
-                mainBox.getChildren().add(new Label("Thank you for purchasing!\nYou should transfer money to our bank account\nOur bank account code is: " + bankAccountCode));
+                mainBox.getChildren().add(new Label("Thank you for purchasing!\nYou should transfer "+
+                        String.format("%.2f",cartManager.total.doubleValue())+" to our bank account\nOur bank account code is: " + bankAccountCode));
             } else {
                 mainBox.getChildren().clear();
                 mainBox.getChildren().add(new Label("\"Thank you for purchasing!\nA courier will arrive soon!"));

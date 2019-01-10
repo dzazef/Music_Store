@@ -1,13 +1,11 @@
 package ui.controllers;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.TilePane;
 import javafx.scene.layout.VBox;
 import model.CartManager;
 
@@ -43,16 +41,28 @@ public class CartViewController {
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
                 HBox hBox = new HBox();
-                Label productInfo = new Label("Product ID: " + pair.getKey() + "\nPrice: " + pair.getValue());
+                Label productInfo = new Label(produceProductInfoString((Integer) pair.getKey()));
                 Button removeFromCartButton = new Button("REMOVE FROM CART");
                 removeFromCartButton.setOnAction((actionEvent) -> {
-                        cartManager.removeProduct((Integer) pair.getKey());
-                        productsInCart.getChildren().remove(hBox);});
+                    cartManager.removeProduct((Integer) pair.getKey());
+                    if (cartManager.getProductCountById((Integer) pair.getKey()).equals(0)) {
+                        productsInCart.getChildren().remove(hBox);
+                    } else {
+                        productInfo.setText(produceProductInfoString((Integer) pair.getKey()));
+                    }
+                });
                 hBox.getChildren().addAll(productInfo, removeFromCartButton);
                 productsInCart.getChildren().add(hBox);
             }
 
         }
+    }
+
+    private String produceProductInfoString(Integer key) {
+        Integer quantity = cartManager.getProductCountById(key);
+        return "Product ID: " + key + "\nPrice: "
+                + quantity * cartManager.getProductsIdsAndPricesMap().get(key)
+                +"\nQuantity: "+ quantity;
     }
 
     private void proceedToCheckout() {
