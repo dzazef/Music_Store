@@ -71,5 +71,6 @@ public class Client_Application extends Application {
     @Override
     public void stop() {
         SessionFactoryManager.closeFactory();
+        System.exit(0);
     }
 }
