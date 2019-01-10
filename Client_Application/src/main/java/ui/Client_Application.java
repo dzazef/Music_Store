@@ -48,6 +48,8 @@ public class Client_Application extends Application {
         primaryStage.getIcons().add(new Image(Client_Application.class.getResourceAsStream("../images/icon.png")));
         primaryStage.show();
         SessionFactoryManager.buildSessionFactory();
+//        primaryStage.setOnCloseRequest((event) -> SessionFactoryManager.closeFactory());
+//        primaryStage.getScene().getWindow().setOnCloseRequest((event -> SessionFactoryManager.closeFactory()));
 //        Configuration cfg = new Configuration();
 //        cfg.configure();
 //        System.setProperty("hibernate.connection.password","123");
@@ -64,5 +66,10 @@ public class Client_Application extends Application {
 //        session.getTransaction().commit();
 //        session.close();
 
+    }
+
+    @Override
+    public void stop() {
+        SessionFactoryManager.closeFactory();
     }
 }
