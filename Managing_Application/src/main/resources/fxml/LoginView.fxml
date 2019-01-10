@@ -23,6 +23,6 @@
         <Button fx:id="loginButton" layoutX="114.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleLogIn" prefHeight="29.0" prefWidth="237.0" text="Log in" />
     </children>
     <stylesheets>
-        <URL value="@../css/style.css" />
+        <URL value="@../css/style.css"/>
     </stylesheets>
 </Pane>
