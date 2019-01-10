@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="mainBox" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            alignment="CENTER">
+<Label text="Choose payment method"></Label>
+    <ChoiceBox value="" fx:id="paymentChoiceBox" prefHeight="25.0" prefWidth="150.0">
+    <!--<String fx:value= />-->
+    <!--<String fx:value="Albums" />-->
+    <!--<String fx:value="Instruments" />-->
+    <!--<String fx:value="Other" />-->
+    </ChoiceBox>
+<Label text="Choose transaction document"></Label>
+    <ChoiceBox value="" fx:id="transactionDocumentChoiceBox" prefHeight="25.0" prefWidth="150.0"></ChoiceBox>
+    <ChoiceBox value="" fx:id="deliveryChoiceBox" prefHeight="25.0" prefWidth="150.0"></ChoiceBox>
+    <Label fx:id="totalLabel" text="Total: "></Label>
+    <Label text="Type your first and last name:"></Label>
+    <TextField fx:id="clientNameField"></TextField>
+    <Label text="Type your full address:"></Label>
+    <TextField fx:id="clientAddressField"></TextField>
+    <Label text="Type your phone number so as a courier could contact with you:"></Label>
+    <TextField fx:id="phoneNumberField"></TextField>
+    <Button fx:id="applyButton" onAction="#applyButtonClicked" ></Button>
+</VBox>

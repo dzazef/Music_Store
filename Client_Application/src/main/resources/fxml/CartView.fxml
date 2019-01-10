@@ -6,13 +6,14 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<HBox fx:id="mainCartView" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml">
+<?import javafx.scene.shape.Rectangle?>
+<VBox fx:id="mainCartView" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER">
 
-    <ScrollPane fx:id="productDisplay">
-
+    <ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true">
+        <VBox  fx:id="productsInCart"></VBox>
     </ScrollPane>
 
 
 
-</HBox>
+</VBox>

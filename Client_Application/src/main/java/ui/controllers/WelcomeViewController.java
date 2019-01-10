@@ -67,7 +67,7 @@ public class WelcomeViewController {
     public void cartClicked(MouseEvent mouseEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/CartView.fxml"));
-            CartViewController cartViewController = new CartViewController(cartManager);
+            CartViewController cartViewController = new CartViewController(cartManager,mainPane);
             loader.setController(cartViewController);
             mainPane.setCenter(loader.load());
         } catch (IOException e) {
@@ -120,4 +120,6 @@ public class WelcomeViewController {
             System.err.println(e.getMessage());
         }
     }
+
+
 }

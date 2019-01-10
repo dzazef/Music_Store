@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 
 public class SessionFactoryManager {
     private static SessionFactory sessionFactory;
-    public static void buildSessionFactory() {
+    public static synchronized void buildSessionFactory() {
         if (sessionFactory == null)
             System.setProperty("hibernate.connection.password","123");
             System.setProperty("hibernate.connection.username","client");
@@ -32,9 +32,11 @@ public class SessionFactoryManager {
                 buildSessionFactory();
     }
     public static Session getNewSession() {
+        buildSessionFactory();
         return sessionFactory.openSession();
     }
-    public static void closeFactory() {
-        sessionFactory.close();
+    public static synchronized void closeFactory() {
+        if (sessionFactory != null)
+            sessionFactory.close();
     }
 }
