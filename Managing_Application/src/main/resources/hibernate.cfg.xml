@@ -18,7 +18,7 @@
         <mapping class="model.entities.InstrumentsEntity"/>
         <mapping class="model.entities.OrdersEntity"/>
         <mapping class="model.entities.OrdersProductsEntity"/>
-        <mapping class="model.entities.OrdersProductsEntity"/>
+        <mapping class="model.entities.OrdersProductsEntityPK"/>
         <mapping class="model.entities.ProductsEntity"/>
         <mapping class="model.entities.StatusLogsEntity"/>
         <mapping class="model.entities.StorageEntity"/>

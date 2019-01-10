@@ -9,6 +9,17 @@ import javax.persistence.*;
 @Entity
 @Table(name = "orders", schema = "music_store", catalog = "")
 public class OrdersEntity {
+    @Basic
+    @Column(name = "delivery_id")
+    public int getDeliveryId() {
+        return deliveryId;
+    }
+
+    public void setDeliveryId(int deliveryId) {
+        this.deliveryId = deliveryId;
+    }
+
+    private int deliveryId;
     private int orderId;
     private String customerName;
     private String customerAdress;

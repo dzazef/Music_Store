@@ -74,4 +74,5 @@ GRANT UPDATE, INSERT, DELETE ON music_store.other TO 'admin'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.instruments TO 'admin'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.instrument_manufacturers TO 'admin'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.delivery TO 'admin'@'localhost';
-GRANT UPDATE, INSERT, DELETE ON music_store.users TO 'admin'@'localhost';
+GRANT SELECT, UPDATE, INSERT, DELETE ON music_store.users TO 'admin'@'localhost';
+GRANT INSERT ON music_store.orders TO 'admin'@'localhost'; #TODO
