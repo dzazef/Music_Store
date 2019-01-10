@@ -17,7 +17,7 @@ public class LoginView {
             @SuppressWarnings("ConstantConditions") final Parent parent = FXMLLoader.load(LoginView.class.getClassLoader().getResource("fxml/LoginView.fxml"));
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(parent));
-            stage.setTitle("TODO xD");
+            stage.setTitle("Music Store Managing Application");
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error while initializing LoginView");
