@@ -1,8 +1,10 @@
 #!/bin/bash
 while IFS='' read -r line || [[ -n "$line" ]]; do
-    curl -s ${line} > test.txt
+    curl -s $line > test.txt
+    #price
+    # printf "%d;" $(shuf -i 30-50 -n 1)
     #album name
-    cat test.txt | sed -n 's:.*Featured on \(.*\)<\/a.*:\1:p' | sed 1q | cut -d ">" -f 2 | tr '\n' ';'| sed -e 's/\&\#039\;/'\''/g' | sed -e 's/amp\;//g' | sed -e 's/\&quot\;/\"/g'
+    cat test.txt | sed -n 's:.*Featured on \(.*\)<\/a.*:\1:p' | sed 1q | cut -d ">" -f 2 | tr '\n' ';'| sed -e 's/\&\#039\;/'\''/g' | sed -e 's/amp\;//g' | sed -e 's/\&quot\;/\"/g' 
     #print date
     cat test.txt | sed -n 's:.*datePublished\(.*\)potentialAction.*:\1:p' | cut -d "\"" -f 3 | cut -d "-" -f 1 | tr '\n' ' ' | sed -e 's/\&\#039\;/'\''/g' | sed -e 's/amp\;//g' | sed -e 's/\&quot\;/\"/g' | sed 's/.$//'
     #print id?
@@ -13,7 +15,7 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     #artist
     cat test.txt | sed -n 's:.*a song by \(.*\) on Spotify.*:\1:p' | sed 1q | tr '\n' ';' | sed -e 's/\&\#039\;/'\''/g' | sed -e 's/amp\;//g' | sed -e 's/\&quot\;/\"/g'
     #print info about license
-    #cat test.txt | sed -n 's:.*&#8471\; \(.*\)*:\1:p' | tr '\n' ' ' 
+    #cat test.txt | sed -n 's:.*&#8471\; \(.*\)*:\1:p' | tr '\n' ' '
     #genre
     genre=$(curl -s 'https://open.spotify.com/artist/'$(cat test.txt | sed -n 's:.*music\:musician\" content\=\(.*\)music\:release_date.*:\1:p' |  sed -e 's/\/.*\///g' | cut -d ':' -f 2 | cut -d '"' -f 1) | sed -n 's:.*genres\(.*\)images.*:\1:p' | cut -d '"' -f 3 | sed 's/href//g')
     genre=${genre//$'\n'/}
@@ -23,22 +25,21 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     sc=${sc//$'\n'/}
     printf "%s;" "$sc"
     counter=0
-    counter2=0
     length=0;
     curl -s 'https://open.spotify.com/album/'$(cat test.txt | sed -n 's:.*com\/album\/\(.*\)meta.*:\1:p' | cut -d "\"" -f 1) | grep -oP '(?<=Spotify.Entity =).*(?<=};)' > test2.txt
-    while [[ ${counter} -ne ${sc} ]]
-    do 
+    while [[ $counter -ne $sc ]];
+    do
     	str=".tracks.items[$counter].name"
     	str2=".tracks.items[$counter].duration_ms"
-    	value=$(cat test2.txt | jq -r ${str})
-    	value2=$(cat test2.txt | jq -r ${str2})
+    	value=$(cat test2.txt | jq -r $str )
+    	value2=$(cat test2.txt | jq -r $str2)
     	let "counter2 = $counter + 1"
 
     	let "length = $length + $value2"
     	printf "%s" "${counter2}. ${value}*"
     	((counter++))
-    done
+    done;
     printf ";%s" "$length"
     printf "\n"
-done < "$1"
+done < "$1";
 rm test.txt
