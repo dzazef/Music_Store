@@ -1,8 +1,12 @@
 package ui;
 
+import db.SessionFactoryManager;
 import javafx.application.Application;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.AccessLevel;
+import model.entities.UsersEntity;
+import org.hibernate.Session;
 import ui.views.LoginView;
 
 public class Managing_Application extends Application {

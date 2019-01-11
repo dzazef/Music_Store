@@ -7,20 +7,10 @@ import model.TransactionDocument;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "orders", schema = "music_store", catalog = "")
+@Table(name = "orders", schema = "music_store")
 public class OrdersEntity {
-    @Basic
-    @Column(name = "delivery_id")
-    public int getDeliveryId() {
-        return deliveryId;
-    }
-
-    public void setDeliveryId(int deliveryId) {
-        this.deliveryId = deliveryId;
-    }
-
-    private int deliveryId;
     private int orderId;
+//    private int deliveryId;
     private String customerName;
     private String customerAdress;
     private String phoneNumber;
@@ -31,7 +21,21 @@ public class OrdersEntity {
     @Enumerated(EnumType.STRING)
     private TransactionDocument transactionDocument;
 
+
+    @ManyToOne
+    @JoinColumn(name = "delivery_id")
+    public DeliveryEntity getDeliveryEntity() {
+        return deliveryEntity;
+    }
+
+    public void setDeliveryEntity(DeliveryEntity deliveryEntity) {
+        this.deliveryEntity = deliveryEntity;
+    }
+
+    private DeliveryEntity deliveryEntity;
+
     @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     public int getOrderId() {
         return orderId;
@@ -40,6 +44,16 @@ public class OrdersEntity {
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
+
+//    @Basic
+//    @Column(name = "delivery_id")
+//    public int getDeliveryId() {
+//        return deliveryId;
+//    }
+//
+//    public void setDeliveryId(int deliveryId) {
+//        this.deliveryId = deliveryId;
+//    }
 
     @Basic
     @Column(name = "customer_name")
