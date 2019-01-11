@@ -1,8 +1,16 @@
 package ui.controllers;
 
 import db.LoginManager;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.stage.Stage;
+import ui.Managing_Application;
 import ui.views.LoginView;
 import ui.views.tiles.BrowseOrdersViewController;
+
+import java.io.IOException;
 
 public class TileViewController {
     public static void handleBrowseOrders() {
@@ -40,6 +48,17 @@ public class TileViewController {
 
     public static void handleManageUsers() {
         System.out.println("handleManageUsers");
+        @SuppressWarnings("ConstantConditions") final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(LoginView.class.getClassLoader().getResource("fxml/tiles/ManageUsersView.fxml"));
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Manage users");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load manage users view.");
+        }
     }
 
     public static void handleShowLogs() {
@@ -54,5 +73,12 @@ public class TileViewController {
         System.out.println("handleLogOut");
         LoginManager.clean();
         LoginView.initialize();
+    }
+
+    public static void showErrorMessage(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

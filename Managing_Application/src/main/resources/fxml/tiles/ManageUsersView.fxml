@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ui.controllers.ManageUsersController"
+            prefHeight="400.0" prefWidth="600.0"
+            fx:id="mainPane">
+    <bottom>
+        <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#goBack" text="Return"/>
+        </HBox>
+    </bottom>
+    <top>
+        <HBox alignment="TOP_CENTER" spacing="10.0">
+            <TextField fx:id="loginTextField" />
+            <PasswordField fx:id="passwordField" />
+            <ChoiceBox fx:id="accessLevelChoiceBox" />
+            <Button fx:id="addUserButton" text="ADD USER" onAction="#addUserButtonClicked"/>
+        </HBox>
+    </top>
+    <center>
+        <TableView fx:id="tableView">
+            <columns>
+                <TableColumn fx:id="loginColumn" text="LOGIN"/>
+                <TableColumn fx:id="passwordColumn" text="PASSWORD"/>
+                <TableColumn fx:id="accessLevelColumn" text="ACCESS LEVEL"/>
+                <TableColumn fx:id="removeButtonsColumn" text=""/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>
