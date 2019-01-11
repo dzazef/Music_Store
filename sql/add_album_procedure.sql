@@ -22,6 +22,13 @@ CREATE PROCEDURE add_album(price FLOAT, title VARCHAR(80), realease_year INT(11)
       /*add album to albums*/
       INSERT INTO albums (album_id, artist_id, duration, release_year, title, songs_count, image_link, tracklist)
       VALUES (@product_id,var_artist_id,duration,realease_year,title,songs_count,img_link,tracklist);
+            /*add album to view*/
+--       INSERT INTO album_view (product_id, category, price, artist_id, name, genre, title,
+--             duration, release_year, songs_count, image_link, tracklist)
+--             VALUES (@product_id,category,price,var_artist_id,artist_name,artist_genre,
+--             title,duration,realease_year,songs_count,img_link,tracklist);
+      /*add album to storage*/
+      INSERT INTO storage (product_id, products_available) VALUES (@product_id,0);
      COMMIT;
   END $$
 DELIMITER ;

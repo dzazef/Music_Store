@@ -21,9 +21,9 @@ GRANT SELECT ON music_store.other TO 'client'@'localhost';
 GRANT SELECT ON music_store.delivery TO 'client'@'localhost';
 GRANT INSERT ON music_store.orders TO 'client'@'localhost';
 GRANT INSERT ON music_store.orders_products TO 'client'@'localhost';
-# GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
-# GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
-# GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
 
 #storekeeper
 GRANT SELECT ON music_store.orders TO 'storekeeper'@'localhost';

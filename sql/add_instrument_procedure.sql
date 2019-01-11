@@ -22,6 +22,12 @@ CREATE PROCEDURE add_instrument(price FLOAT,instrument_type VARCHAR(80),instrume
       /*add instrument to instruments*/
       INSERT INTO instruments (instrument_id, manufacturer_id, type, name) 
         VALUES(@product_id,var_manufacturer_id,instrument_type,instrument_name);
+--         /*add instrument to instrument_view*/
+--     INSERT INTO instrument_view (product_id, category, price, manufacturer_id, manufacturer_name, instrument_name, type)
+--     VALUES (@product_id,'instrument',price,var_manufacturer_id,var_manufacturer_name,instrument_name,instrument_type);
+    /*add to storage*/
+    INSERT INTO storage (product_id, products_available)
+    VALUES (@product_id,0);
      COMMIT;
   END $$
 DELIMITER ;
