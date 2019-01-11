@@ -3,7 +3,7 @@ CREATE USER 'client'@'localhost' IDENTIFIED BY 'client';
 DROP USER IF EXISTS 'storekeeper'@'localhost';
 CREATE USER 'storekeeper'@'localhost' IDENTIFIED BY 'storekeeper';
 DROP USER IF EXISTS 'storage_manager'@'localhost';
-CREATE USER 'storage_manager'@'localhost' IDENTIFIED BY 'store_manager';
+CREATE USER 'storage_manager'@'localhost' IDENTIFIED BY 'storage_manager';
 DROP USER IF EXISTS 'manager'@'localhost';
 CREATE USER 'manager'@'localhost' IDENTIFIED BY 'manager';
 DROP USER IF EXISTS 'admin'@'localhost';
@@ -21,9 +21,9 @@ GRANT SELECT ON music_store.other TO 'client'@'localhost';
 GRANT SELECT ON music_store.delivery TO 'client'@'localhost';
 GRANT INSERT ON music_store.orders TO 'client'@'localhost';
 GRANT INSERT ON music_store.orders_products TO 'client'@'localhost';
-GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
-GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
-GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
+# GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
+# GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
+# GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
 
 #storekeeper
 GRANT SELECT ON music_store.orders TO 'storekeeper'@'localhost';
