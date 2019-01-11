@@ -1,29 +1,22 @@
 package db;
 
 import model.AccessLevel;
-import model.Payment;
-import model.Status;
-import model.TransactionDocument;
-import model.entities.OrdersEntity;
 import model.entities.UsersEntity;
 import org.hibernate.Session;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@SuppressWarnings("Duplicates")
 public class LoginManager {
-    private static Session session;
-    private static SessionFactoryManager loginSessionFactory;
+    private static Session loginSession;
+    private static SessionFactoryManager currentSessionFactoryManager;
     private static AccessLevel accessLevel;
 
-    public static AccessLevel getAccessLevel() {
-        return accessLevel;
-    }
-
-    public static void connect() {
-        loginSessionFactory = new SessionFactoryManager("admin", "admin");
-        loginSessionFactory.buildSessionFactory();
-        session = loginSessionFactory.getNewSession();
+    public static void connectUserCheck() {
+        currentSessionFactoryManager = new SessionFactoryManager("admin", "admin");
+        currentSessionFactoryManager.buildSessionFactory();
+        loginSession = currentSessionFactoryManager.getNewSession();
     }
 
     /**
@@ -33,7 +26,7 @@ public class LoginManager {
      * @return access level.
      */
     public static boolean checkUser(String username, String password) {
-        TypedQuery<UsersEntity> query = session.
+        TypedQuery<UsersEntity> query = loginSession.
                 createQuery("from UsersEntity where userId like (:username)", UsersEntity.class)
                 .setParameter("username", username);
         List<UsersEntity> usersEntityList = query.getResultList();
@@ -41,18 +34,6 @@ public class LoginManager {
 //            if (BCrypt.checkpw(password, usersEntityList.get(0).getPassword())) {
             if(password.equals(usersEntityList.get(0).getPassword())) {
                 accessLevel = usersEntityList.get(0).getAccessLevel();
-                //TODO
-//                OrdersEntity ordersEntity = new OrdersEntity();
-//                ordersEntity.setCurrentStatus(Status.cancelled);
-//                ordersEntity.setCustomerAdress("1");
-//                ordersEntity.setCustomerName("1");
-//                ordersEntity.setDeliveryId(1);
-//                ordersEntity.setPayment(Payment.bank_transfer);
-//                ordersEntity.setPhoneNumber("123456789");
-//                ordersEntity.setTransactionDocument(TransactionDocument.invoice);
-//                session.beginTransaction();
-//                session.save(ordersEntity);
-//                session.getTransaction().commit();
 
                 return true;
             } else {
@@ -62,8 +43,45 @@ public class LoginManager {
             return false;
         }
     }
+
+    /**
+     * Closes the loginSession if exists, and closes the session factory.
+     */
     public static void clean() {
-        session.close();
-        loginSessionFactory.closeFactory();
+        if (loginSession!=null) loginSession.close();
+        currentSessionFactoryManager.closeFactory();
+    }
+
+    public static AccessLevel getAccessLevel() {
+        return accessLevel;
+    }
+
+    /**
+     * Connect as current user. Used after correct log in.
+     */
+    public static void connectCurrentSession() {
+        if (loginSession!=null) loginSession.close();
+        switch (accessLevel) {
+            case storekeeper: {
+                currentSessionFactoryManager = new SessionFactoryManager("storekeeper", "storekeeper");
+                currentSessionFactoryManager.buildSessionFactory();
+            }
+            case storage_manager: {
+                currentSessionFactoryManager = new SessionFactoryManager("storage_manager", "storage_manager");
+                currentSessionFactoryManager.buildSessionFactory();
+            }
+            case manager: {
+                currentSessionFactoryManager = new SessionFactoryManager("manager", "manager");
+                currentSessionFactoryManager.buildSessionFactory();
+            }
+            case administrator: {
+                currentSessionFactoryManager = new SessionFactoryManager("admin", "admin");
+                currentSessionFactoryManager.buildSessionFactory();
+            }
+        }
+    }
+
+    public static Session getSession() {
+        return currentSessionFactoryManager.getNewSession();
     }
 }

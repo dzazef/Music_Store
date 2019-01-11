@@ -8,7 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import ui.Managing_Application;
 import ui.views.LoginView;
-import ui.views.tiles.BrowseOrdersViewController;
+import ui.controllers.tiles.BrowseOrdersViewController;
 
 import java.io.IOException;
 

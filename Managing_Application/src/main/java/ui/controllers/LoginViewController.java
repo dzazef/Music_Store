@@ -19,7 +19,7 @@ public class LoginViewController {
      * Get a connection with database to check user's login, password and AccessLevel.
      */
     public void initialize() {
-        LoginManager.connect();
+        LoginManager.connectUserCheck();
     }
 
     /**
@@ -28,12 +28,10 @@ public class LoginViewController {
     @FXML
     public void handleLogIn() {
         if (LoginManager.checkUser(username.getText(), password.getText())) {
-            System.out.println("logowanie udane");
-            AccessLevel acessLevel = LoginManager.getAccessLevel();
             LoginManager.clean();
-            TileView.initialize(acessLevel);
+            LoginManager.connectCurrentSession();
+            TileView.initialize(LoginManager.getAccessLevel());
         } else {
-            System.out.println("logowanie nie udane");
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Wrong username or password");
             alert.setHeaderText(null);

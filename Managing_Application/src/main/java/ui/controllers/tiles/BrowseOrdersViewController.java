@@ -1,4 +1,4 @@
-package ui.views.tiles;
+package ui.controllers.tiles;
 
 import db.LoginManager;
 import javafx.fxml.FXML;

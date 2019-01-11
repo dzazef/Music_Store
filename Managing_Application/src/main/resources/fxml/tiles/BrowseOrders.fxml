@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="ui.views.tiles.BrowseOrdersViewController" >
+            fx:controller="ui.controllers.tiles.BrowseOrdersViewController" >
     <bottom>
         <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
             <Button mnemonicParsing="false" onAction="#goBack" text="Return"/>

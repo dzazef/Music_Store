@@ -1,4 +1,4 @@
-package ui.controllers;
+package ui.controllers.tiles;
 
 import db.LoginManager;
 import javafx.collections.FXCollections;
@@ -12,7 +12,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import model.AccessLevel;
 import model.entities.UsersEntity;
-import sun.security.util.Password;
 import ui.views.TileView;
 
 import java.util.LinkedList;

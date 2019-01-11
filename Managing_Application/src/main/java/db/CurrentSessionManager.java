@@ -6,6 +6,7 @@ import org.hibernate.Session;
 /**
  * Class used when client's permission, login and password already checked to get a connection with database.
  */
+@Deprecated
 public class CurrentSessionManager {
     private static SessionFactoryManager sessionFactoryManager;
     public static void initialize(AccessLevel accessLevel) {
