@@ -3,6 +3,7 @@ package db;
 import model.AccessLevel;
 import model.entities.UsersEntity;
 import org.hibernate.Session;
+import sh.LoadAlbums;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -14,7 +15,7 @@ public class LoginManager {
     private static AccessLevel accessLevel;
 
     public static void connectUserCheck() {
-        currentSessionFactoryManager = new SessionFactoryManager("admin", "admin");
+        currentSessionFactoryManager = new SessionFactoryManager("root", "sqlpass.");
         currentSessionFactoryManager.buildSessionFactory();
         loginSession = currentSessionFactoryManager.getNewSession();
     }
@@ -34,7 +35,6 @@ public class LoginManager {
 //            if (BCrypt.checkpw(password, usersEntityList.get(0).getPassword())) {
             if(password.equals(usersEntityList.get(0).getPassword())) {
                 accessLevel = usersEntityList.get(0).getAccessLevel();
-
                 return true;
             } else {
                 return false;

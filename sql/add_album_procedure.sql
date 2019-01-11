@@ -1,9 +1,8 @@
 USE music_store;
+DROP PROCEDURE IF EXISTS add_album;
 DELIMITER $$
-CREATE PROCEDURE add_album(price FLOAT,title VARCHAR(80),duration INT(11),realease_year INT(11),
-      songs_count INT(11),img_link VARCHAR(120),tracklist TEXT,
-      /*if necessary*/
-      artist_name VARCHAR(50), artist_genre VARCHAR(50))
+CREATE PROCEDURE add_album(price FLOAT, title VARCHAR(80), realease_year INT(11), img_link VARCHAR(120),
+                           artist_name VARCHAR(50), artist_genre VARCHAR(50), songs_count INT(11), tracklist TEXT, duration INT(11))
   BEGIN
       DECLARE var_artist_id INT DEFAULT NULL ;
       DECLARE var_artist_name VARCHAR(50) DEFAULT NULL;

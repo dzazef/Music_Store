@@ -1,8 +1,6 @@
 #!/bin/bash
 while IFS='' read -r line || [[ -n "$line" ]]; do
-    curl -s $line > test.txt
-    #price
-    printf "%d;" $(shuf -i 30-50 -n 1)
+    curl -s ${line} > test.txt
     #album name
     cat test.txt | sed -n 's:.*Featured on \(.*\)<\/a.*:\1:p' | sed 1q | cut -d ">" -f 2 | tr '\n' ';'| sed -e 's/\&\#039\;/'\''/g' | sed -e 's/amp\;//g' | sed -e 's/\&quot\;/\"/g'
     #print date
@@ -25,14 +23,15 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     sc=${sc//$'\n'/}
     printf "%s;" "$sc"
     counter=0
+    counter2=0
     length=0;
     curl -s 'https://open.spotify.com/album/'$(cat test.txt | sed -n 's:.*com\/album\/\(.*\)meta.*:\1:p' | cut -d "\"" -f 1) | grep -oP '(?<=Spotify.Entity =).*(?<=};)' > test2.txt
-    while [ $counter -ne $sc ]
+    while [[ ${counter} -ne ${sc} ]]
     do 
     	str=".tracks.items[$counter].name"
     	str2=".tracks.items[$counter].duration_ms"
-    	value=$(cat test2.txt | jq -r $str)
-    	value2=$(cat test2.txt | jq -r $str2)
+    	value=$(cat test2.txt | jq -r ${str})
+    	value2=$(cat test2.txt | jq -r ${str2})
     	let "counter2 = $counter + 1"
 
     	let "length = $length + $value2"

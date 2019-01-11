@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import model.AccessLevel;
+import sh.LoadAlbums;
 import ui.views.TileView;
 
 public class LoginViewController {
