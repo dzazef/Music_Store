@@ -16,6 +16,17 @@ public class OtherViewEntity {
     private String producer;
     private String name;
     private String type;
+    private StorageEntity storageEntity;
+
+    @OneToOne (fetch = FetchType.LAZY)
+    @JoinColumn (name = "product_id")
+    public StorageEntity getStorageEntity() {
+        return storageEntity;
+    }
+
+    public void setStorageEntity(StorageEntity storageEntity) {
+        this.storageEntity = storageEntity;
+    }
 
     @Id
     @Column(name = "product_id", nullable = false)

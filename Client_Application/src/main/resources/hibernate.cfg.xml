@@ -11,6 +11,7 @@
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="hibernate.connection.characterEncoding">utf8</property>
+        <mapping class="model.entities.StorageEntity"/>
         <mapping class="model.entities.DeliveryEntity" />
         <mapping class="model.entities.AlbumViewEntity"/>
         <mapping class="model.entities.InstrumentViewEntity"/>
