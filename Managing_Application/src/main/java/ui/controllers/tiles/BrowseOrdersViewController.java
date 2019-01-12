@@ -11,12 +11,15 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import model.entities.OrdersEntity;
+import org.hibernate.Session;
 import ui.views.TileView;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+@SuppressWarnings("Duplicates")
 public class BrowseOrdersViewController {
+    private Session session;
     public ScrollPane scrollPane;
     public TableView<OrdersTable> tableBrowseOrders;
     public TableColumn<OrdersTable, String>  TransactionDocumentColumn;
@@ -31,6 +34,7 @@ public class BrowseOrdersViewController {
 
     public void initialize() {
         createTableView();
+        session = LoginManager.getSession();
         runQuery();
     }
 
@@ -55,7 +59,7 @@ public class BrowseOrdersViewController {
     }
 
     private void runQuery() {
-        TypedQuery<OrdersEntity> browseOrdersQuery = LoginManager.getSession().
+        TypedQuery<OrdersEntity> browseOrdersQuery = session.
                 createQuery("from OrdersEntity", OrdersEntity.class);
         List<OrdersEntity> ordersEntityList = browseOrdersQuery.getResultList();
         for (OrdersEntity ordersEntity : ordersEntityList) {
@@ -64,6 +68,7 @@ public class BrowseOrdersViewController {
     }
     @FXML
     public void goBack() {
+        session.close();
         TileView.initialize(LoginManager.getAccessLevel());
     }
     @SuppressWarnings("unused")
