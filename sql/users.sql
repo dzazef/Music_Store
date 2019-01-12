@@ -34,6 +34,9 @@ GRANT SELECT ON music_store.albums TO 'storekeeper'@'localhost';
 GRANT SELECT ON music_store.instruments TO 'storekeeper'@'localhost';
 GRANT SELECT ON music_store.other TO 'storekeeper'@'localhost';
 GRANT UPDATE ON music_store.orders TO 'storekeeper'@'localhost';
+GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
 
 #storage_manager
 GRANT SELECT ON music_store.orders TO 'storage_manager'@'localhost';
@@ -44,6 +47,9 @@ GRANT SELECT ON music_store.instruments TO 'storage_manager'@'localhost';
 GRANT SELECT ON music_store.other TO 'storage_manager'@'localhost';
 GRANT UPDATE ON music_store.orders TO 'storage_manager'@'localhost';
 GRANT UPDATE ON music_store.storage TO 'storage_manager'@'localhost';
+GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
 
 #manager
 GRANT SELECT ON music_store.orders TO 'manager'@'localhost';
@@ -61,6 +67,9 @@ GRANT UPDATE, INSERT, DELETE ON music_store.other TO 'manager'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.instruments TO 'manager'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.instrument_manufacturers TO 'manager'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.delivery TO 'manager'@'localhost';
+GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
 
 #admin
 GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
