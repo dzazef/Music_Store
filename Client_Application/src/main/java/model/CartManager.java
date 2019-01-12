@@ -2,7 +2,10 @@ package model;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class CartManager {
     public DoubleProperty total = new SimpleDoubleProperty(0.0);

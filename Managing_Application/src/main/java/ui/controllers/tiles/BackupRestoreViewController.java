@@ -3,7 +3,6 @@ package ui.controllers.tiles;
 import db.LoginManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
-import javafx.scene.text.Text;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import ui.Managing_Application;

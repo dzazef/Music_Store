@@ -8,7 +8,6 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import ui.Managing_Application;
 import ui.views.LoginView;
-import ui.controllers.tiles.BrowseOrdersViewController;
 
 import java.io.IOException;
 import java.util.Objects;
@@ -89,7 +88,7 @@ public class TileViewController {
 
     public static void handleBackupAndRestore() {
         System.out.println("handleBackupAndRestore");
-        @SuppressWarnings("ConstantConditions") final Parent parent;
+        final Parent parent;
         try {
             parent = FXMLLoader
                     .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/BackupRestore.fxml")));
@@ -109,7 +108,7 @@ public class TileViewController {
         LoginView.initialize();
     }
 
-    public static void showErrorMessage(String message) {
+    private static void showErrorMessage(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setHeaderText(null);
         alert.setContentText(message);

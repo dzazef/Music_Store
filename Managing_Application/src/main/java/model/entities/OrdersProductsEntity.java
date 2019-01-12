@@ -8,6 +8,18 @@ import javax.persistence.*;
 public class OrdersProductsEntity {
     private int orderId;
     private int productId;
+
+    @Id
+    @Column(name = "quantity")
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    private int quantity;
     private AlbumViewEntity albumViewEntity;
     private InstrumentViewEntity instrumentViewEntity;
     private OtherViewEntity otherViewEntity;

@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-
-<BorderPane prefHeight="497.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.CompleteOrdersViewController">
+<BorderPane prefHeight="497.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.completeOrders.ViewController">
     <bottom>
         <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
             <Button mnemonicParsing="false" onAction="#goBack" text="Return" />

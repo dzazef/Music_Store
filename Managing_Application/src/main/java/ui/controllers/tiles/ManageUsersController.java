@@ -13,13 +13,10 @@ import javafx.util.Callback;
 import model.AccessLevel;
 import model.entities.UsersEntity;
 import org.hibernate.Session;
-import org.hibernate.exception.ConstraintViolationException;
-import org.hibernate.exception.LockAcquisitionException;
 import ui.views.TileView;
 
 import javax.persistence.OptimisticLockException;
 import javax.persistence.Query;
-import javax.persistence.RollbackException;
 import java.util.List;
 
 public class ManageUsersController {

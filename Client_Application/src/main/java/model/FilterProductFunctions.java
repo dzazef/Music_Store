@@ -6,7 +6,9 @@ import model.entities.OtherViewEntity;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.StringJoiner;
 
 
 public final class FilterProductFunctions {
