@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane prefHeight="497.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.CompleteOrdersViewController">
+    <bottom>
+        <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#goBack" text="Return" />
+        </HBox>
+    </bottom>
+    <top>
+        <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true">
+            <TableView fx:id="tableBrowseOrders" prefHeight="469.0" prefWidth="970.0" BorderPane.alignment="CENTER">
+                <columns>
+                    <TableColumn fx:id="idColumn" prefWidth="62.0" text="ID" />
+                    <TableColumn fx:id="nameColumn" prefWidth="139.0" text="Name" />
+                    <TableColumn fx:id="addressColumn" prefWidth="140.0" text="Adress" />
+                    <TableColumn fx:id="phoneColumn" prefWidth="124.0" text="Phone number" />
+                    <TableColumn fx:id="deliveryColumn" minWidth="0.0" prefWidth="99.0" text="Delivery" />
+                    <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="164.0" text="Status" />
+                    <TableColumn fx:id="paymentColumn" minWidth="9.0" prefWidth="120.0" text="Payment" />
+                    <TableColumn fx:id="TransactionDocumentColumn" minWidth="9.0" prefWidth="121.0" text="Document" />
+                    <TableColumn fx:id="productsColumn" minWidth="9.0" prefWidth="121.0" text="Products" />
+                    <TableColumn fx:id="confirmColumn" minWidth="9.0" prefWidth="121.0" text="Confirm" />
+                </columns>
+            </TableView>
+        </ScrollPane>
+    </top>
+</BorderPane>

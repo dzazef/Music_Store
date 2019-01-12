@@ -22,15 +22,26 @@ public class TileViewController {
                     .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/BrowseOrders.fxml")));
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(parent));
-            stage.setTitle("Manage users");
+            stage.setTitle("Browse Orders");
         } catch (IOException e) {
             e.printStackTrace();
-            showErrorMessage("Unable to load manage users view.");
+            showErrorMessage("Unable to load manage browse orders view.");
         }
     }
 
     public static void handleCompleteOrders() {
         System.out.println("handleCompleteOrders");
+        final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/CompleteOrdersView.fxml")));
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Complete orders");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load manage complete orders view.");
+        }
     }
 
     public static void handleChangeStorageLevels() {
