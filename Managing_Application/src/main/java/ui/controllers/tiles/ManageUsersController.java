@@ -13,10 +13,13 @@ import javafx.util.Callback;
 import model.AccessLevel;
 import model.entities.UsersEntity;
 import org.hibernate.Session;
+import org.hibernate.exception.ConstraintViolationException;
+import org.hibernate.exception.LockAcquisitionException;
 import ui.views.TileView;
 
+import javax.persistence.OptimisticLockException;
 import javax.persistence.Query;
-import java.util.LinkedList;
+import javax.persistence.RollbackException;
 import java.util.List;
 
 public class ManageUsersController {
@@ -70,7 +73,8 @@ public class ManageUsersController {
 
                     {
                         setAlignment(Pos.CENTER);
-                        button.setOnAction((event) -> removeUser(data.get(getIndex())));
+                        button.setOnAction((event) -> {
+                            removeUser(data.get(getIndex()));});
                     }
 
                     @Override
@@ -88,13 +92,19 @@ public class ManageUsersController {
     }
 
     private void removeUser(UsersEntity user) {
-        data.remove(user);
-        Session session = LoginManager.getSession();
-        session.beginTransaction();
-        session.remove(user);
-        session.getTransaction().commit();
-        session.close();
-        //TODO handle if no possible to do so
+        if (showConfirmationAlert("Are you sure you want to remove user "+
+                user.getUserId()+"?\nThis cannot be undone!")) {
+            //TODO handle deleting oneself
+            try (Session session = LoginManager.getSession()) {
+                session.beginTransaction();
+                session.remove(user);
+                session.getTransaction().commit();
+                data.remove(user);
+            } catch (OptimisticLockException exception) {
+                showErrorAlert("Unable to remove user '"+user.getUserId()+"'.\nUser is present in the logs.\n" +
+                        "To remove this user clean the logs.");
+            }
+        }
     }
 
     private void showUsersInTable(List<UsersEntity> users) {
@@ -136,5 +146,12 @@ public class ManageUsersController {
         alert.setHeaderText(null);
         alert.setContentText(mess);
         alert.showAndWait();
+    }
+
+    private boolean showConfirmationAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        return !alert.showAndWait().get().getButtonData().isCancelButton();
     }
 }
