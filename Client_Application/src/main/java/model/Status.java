@@ -1,5 +1,5 @@
 package model;
 
 public enum Status {
-    in_progress, prepared_for_sending,sent, delivered, returned, cancelled
+    waiting_for_payment, in_progress,prepared_for_sending,sent, delivered, returned, cancelled
 }

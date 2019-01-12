@@ -13,6 +13,7 @@ import javafx.util.Callback;
 import model.AccessLevel;
 import model.entities.UsersEntity;
 import org.hibernate.Session;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import ui.views.TileView;
 
 import javax.persistence.OptimisticLockException;
@@ -127,7 +128,7 @@ public class ManageUsersController {
         }
         UsersEntity user = new UsersEntity();
         user.setUserId(loginTextField.getText());
-        user.setPassword(passwordField.getText());
+        user.setPassword(BCrypt.hashpw(passwordField.getText(),BCrypt.gensalt()));
         user.setAccessLevel(accessLevelChoiceBox.getValue());
         data.add(user);
         Session session = LoginManager.getSession();

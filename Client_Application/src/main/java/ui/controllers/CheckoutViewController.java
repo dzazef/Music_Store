@@ -47,7 +47,7 @@ public class CheckoutViewController {
 
 
             OrdersEntity order = new OrdersEntity();
-            order.setCurrentStatus(Status.in_progress);
+            order.setCurrentStatus(Status.waiting_for_payment);
             order.setTransactionDocument(transactionDocumentChoiceBox.getValue());
             order.setPayment(Payment.getByValue(paymentChoiceBox.getValue()));
             //TODO change it
