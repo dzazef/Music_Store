@@ -3,6 +3,7 @@ package db;
 import model.AccessLevel;
 import model.entities.UsersEntity;
 import org.hibernate.Session;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -32,8 +33,8 @@ public class LoginManager {
                 .setParameter("username", username);
         List<UsersEntity> usersEntityList = query.getResultList();
         if (usersEntityList.size()>0) {
-//            if (BCrypt.checkpw(password, usersEntityList.get(0).getPassword())) {
-            if(password.equals(usersEntityList.get(0).getPassword())) {
+            if (BCrypt.checkpw(password, usersEntityList.get(0).getPassword())) {
+//            if(password.equals(usersEntityList.get(0).getPassword())) {
                 accessLevel = usersEntityList.get(0).getAccessLevel();
                 activeUsername = username;
                 return true;
