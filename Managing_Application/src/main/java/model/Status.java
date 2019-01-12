@@ -1,7 +1,7 @@
 package model;
 
 public enum Status {
-    in_progress("in progress"), prepared_for_sending("prepared for sending"),sent("sent"),
+    waiting_for_payment("waiting for payment"), in_progress("in progress"), prepared_for_sending("prepared for sending"),sent("sent"),
     delivered("delivered"), returned("returned"), cancelled("cancelled");
 
     private String name;
