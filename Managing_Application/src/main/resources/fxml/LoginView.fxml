@@ -17,8 +17,8 @@
                 <Font name="Lato Light Italic" size="64.0" />
             </font>
         </Label>
-        <TextField text="marzenka" fx:id="username" layoutX="114.0" layoutY="263.0" prefHeight="42.0" prefWidth="237.0" promptText="Login" />
-        <PasswordField text="puszek4" fx:id="password" layoutX="114.0" layoutY="314.0" onAction="#onEnter" prefHeight="42.0" prefWidth="237.0" promptText="Password" />
+        <TextField text="administrator" fx:id="username" layoutX="114.0" layoutY="263.0" prefHeight="42.0" prefWidth="237.0" promptText="Login" />
+        <PasswordField text="administrator" fx:id="password" layoutX="114.0" layoutY="314.0" onAction="#onEnter" prefHeight="42.0" prefWidth="237.0" promptText="Password" />
       <!--suppress JavaFxUnresolvedFxIdReference -->
         <Button fx:id="loginButton" layoutX="114.0" layoutY="381.0" mnemonicParsing="false" onAction="#handleLogIn" prefHeight="29.0" prefWidth="237.0" text="Log in" />
     </children>

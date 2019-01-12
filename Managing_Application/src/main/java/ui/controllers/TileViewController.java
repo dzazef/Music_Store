@@ -11,6 +11,7 @@ import ui.views.LoginView;
 import ui.controllers.tiles.BrowseOrdersViewController;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class TileViewController {
     public static void handleBrowseOrders() {
@@ -51,7 +52,7 @@ public class TileViewController {
         @SuppressWarnings("ConstantConditions") final Parent parent;
         try {
             parent = FXMLLoader
-                    .load(LoginView.class.getClassLoader().getResource("fxml/tiles/ManageUsersView.fxml"));
+                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/ManageUsersView.fxml")));
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(parent));
             stage.setTitle("Manage users");
@@ -67,6 +68,18 @@ public class TileViewController {
 
     public static void handleBackupAndRestore() {
         System.out.println("handleBackupAndRestore");
+        @SuppressWarnings("ConstantConditions") final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/BackupRestore.fxml")));
+            Stage stage = Managing_Application.getStage();
+            Scene scene = new Scene(parent);
+            stage.setScene(scene);
+            stage.setTitle("Backup restore");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load backup&restore view.");
+        }
     }
 
     public static void handleLogOut() {

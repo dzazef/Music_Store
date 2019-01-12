@@ -21,6 +21,7 @@ public class LoginViewController {
      */
     public void initialize() {
         LoginManager.connectUserCheck();
+//        LoadAlbums.loadAlbums();
     }
 
     /**

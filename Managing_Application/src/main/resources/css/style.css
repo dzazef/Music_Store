@@ -24,3 +24,9 @@
 #loginPane {
     -fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(255,255,255,1) 0%, rgba(80,80,80,1) 100%);
 }
+#TileHBox {
+    -fx-background-color: #555555
+}
+#backupRestoreBorderPane {
+    -fx-background-color: #555555
+}

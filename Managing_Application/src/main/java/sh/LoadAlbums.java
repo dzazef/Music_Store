@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadLocalRandom;
 public class LoadAlbums {
     public static void loadAlbums(){
         Session session = LoginManager.getSession();
-        try (BufferedReader br = new BufferedReader(new FileReader("../album.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("/home/dzazef/Pobrane/file.txt"))) {
             String line;
             String[] temp;
             while ((line = br.readLine()) != null) {
@@ -31,6 +31,14 @@ public class LoadAlbums {
                         .setParameter("duration", temp[7]);
                 query.executeUpdate();
                 session.getTransaction().commit();
+//                System.out.println(temp[0]);
+//                System.out.println(temp[1]);
+//                System.out.println(temp[2]);
+//                System.out.println(temp[3]);
+//                System.out.println(temp[4]);
+//                System.out.println(temp[5]);
+//                System.out.println(temp[6]);
+//                System.out.println(temp[7]);
             }
         } catch (IOException e) {
             e.printStackTrace();

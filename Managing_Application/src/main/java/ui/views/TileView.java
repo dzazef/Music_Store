@@ -29,7 +29,7 @@ public class TileView {
         VBox mainBox = new VBox();
         mainBox.setAlignment(Pos.TOP_CENTER);
         mainBox.setPadding(new Insets(20,20,20,20));
-        mainBox.setStyle("-fx-background-color: #555555");
+        mainBox.setId("TileHBox");
         mainBox.setMinWidth(510.0);
         tilePane = new TilePane();
         tilePane.setHgap(10);
