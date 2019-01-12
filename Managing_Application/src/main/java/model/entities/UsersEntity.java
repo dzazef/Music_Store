@@ -9,7 +9,7 @@ import javax.persistence.*;
 public class UsersEntity {
     private String userId;
     private String password;
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private AccessLevel accessLevel;
 
     @Id

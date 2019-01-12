@@ -84,6 +84,17 @@ public class TileViewController {
 
     public static void handleShowLogs() {
         System.out.println("handleShowLogs");
+        @SuppressWarnings("ConstantConditions") final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/StatusLogsView.fxml")));
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Status Logs");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load status logs view.");
+        }
     }
 
     public static void handleBackupAndRestore() {

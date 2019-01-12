@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ui.controllers.StatusLogsViewController"
+            prefHeight="400.0" prefWidth="600.0"
+            fx:id="mainPane">
+    <bottom>
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#goBack" text="Return"/>
+            <Button fx:id="previousPageButton" text="PREVIOUS" onAction="#previousPageClicked"/>
+            <Label fx:id="currentPageNumberLabel" />
+            <Button fx:id="nextPageButton" text="NEXT" onAction="#nextPageClicked"/>
+        </HBox>
+    </bottom>
+    <top>
+        <HBox alignment="TOP_CENTER" spacing="20.0">
+            <Button fx:id="clearLogsButton" text="CLEAR ALL LOGS"/>
+            <Button fx:id="exportLogsToFileButton" text="EXPORT TO FILE"/>
+        </HBox>
+    </top>
+    <center>
+        <TableView fx:id="tableView">
+            <columns>
+                <TableColumn fx:id="orderColumn" text="ORDER ID"/>
+                <TableColumn fx:id="userColumn" text="USER"/>
+                <TableColumn fx:id="timeColumn" text="TIME"/>
+                <TableColumn fx:id="oldStatusColumn" text="PREVIOUS STATUS"/>
+                <TableColumn fx:id="newStatusColumn" text="NEW STATUS"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

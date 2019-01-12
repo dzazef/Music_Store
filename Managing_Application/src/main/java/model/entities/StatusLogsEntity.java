@@ -9,6 +9,8 @@ import java.sql.Timestamp;
 @Table(name = "status_logs", schema = "music_store", catalog = "")
 public class StatusLogsEntity {
     private int logId;
+    private int orderId;
+    private String userId;
     private Timestamp dateTime;
     @Enumerated(EnumType.STRING)
     private Status statusOld;
@@ -23,6 +25,26 @@ public class StatusLogsEntity {
 
     public void setLogId(int logId) {
         this.logId = logId;
+    }
+
+    @Basic
+    @Column(name = "order_id")
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId = orderId;
+    }
+
+    @Basic
+    @Column(name = "user_id")
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Basic
