@@ -5,7 +5,7 @@ CREATE PROCEDURE update_order_status (order_id_ INT,new_status VARCHAR(25),user_
     DECLARE old_status VARCHAR(25) DEFAULT NULL ;
     SELECT current_status INTO old_status FROM orders WHERE order_id = order_id_;
     IF old_status = new_status THEN
-      SIGNAL SQLSTATE '40005' SET MESSAGE_TEXT = CONCAT('An attempt to change status to the same value.');
+      SIGNAL SQLSTATE '40005' SET MESSAGE_TEXT = 'An attempt to change status to the same value.';
     # Status already is new_status.
     END IF ;
     UPDATE orders SET current_status = new_status WHERE order_id = order_id_;
