@@ -9,19 +9,23 @@ import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
 import javafx.stage.Stage;
 import javafx.util.Callback;
-import model.entities.OrdersEntity;
-import org.hibernate.Session;
 import ui.controllers.tiles.order_management.OrdersTable;
 import ui.controllers.tiles.order_management.ViewController;
 
-import javax.persistence.TypedQuery;
 import java.io.IOException;
-import java.util.List;
 
 @SuppressWarnings("Duplicates")
 public class ManageOrdersViewController extends ViewController {
     private static Stage stage;
     private static OrdersTable ordersTableToEdit;
+
+    @Override
+    public void initialize() {
+        createTableView();
+        session = LoginManager.getSession();
+        confirmColumn.setCellFactory(callCreateButtonCellFactory(false));
+        runQuery();
+    }
 
     @Override
     public Callback<TableColumn<OrdersTable, Void>, TableCell<OrdersTable, Void>> callCreateButtonCellFactory(boolean isItProducts) {
@@ -46,17 +50,6 @@ public class ManageOrdersViewController extends ViewController {
             alert.setHeaderText(null);
             alert.setContentText("Unable to load manage status view.");
             alert.showAndWait();
-        }
-    }
-
-    @Override
-    public void runQuery() {
-        data.clear();
-        TypedQuery<OrdersEntity> completeOrdersQuery = session.
-                createQuery("from OrdersEntity", OrdersEntity.class);
-        List<OrdersEntity> ordersEntityList = completeOrdersQuery.getResultList();
-        for (OrdersEntity ordersEntity : ordersEntityList) {
-            data.add(new OrdersTable(ordersEntity));
         }
     }
 

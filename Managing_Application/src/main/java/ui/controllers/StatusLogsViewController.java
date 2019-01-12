@@ -3,8 +3,6 @@ package ui.controllers;
 import db.LoginManager;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -15,9 +13,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import model.Status;
 import model.entities.StatusLogsEntity;
-import model.entities.UsersEntity;
 import org.hibernate.Session;
 import ui.views.TileView;
 

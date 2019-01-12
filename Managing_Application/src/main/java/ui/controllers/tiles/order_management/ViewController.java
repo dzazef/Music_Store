@@ -12,6 +12,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.util.Callback;
+import model.entities.OrdersEntity;
 import model.entities.OrdersProductsEntity;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
@@ -39,13 +40,9 @@ public abstract class ViewController {
     public TableColumn<OrdersTable, Void> confirmColumn;
     public static final ObservableList<OrdersTable> data = FXCollections.observableArrayList();
 
-    public void initialize() {
-        createTableView();
-        session = LoginManager.getSession();
-        runQuery();
-    }
+    public abstract void initialize();
 
-    private void createTableView() {
+    protected void createTableView() {
         tableBrowseOrders.setItems(data);
         idColumn.setCellValueFactory(
                 new PropertyValueFactory<>("orderId"));
@@ -64,7 +61,6 @@ public abstract class ViewController {
         TransactionDocumentColumn.setCellValueFactory(
                 new PropertyValueFactory<>("transactionDocument"));
         productsColumn.setCellFactory(callCreateButtonCellFactory(true));
-        confirmColumn.setCellFactory(callCreateButtonCellFactory(false));
     }
 
     public Callback<TableColumn<OrdersTable, Void>, TableCell<OrdersTable, Void>> createButtonCellFactory(boolean isItProducts, String buttonMessage) {
@@ -164,7 +160,15 @@ public abstract class ViewController {
 
     }
 
-    public abstract void runQuery();
+    public void runQuery() {
+        data.clear();
+        TypedQuery<OrdersEntity> completeOrdersQuery = session.
+                createQuery("from OrdersEntity", OrdersEntity.class);
+        List<OrdersEntity> ordersEntityList = completeOrdersQuery.getResultList();
+        for (OrdersEntity ordersEntity : ordersEntityList) {
+            data.add(new OrdersTable(ordersEntity));
+        }
+    }
 
     @FXML
     public void goBack() {

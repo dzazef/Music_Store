@@ -15,6 +15,24 @@ import java.util.List;
 
 @SuppressWarnings("Duplicates")
 public class CompleteOrdersViewController extends ViewController {
+    @Override
+    public void runQuery() {
+        data.clear();
+        TypedQuery<OrdersEntity> completeOrdersQuery = session.
+                createQuery("from OrdersEntity where currentStatus=(:par)", OrdersEntity.class).setParameter("par", Status.in_progress);
+        List<OrdersEntity> ordersEntityList = completeOrdersQuery.getResultList();
+        for (OrdersEntity ordersEntity : ordersEntityList) {
+            data.add(new OrdersTable(ordersEntity));
+        }
+    }
+
+    @Override
+    public void initialize() {
+        createTableView();
+        session = LoginManager.getSession();
+        confirmColumn.setCellFactory(callCreateButtonCellFactory(false));
+        runQuery();
+    }
 
     @Override
     public Callback<TableColumn<OrdersTable, Void>, TableCell<OrdersTable, Void>> callCreateButtonCellFactory(boolean isItProducts) {
@@ -33,13 +51,6 @@ public class CompleteOrdersViewController extends ViewController {
         session.getTransaction().commit();
         data.removeAll(ordersTable);
     }
-    @Override
-    public void runQuery() {
-        TypedQuery<OrdersEntity> completeOrdersQuery = session.
-                createQuery("from OrdersEntity where currentStatus=(:par)", OrdersEntity.class).setParameter("par", Status.in_progress);
-        List<OrdersEntity> ordersEntityList = completeOrdersQuery.getResultList();
-        for (OrdersEntity ordersEntity : ordersEntityList) {
-            data.add(new OrdersTable(ordersEntity));
-        }
-    }
+
+
 }
