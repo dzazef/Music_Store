@@ -122,7 +122,7 @@ CREATE TABLE status_logs
   log_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   order_id INT NOT NULL,
   user_id VARCHAR(30) NOT NULL,
-  date_time DATETIME NOT NULL,
+  date_time TIMESTAMP NOT NULL,
   status_old VARCHAR(30) NOT NULL,
   status_new VARCHAR(30) NOT NULL,
   CONSTRAINT status_logs_users_user_id_fk FOREIGN KEY (user_id) REFERENCES users (user_id),
