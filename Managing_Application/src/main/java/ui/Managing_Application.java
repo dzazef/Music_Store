@@ -1,5 +1,6 @@
 package ui;
 
+import db.LoginManager;
 import db.SessionFactoryManager;
 import javafx.application.Application;
 import javafx.scene.image.Image;
@@ -54,6 +55,11 @@ public class Managing_Application extends Application {
         LoginView.initialize();
         stage.show();
         //stage.setOnCloseRequest(e -> System.exit(0)); //TODO: zrobić to po ludzku
+    }
+
+    @Override
+    public void stop() {
+        LoginManager.clean();
     }
 
     public static Stage getStage() {
