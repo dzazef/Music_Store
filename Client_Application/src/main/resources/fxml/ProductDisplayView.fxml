@@ -8,21 +8,22 @@
 
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.geometry.Insets?>
-<HBox fx:id="mainCartView" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml" >
-
-    <VBox fx:id="filtersMenuBox" prefWidth="180"  alignment="TOP_CENTER">
-        <Button fx:id="doFilterButton" text="FILTER" onAction="#doFilter"></Button>
-    </VBox>
+<HBox fx:id="mainDisplayProductsView" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml">
+    <HBox fx:id="internalMainBox">
+        <VBox fx:id="filtersMenuBox" prefWidth="150" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="10"/>
+            </padding>
+            <Button fx:id="doFilterButton" text="FILTER" onAction="#doFilter"/>
+        </VBox>
 
         <ScrollPane fx:id="productDisplay">
             <padding>
-                <Insets left="20.0" right="20.0"></Insets>
+                <Insets left="20.0" right="20.0"/>
             </padding>
-            <TilePane fx:id="tilePaneWithProducts" hgap="20" vgap="20" >
+            <TilePane fx:id="tilePaneWithProducts" hgap="20" vgap="20">
             </TilePane>
         </ScrollPane>
-
-
-
+    </HBox>
 </HBox>

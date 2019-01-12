@@ -41,6 +41,8 @@ public class CheckoutViewController {
             alert.showAndWait();
         } else {
             Session session = SessionFactoryManager.getNewSession();
+
+
             OrdersEntity order = new OrdersEntity();
             order.setCurrentStatus(Status.in_progress);
             order.setTransactionDocument(transactionDocumentChoiceBox.getValue());
@@ -61,6 +63,7 @@ public class CheckoutViewController {
                 OrdersProductsEntity ordersProductsEntity = new OrdersProductsEntity();
                 ordersProductsEntity.setProductId(id);
                 ordersProductsEntity.setOrderId(order.getOrderId());
+                ordersProductsEntity.setQuantity(cartManager.getProductCountById(id));
                 session.save(ordersProductsEntity);
             }
             session.getTransaction().commit();

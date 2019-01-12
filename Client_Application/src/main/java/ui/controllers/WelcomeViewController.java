@@ -79,7 +79,7 @@ public class WelcomeViewController {
     public void albumsButtonClicked(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProductDisplayView.fxml"));
-            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.album);
+            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.album,mainPane);
             loader.setController(productDisplayViewController);
             mainPane.setCenter(loader.load());
             productDisplayViewController.addFilterTextField("TITLE", "title");
@@ -94,7 +94,7 @@ public class WelcomeViewController {
     public void instrumentsButtonClicked(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProductDisplayView.fxml"));
-            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.instrument);
+            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.instrument,mainPane);
             loader.setController(productDisplayViewController);
             mainPane.setCenter(loader.load());
             productDisplayViewController.addFilterTextField("NAME", "instrument_name");
@@ -109,7 +109,7 @@ public class WelcomeViewController {
     public void othersButtonClicked(ActionEvent actionEvent) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/ProductDisplayView.fxml"));
-            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.other);
+            ProductDisplayViewController productDisplayViewController = new ProductDisplayViewController(cartManager, ProductCategory.other,mainPane);
             loader.setController(productDisplayViewController);
             mainPane.setCenter(loader.load());
             productDisplayViewController.addFilterTextField("NAME", "name");

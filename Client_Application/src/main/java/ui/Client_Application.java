@@ -38,6 +38,10 @@ public class Client_Application extends Application {
         }
     }
 
+    public static Stage getStage() {
+        return stage;
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setMinHeight(500.0);
