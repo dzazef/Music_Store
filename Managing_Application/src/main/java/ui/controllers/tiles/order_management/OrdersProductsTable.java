@@ -1,4 +1,4 @@
-package ui.controllers.tiles.completeOrders;
+package ui.controllers.tiles.order_management;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;

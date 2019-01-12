@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<BorderPane prefHeight="497.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.complete_orders.CompleteOrdersViewController">
+<BorderPane prefHeight="497.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.manage_orders.ManageOrdersViewController">
     <bottom>
         <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
             <Button mnemonicParsing="false" onAction="#goBack" text="Return" />
@@ -22,7 +22,7 @@
                     <TableColumn fx:id="paymentColumn" minWidth="9.0" prefWidth="120.0" text="Payment" />
                     <TableColumn fx:id="TransactionDocumentColumn" minWidth="9.0" prefWidth="121.0" text="Document" />
                     <TableColumn fx:id="productsColumn" minWidth="9.0" prefWidth="121.0" text="Products" />
-                    <TableColumn fx:id="confirmColumn" minWidth="9.0" prefWidth="121.0" text="Confirm" />
+                    <TableColumn fx:id="confirmColumn" minWidth="9.0" prefWidth="121.0" text="Manage" />
                 </columns>
             </TableView>
         </ScrollPane>

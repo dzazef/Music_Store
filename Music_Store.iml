@@ -4,7 +4,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" />
+          <unit-entry name="hibernate.cfg.xml" value="03ac7daa-20a6-46e9-a8ca-59a6075fc430" />
         </datasource-map>
         <naming-strategy-map />
         <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/Managing_Application/src/main/resources/hibernate.cfg.xml" />
@@ -27,5 +27,6 @@
     <orderEntry type="library" name="Hibernate 5.3.7-5.3.7 (2)" level="project" />
     <orderEntry type="library" name="Hibernate 5.3.7-5.3.7 (2)" level="project" />
     <orderEntry type="library" name="Gradle: org.hibernate:hibernate-core:5.3.6.Final" level="project" />
+    <orderEntry type="library" name="lib" level="project" />
   </component>
 </module>

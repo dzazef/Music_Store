@@ -57,6 +57,17 @@ public class TileViewController {
 
     public static void handleManageOrders() {
         System.out.println("handleManageOrders");
+        final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/ManageOrdersView.fxml")));
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Complete orders");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load manage complete orders view.");
+        }
     }
 
     public static void handleManageProducts() {
