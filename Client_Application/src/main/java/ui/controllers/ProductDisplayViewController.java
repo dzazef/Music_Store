@@ -93,7 +93,7 @@ public class ProductDisplayViewController {
 //            imageView.setFitHeight(140.0);
             Label titleLabel = new Label(product.getName()+"\nProducer: "+product.getProducer()+
                     "\nType: "+product.getType()+"\n"+product.getPrice()+"$\n"
-                    + "Quantity: \"+album.getStorageEntity().getProductsAvailable()");
+                    + "Quantity: \n"+product.getStorageEntity().getProductsAvailable());
             Button addDoCartButton = new Button("ADD DO CART");
             addDoCartButton.setOnAction((actionEvent) -> addToCart(product.getProductId(),product.getPrice(),1));
             vBox.getChildren().addAll(titleLabel,addDoCartButton);
@@ -125,7 +125,7 @@ public class ProductDisplayViewController {
         for (AlbumViewEntity album : albums) {
             VBox vBox = new VBox();
             vBox.prefWidth(200);
-            vBox.setAlignment(Pos.CENTER);
+            vBox.setAlignment(Pos.TOP_CENTER);
             ImageView imageView = new ImageView(new Image(album.getImageLink()));
             imageView.setOnMouseClicked((event) -> changeToAlbumView(album));
             imageView.setFitWidth(160.0);

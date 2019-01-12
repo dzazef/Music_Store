@@ -10,7 +10,7 @@
 <VBox fx:id="mainCartView" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER">
 
-    <ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true">
+    <ScrollPane fx:id="scrollPane"  vbarPolicy="AS_NEEDED" hbarPolicy="NEVER">
         <VBox  fx:id="productsInCart"></VBox>
     </ScrollPane>
 
