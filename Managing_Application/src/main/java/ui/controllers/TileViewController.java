@@ -16,7 +16,17 @@ import java.util.Objects;
 public class TileViewController {
     public static void handleBrowseOrders() {
         System.out.println("handleBrowseOrders");
-        BrowseOrdersViewController.initialize();
+        final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/BrowseOrders.fxml")));
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Manage users");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load manage users view.");
+        }
     }
 
     public static void handleCompleteOrders() {
