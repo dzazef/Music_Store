@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Immutable
-@Table(name = "album_view", schema = "music_store", catalog = "")
+@Table(name = "album_view", schema = "music_store")
 public class AlbumViewEntity {
     private int productId;
     private String category;
@@ -21,6 +21,17 @@ public class AlbumViewEntity {
     private Integer songsCount;
     private String imageLink;
     private String tracklist;
+    private StorageEntity storageEntity;
+
+    @OneToOne (fetch = FetchType.LAZY)
+    @JoinColumn (name = "product_id")
+    public StorageEntity getStorageEntity() {
+        return storageEntity;
+    }
+
+    public void setStorageEntity(StorageEntity storageEntity) {
+        this.storageEntity = storageEntity;
+    }
 
     @Id
     @Column(name = "product_id", nullable = false)

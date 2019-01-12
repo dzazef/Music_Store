@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class OrdersProductsEntity {
     private int orderId;
     private int productId;
+    private int quantity;
 
     @Id
     @Column(name = "order_id")
@@ -27,6 +28,16 @@ public class OrdersProductsEntity {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    @Id
+    @Column(name = "quantity")
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
     @Override

@@ -3,7 +3,7 @@ package model.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "storage", schema = "music_store", catalog = "")
+@Table(name = "storage", schema = "music_store")
 public class StorageEntity {
     private int productId;
     private int productsAvailable;
