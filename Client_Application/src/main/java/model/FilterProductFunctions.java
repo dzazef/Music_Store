@@ -6,41 +6,47 @@ import model.entities.OtherViewEntity;
 import org.hibernate.Session;
 
 import javax.persistence.Query;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.StringJoiner;
+import java.util.*;
+
 
 public final class FilterProductFunctions {
+    public static final int MAX_RECORDS = 40;
     /**
      * @param filters is map of 'column name' and 'user input'
      */
     public static List<AlbumViewEntity> filterAlbums(Map<String, String> filters) {
         try (Session session = SessionFactoryManager.getNewSession()) {
-            String queryString = buildQueryString("FROM model.entities.AlbumViewEntity", filters);
+            String queryString = buildQueryString(
+                    "FROM model.entities.AlbumViewEntity WHERE storageEntity.productsAvailable > 0 ",filters);
+                            //"StorageEntity st ON al.productId = st.productId WHERE st.productsAvailable > 0 ",
             Query query = session.createQuery(queryString);
+            query.setMaxResults(MAX_RECORDS);
             return query.getResultList();
         }
     }
 
     public static List<InstrumentViewEntity> filterInstruments(Map<String, String> filters) {
         try (Session session = SessionFactoryManager.getNewSession()) {
-            String queryString = buildQueryString("FROM model.entities.InstrumentViewEntity", filters);
+            String queryString = buildQueryString(
+                    "FROM model.entities.InstrumentViewEntity WHERE storageEntity.productsAvailable > 0 ", filters);
             Query query = session.createQuery(queryString);
+            query.setMaxResults(MAX_RECORDS);
             return query.getResultList();
         }
     }
 
     public static List<OtherViewEntity> filterOther(Map<String, String> filters) {
         try (Session session = SessionFactoryManager.getNewSession()) {
-            String queryString = buildQueryString("FROM model.entities.OtherViewEntity", filters);
+            String queryString = buildQueryString(
+                    "FROM model.entities.OtherViewEntity WHERE storageEntity.productsAvailable > 0 ", filters);
             Query query = session.createQuery(queryString);
+            query.setMaxResults(MAX_RECORDS);
             return query.getResultList();
         }
     }
 
     private static String buildQueryString(String initialQueryString, Map<String, String> filters) {
-        StringJoiner joiner = new StringJoiner(" AND ", " WHERE ", "");
+        StringJoiner joiner = new StringJoiner(" AND ", "AND", "");
         for (Map.Entry<String, String> entry : filters.entrySet()) {
             joiner.add(" "+entry.getKey()+" LIKE '%"+entry.getValue()+"%' ");
         }
