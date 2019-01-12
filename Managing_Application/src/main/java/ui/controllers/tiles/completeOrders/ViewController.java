@@ -25,7 +25,6 @@ import ui.views.TileView;
 import javax.persistence.TypedQuery;
 import java.io.IOException;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("Duplicates")
 public class ViewController {
