@@ -1,4 +1,4 @@
-package ui.controllers.tiles;
+package ui.controllers.tiles.completeOrders;
 
 import db.LoginManager;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -6,21 +6,30 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+import model.Status;
 import model.entities.OrdersEntity;
 import model.entities.OrdersProductsEntity;
 import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import ui.views.TileView;
 
 import javax.persistence.TypedQuery;
+import java.io.IOException;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 @SuppressWarnings("Duplicates")
-public class CompleteOrdersViewController {
+public class ViewController {
+    private static Stage stage;
     private Session session;
     public ScrollPane scrollPane;
     public TableView<OrdersTable> tableBrowseOrders;
@@ -93,12 +102,34 @@ public class CompleteOrdersViewController {
     }
 
     private void doOtherStuff(OrdersTable ordersTable) {
+        session.beginTransaction();
+        Query query = session.
+                createSQLQuery("CALL music_store.update_order_status((:orderId), (:newStatus), (:userId))")
+                .setParameter("orderId", ordersTable.getOrderId())
+                .setParameter("newStatus", 1)
+                .setParameter("userId", LoginManager.getUsername());
+        query.executeUpdate();
+        session.getTransaction().commit();
+        data.removeAll(ordersTable);
     }
 
     private void showProducts(OrdersTable ordersTable) {
-//        TypedQuery<OrdersProductsEntity>  getProductId =
-//                session.createQuery("from OrdersProductsEntity where orderId=(:id)", OrdersProductsEntity.class).setParameter("id", ordersTable.getOrderId());
-//        List<OrdersProductsEntity> ordersProductsEntityList = getProductId.getResultList();
+        @SuppressWarnings("ConstantConditions") final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(this.getClass().getClassLoader().getResource("fxml/tiles/CompleteOrdersProducts.fxml"));
+            stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Products");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Unable to load manage users view.");
+            alert.showAndWait();
+        }
+
         TypedQuery<OrdersProductsEntity> ordersProductsEntityTypedQuery =
                 session.createQuery("from OrdersProductsEntity where orderId=(:id)", OrdersProductsEntity.class).setParameter("id", ordersTable.getOrderId());
         List<OrdersProductsEntity> ordersProductsEntityList = ordersProductsEntityTypedQuery.getResultList();
@@ -106,15 +137,34 @@ public class CompleteOrdersViewController {
             try {
                 System.out.println(ordersProductsEntity.getOrderId());
                 try {
-                    System.out.println(ordersProductsEntity.getAlbumViewEntity().getName());
+                    ProductsViewController.insertData(
+                            new OrdersProductsTable(
+                                    ordersProductsEntity.getProductId(),
+                                    ordersProductsEntity.getAlbumViewEntity().getName(),
+                                    ordersProductsEntity.getAlbumViewEntity().getName(),
+                                    ordersProductsEntity.getQuantity()));
                 } catch (ObjectNotFoundException e){//
                 }
                 try {
-                    System.out.println(ordersProductsEntity.getInstrumentViewEntity().getInstrumentName());
+                    ProductsViewController.insertData(
+                            new OrdersProductsTable(
+                                    ordersProductsEntity.getProductId(),
+                                    ordersProductsEntity.getInstrumentViewEntity().getManufacturerName(),
+                                    ordersProductsEntity.getInstrumentViewEntity().getInstrumentName(),
+                                    ordersProductsEntity.getQuantity()
+                            )
+                    );
                 } catch (ObjectNotFoundException e){//
                 }
                 try {
-                    System.out.println(ordersProductsEntity.getOtherViewEntity().getName());
+                    ProductsViewController.insertData(
+                            new OrdersProductsTable(
+                                    ordersProductsEntity.getProductId(),
+                                    ordersProductsEntity.getOtherViewEntity().getProducer(),
+                                    ordersProductsEntity.getOtherViewEntity().getName(),
+                                    ordersProductsEntity.getQuantity()
+                            )
+                    );
                 } catch (ObjectNotFoundException e){//
                 }
             }
@@ -124,10 +174,13 @@ public class CompleteOrdersViewController {
         }
     }
 
+    static void closeDialogWindow() {
+        stage.close();
+    }
 
     private void runQuery() {
         TypedQuery<OrdersEntity> completeOrdersQuery = session.
-                createQuery("from OrdersEntity", OrdersEntity.class);
+                createQuery("from OrdersEntity where currentStatus=(:par)", OrdersEntity.class).setParameter("par", Status.in_progress);
         List<OrdersEntity> ordersEntityList = completeOrdersQuery.getResultList();
         for (OrdersEntity ordersEntity : ordersEntityList) {
             data.add(new OrdersTable(ordersEntity));
@@ -208,19 +261,3 @@ public class CompleteOrdersViewController {
         }
     }
 }
-
-//        Session session = LoginManager.getSession();
-//        OrdersEntity ordersEntity = new OrdersEntity();
-//        ordersEntity.setDeliveryEntity(session.load(DeliveryEntity.class, 1));
-//        ordersEntity.setCustomerName("aaa");
-//        ordersEntity.setCustomerAdress("aaa");
-//        ordersEntity.setPhoneNumber("aaa");
-//        ordersEntity.setPayment(Payment.bank_transfer);
-//        ordersEntity.setTransactionDocument(TransactionDocument.invoice);
-//        ordersEntity.setCurrentStatus(Status.cancelled);
-//        session.beginTransaction();
-//        session.save(ordersEntity);
-//        session.getTransaction().commit();
-
-
-//

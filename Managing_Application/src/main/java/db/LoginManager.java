@@ -12,9 +12,10 @@ public class LoginManager {
     private static Session currentSession;
     private static SessionFactoryManager currentSessionFactoryManager;
     private static AccessLevel accessLevel;
+    private static String activeUsername;
 
     public static void connectUserCheck() {
-        currentSessionFactoryManager = new SessionFactoryManager("root", "");
+        currentSessionFactoryManager = new SessionFactoryManager("root", "sqlpass.");
         currentSessionFactoryManager.buildSessionFactory();
         currentSession = currentSessionFactoryManager.getNewSession();
     }
@@ -34,6 +35,7 @@ public class LoginManager {
 //            if (BCrypt.checkpw(password, usersEntityList.get(0).getPassword())) {
             if(password.equals(usersEntityList.get(0).getPassword())) {
                 accessLevel = usersEntityList.get(0).getAccessLevel();
+                activeUsername = username;
                 return true;
             } else {
                 return false;
@@ -83,5 +85,9 @@ public class LoginManager {
 
     public static Session getSession() {
         return currentSessionFactoryManager.getNewSession();
+    }
+
+    public static String getUsername() {
+        return activeUsername;
     }
 }
