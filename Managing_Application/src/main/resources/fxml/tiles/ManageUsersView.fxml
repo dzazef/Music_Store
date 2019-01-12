@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.HBox?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.controllers.tiles.ManageUsersController"
+            fx:controller="ui.controllers.tiles.manage_users.ManageUsersController"
             prefHeight="400.0" prefWidth="600.0"
             fx:id="mainPane">
     <bottom>

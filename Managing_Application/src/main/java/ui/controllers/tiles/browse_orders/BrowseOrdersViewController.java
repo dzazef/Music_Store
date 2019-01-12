@@ -1,4 +1,4 @@
-package ui.controllers.tiles;
+package ui.controllers.tiles.browse_orders;
 
 import db.LoginManager;
 import javafx.scene.control.TableCell;

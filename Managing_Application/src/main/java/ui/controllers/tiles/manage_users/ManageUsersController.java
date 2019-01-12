@@ -1,4 +1,4 @@
-package ui.controllers.tiles;
+package ui.controllers.tiles.manage_users;
 
 import db.LoginManager;
 import javafx.collections.FXCollections;
