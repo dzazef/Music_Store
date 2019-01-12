@@ -12,8 +12,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import model.AccessLevel;
 import model.entities.UsersEntity;
+import org.hibernate.Session;
 import ui.views.TileView;
 
+import javax.persistence.Query;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -32,28 +34,31 @@ public class ManageUsersController {
     public Button removeButton = new Button("REMOVE");
 
     public void initialize() {
+
         tableView.prefWidthProperty().bind(mainPane.widthProperty().divide(1.5));
         passwordColumn.prefWidthProperty().bind(tableView.widthProperty().divide(4));
         loginColumn.prefWidthProperty().bind(tableView.widthProperty().divide(4));
         accessLevelColumn.prefWidthProperty().bind(tableView.widthProperty().divide(4));
         removeButtonsColumn.prefWidthProperty().bind(tableView.widthProperty().divide(4));
         accessLevelChoiceBox.getItems().addAll(AccessLevel.values());
-        //removeButton.setOnAction((event -> removeUser()));
-        //TODO open session
+        Session session = LoginManager.getSession();
+        Query query = session.createQuery("FROM UsersEntity ");
+        data.addAll(query.getResultList());
         tableView.setItems(data);
+        session.close();
         //tableView.setEditable(true);
         loginColumn.setCellValueFactory(new PropertyValueFactory<UsersEntity, String>("userId"));
         passwordColumn.setCellValueFactory(new PropertyValueFactory<UsersEntity, String>("password"));
         accessLevelColumn.setCellValueFactory(new PropertyValueFactory<UsersEntity, String>("accessLevel"));
         removeButtonsColumn.setCellFactory(createButtonCellFactory());
-
-        UsersEntity usersEntity = new UsersEntity();
-        usersEntity.setPassword("pies");
-        usersEntity.setUserId("Tanja");
-        usersEntity.setAccessLevel(AccessLevel.storekeeper);
-        List<UsersEntity> users = new LinkedList<>();
-        users.add(usersEntity);
-        showUsersInTable(users);
+//
+//        UsersEntity usersEntity = new UsersEntity();
+//        usersEntity.setPassword("pies");
+//        usersEntity.setUserId("Tanja");
+//        usersEntity.setAccessLevel(AccessLevel.storekeeper);
+//        List<UsersEntity> users = new LinkedList<>();
+//        users.add(usersEntity);
+//        showUsersInTable(users);
     }
 
     private Callback<TableColumn<UsersEntity, Void>, TableCell<UsersEntity, Void>> createButtonCellFactory() {
@@ -84,7 +89,12 @@ public class ManageUsersController {
 
     private void removeUser(UsersEntity user) {
         data.remove(user);
-        //TODO remove user from database
+        Session session = LoginManager.getSession();
+        session.beginTransaction();
+        session.remove(user);
+        session.getTransaction().commit();
+        session.close();
+        //TODO handle if no possible to do so
     }
 
     private void showUsersInTable(List<UsersEntity> users) {
@@ -113,7 +123,11 @@ public class ManageUsersController {
         user.setPassword(passwordField.getText());
         user.setAccessLevel(accessLevelChoiceBox.getValue());
         data.add(user);
-        //TODO add user to database
+        Session session = LoginManager.getSession();
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+        session.close();
 
     }
 

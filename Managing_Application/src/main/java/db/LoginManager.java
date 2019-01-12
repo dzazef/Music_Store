@@ -14,7 +14,7 @@ public class LoginManager {
     private static AccessLevel accessLevel;
 
     public static void connectUserCheck() {
-        currentSessionFactoryManager = new SessionFactoryManager("root", "sqlpass.");
+        currentSessionFactoryManager = new SessionFactoryManager("root", "");
         currentSessionFactoryManager.buildSessionFactory();
         currentSession = currentSessionFactoryManager.getNewSession();
     }
@@ -82,6 +82,6 @@ public class LoginManager {
     }
 
     public static Session getSession() {
-        return currentSession;
+        return currentSessionFactoryManager.getNewSession();
     }
 }
