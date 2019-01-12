@@ -29,10 +29,6 @@ public class BrowseOrdersViewController {
     public TableColumn<OrdersTable, String>  paymentColumn;
     private final ObservableList<OrdersTable> data = FXCollections.observableArrayList();
 
-    @FXML
-    public void test() {
-    }
-
     public void initialize() {
         createTableView();
         runQuery();

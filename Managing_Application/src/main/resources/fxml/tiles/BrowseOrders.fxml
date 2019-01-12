@@ -7,10 +7,9 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.BrowseOrdersViewController">
+<BorderPane prefHeight="497.0" prefWidth="974.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.BrowseOrdersViewController">
     <bottom>
         <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
-         <Button onAction="#test" mnemonicParsing="false" text="test" />
             <Button mnemonicParsing="false" onAction="#goBack" text="Return" />
         </HBox>
     </bottom>
