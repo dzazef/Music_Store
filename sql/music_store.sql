@@ -13,7 +13,7 @@ CREATE UNIQUE INDEX products_product_id_uindex ON products (product_id);
 CREATE TABLE artists
 (
   artist_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  name VARCHAR(50) NOT NULL,
+  name VARCHAR(80) NOT NULL,
   genre VARCHAR(50) NOT NULL DEFAULT 'other'
 );
 
@@ -110,6 +110,7 @@ CREATE TABLE orders_products
 (
   order_id INT NOT NULL,
   product_id INT NOT NULL,
+  quantity INT NOT NULL DEFAULT 1
   PRIMARY KEY (order_id,product_id),
   CONSTRAINT orders_products_products_product_id_fk FOREIGN KEY (product_id) REFERENCES products (product_id),
   CONSTRAINT orders_products_orders_order_id_fk FOREIGN KEY (order_id) REFERENCES orders (order_id)

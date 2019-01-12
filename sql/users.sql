@@ -19,6 +19,7 @@ GRANT SELECT ON music_store.instruments TO 'client'@'localhost';
 GRANT SELECT ON music_store.instrument_manufacturers TO 'client'@'localhost';
 GRANT SELECT ON music_store.other TO 'client'@'localhost';
 GRANT SELECT ON music_store.delivery TO 'client'@'localhost';
+GRANT SELECT ON music_store.storage TO 'client'@'localhost';
 GRANT INSERT ON music_store.orders TO 'client'@'localhost';
 GRANT INSERT ON music_store.orders_products TO 'client'@'localhost';
 # GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
