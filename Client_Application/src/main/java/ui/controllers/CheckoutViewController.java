@@ -77,7 +77,7 @@ public class CheckoutViewController {
                         String.format("%.2f",cartManager.total.doubleValue())+" to our bank account\nOur bank account code is: " + bankAccountCode));
             } else {
                 mainBox.getChildren().clear();
-                mainBox.getChildren().add(new Label("\"Thank you for purchasing!\nA courier will arrive soon!"));
+                mainBox.getChildren().add(new Label("Thank you for purchasing!\nA courier will arrive soon!"));
             }
             cartManager.resetCart();
         }

@@ -15,4 +15,8 @@
     -fx-border-color: transparent;
     -fx-background-insets: 0;
 }
+#footer {
+    -fx-background-color: #272727;
+    -fx-text-fill: #FFFFFF;
+}
 

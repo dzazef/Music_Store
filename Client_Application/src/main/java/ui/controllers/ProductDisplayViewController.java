@@ -43,7 +43,7 @@ public class ProductDisplayViewController {
         filtersMenuBox.prefWidthProperty().bind(mainDisplayProductsView.widthProperty().divide(5));
         boxForScrollPane.prefWidthProperty().bind(mainDisplayProductsView.widthProperty().divide(1.25));
         //boxForScrollPane.setStyle("-fx-background-color: #445599");
-//        //tilePaneWithProducts.prefColumnsProperty().bind(mainDisplayProductsView.widthProperty().divide(200));
+        tilePaneWithProducts.prefColumnsProperty().bind(boxForScrollPane.widthProperty().divide(184));
 //        tilePaneWithProducts.setPrefColumns(15);
 //        tilePaneWithProducts.prefWidthProperty().bind(mainDisplayProductsView.prefWidthProperty().subtract(filtersMenuBox.prefWidthProperty().subtract(40)));
         productDisplay.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);

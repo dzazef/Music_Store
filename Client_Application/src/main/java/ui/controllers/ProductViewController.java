@@ -24,6 +24,7 @@ public class ProductViewController {
     public Label durationLabel;
     public Text trackListText;
     public Label priceLabel;
+    public Label genreLabel;
     private HBox parentNode;
     private AlbumViewEntity album;
     private CartManager cart;
@@ -44,6 +45,7 @@ public class ProductViewController {
         titleLabel.setText("TITLE: "+album.getTitle());
         releaseYearLabel.setText("RELEASE YEAR: "+album.getReleaseYear().toString());
         artistLabel.setText("ARTIST: "+album.getName());
+        genreLabel.setText("GENRE: "+album.getGenre());
         durationLabel.setText("DURATION: "+(album.getDuration()/1000/60));
         trackListText.setText(album.getTracklist().replace('*','\n'));
         priceLabel.setText("PRICE: "+album.getPrice()+"$");

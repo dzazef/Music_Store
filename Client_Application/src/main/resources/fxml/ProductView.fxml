@@ -25,6 +25,7 @@
             <Label fx:id="titleLabel"/>
             <Label fx:id="releaseYearLabel"/>
             <Label fx:id="artistLabel"/>
+            <Label fx:id="genreLabel"/>
             <Label text="TRACK LIST:"/>
             <ScrollPane fx:id="scrollPane" hbarPolicy="NEVER">
 
