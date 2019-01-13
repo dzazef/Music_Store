@@ -7,6 +7,39 @@ import javax.persistence.*;
 public class StorageEntity {
     private int productId;
     private int productsAvailable;
+    private AlbumViewEntity albumViewEntity;
+    private InstrumentViewEntity instrumentViewEntity;
+    private OtherViewEntity otherViewEntity;
+
+    @OneToOne
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    public AlbumViewEntity getAlbumViewEntity() {
+        return albumViewEntity;
+    }
+
+    public void setAlbumViewEntity(AlbumViewEntity albumViewEntity) {
+        this.albumViewEntity = albumViewEntity;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    public InstrumentViewEntity getInstrumentViewEntity() {
+        return instrumentViewEntity;
+    }
+
+    public void setInstrumentViewEntity(InstrumentViewEntity instrumentViewEntity) {
+        this.instrumentViewEntity = instrumentViewEntity;
+    }
+
+    @OneToOne
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    public OtherViewEntity getOtherViewEntity() {
+        return otherViewEntity;
+    }
+
+    public void setOtherViewEntity(OtherViewEntity otherViewEntity) {
+        this.otherViewEntity = otherViewEntity;
+    }
 
     @Id
     @Column(name = "product_id")

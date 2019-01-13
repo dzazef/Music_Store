@@ -20,11 +20,14 @@ public class OrdersProductsEntity {
     }
 
     private int quantity;
+
+
+
     private AlbumViewEntity albumViewEntity;
     private InstrumentViewEntity instrumentViewEntity;
     private OtherViewEntity otherViewEntity;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     public AlbumViewEntity getAlbumViewEntity() {
         return albumViewEntity;
@@ -34,7 +37,7 @@ public class OrdersProductsEntity {
         this.albumViewEntity = albumViewEntity;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     public InstrumentViewEntity getInstrumentViewEntity() {
         return instrumentViewEntity;
@@ -44,7 +47,7 @@ public class OrdersProductsEntity {
         this.instrumentViewEntity = instrumentViewEntity;
     }
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "product_id", insertable = false, updatable = false)
     public OtherViewEntity getOtherViewEntity() {
         return otherViewEntity;
@@ -53,6 +56,9 @@ public class OrdersProductsEntity {
     public void setOtherViewEntity(OtherViewEntity otherViewEntity) {
         this.otherViewEntity = otherViewEntity;
     }
+
+
+
 
     @Id
     @Column(name = "order_id")

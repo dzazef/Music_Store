@@ -8,6 +8,7 @@ import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import ui.Managing_Application;
 import ui.controllers.tiles.browse_orders.BrowseOrdersViewController;
+import ui.controllers.tiles.change_storage_levels.ChangeStorageViewController;
 import ui.controllers.tiles.complete_orders.CompleteOrdersViewController;
 import ui.controllers.tiles.manage_orders.ManageOrdersViewController;
 import ui.controllers.tiles.payment_confirmation.ConfirmPaymentViewController;
@@ -47,6 +48,17 @@ public class TileViewController {
 
     public static void handleChangeStorageLevels() {
         System.out.println("handleChangeStorageLevels");
+        try {
+            FXMLLoader loader =  new FXMLLoader(TileViewController.class.getClassLoader().getResource("fxml/tiles/ChangeStorage.fxml"));
+            loader.setController(new ChangeStorageViewController());
+            Parent root = loader.load();
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Change storage");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load manage change storage view.");
+        }
     }
 
     public static void handleManageShipments() {
