@@ -45,7 +45,7 @@ public class CompleteOrdersViewController extends ViewController {
         Query query = session.
                 createSQLQuery("CALL music_store.update_order_status((:orderId), (:newStatus), (:userId))")
                 .setParameter("orderId", ordersTable.getOrderId())
-                .setParameter("newStatus", 1)
+                .setParameter("newStatus", 2)
                 .setParameter("userId", LoginManager.getUsername());
         query.executeUpdate();
         session.getTransaction().commit();
