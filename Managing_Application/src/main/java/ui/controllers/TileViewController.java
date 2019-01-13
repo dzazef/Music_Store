@@ -7,6 +7,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import ui.Managing_Application;
+import ui.controllers.tiles.browse_orders.BrowseOrdersViewController;
+import ui.controllers.tiles.complete_orders.CompleteOrdersViewController;
+import ui.controllers.tiles.manage_orders.ManageOrdersViewController;
+import ui.controllers.tiles.payment_confirmation.ConfirmPaymentViewController;
 import ui.views.LoginView;
 
 import java.io.IOException;
@@ -15,13 +19,11 @@ import java.util.Objects;
 public class TileViewController {
     public static void handleBrowseOrders() {
         System.out.println("handleBrowseOrders");
-        final Parent parent;
         try {
-            parent = FXMLLoader
-                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/BrowseOrders.fxml")));
+            FXMLLoader loader =  new FXMLLoader(TileViewController.class.getClassLoader().getResource("fxml/tiles/BrowseOrders.fxml"));
+            Parent root = loader.load();
             Stage stage = Managing_Application.getStage();
-            stage.setScene(new Scene(parent));
-            stage.setTitle("Browse Orders");
+            stage.setScene(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
             showErrorMessage("Unable to load manage browse orders view.");
@@ -30,12 +32,12 @@ public class TileViewController {
 
     public static void handleCompleteOrders() {
         System.out.println("handleCompleteOrders");
-        final Parent parent;
         try {
-            parent = FXMLLoader
-                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/CompleteOrdersView.fxml")));
+            FXMLLoader loader =  new FXMLLoader(TileViewController.class.getClassLoader().getResource("fxml/tiles/CompleteOrdersView.fxml"));
+            loader.setController(new CompleteOrdersViewController());
+            Parent root = loader.load();
             Stage stage = Managing_Application.getStage();
-            stage.setScene(new Scene(parent));
+            stage.setScene(new Scene(root));
             stage.setTitle("Complete orders");
         } catch (IOException e) {
             e.printStackTrace();
@@ -53,17 +55,27 @@ public class TileViewController {
 
     public static void handlePaymentConfirmation() {
         System.out.println("handlePaymentConfirmation");
+        try {
+            FXMLLoader loader =  new FXMLLoader(TileViewController.class.getClassLoader().getResource("fxml/tiles/CompleteOrdersView.fxml"));
+            loader.setController(new ConfirmPaymentViewController());
+            Parent root = loader.load();
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(root));
+            stage.setTitle("Payment confirmation");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load manage confirm payment view.");
+        }
     }
 
     public static void handleManageOrders() {
         System.out.println("handleManageOrders");
-        final Parent parent;
         try {
-            parent = FXMLLoader
-                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/ManageOrdersView.fxml")));
+            FXMLLoader loader =  new FXMLLoader(TileViewController.class.getClassLoader().getResource("fxml/tiles/CompleteOrdersView.fxml"));
+            loader.setController(new ManageOrdersViewController());
+            Parent root = loader.load();
             Stage stage = Managing_Application.getStage();
-            stage.setScene(new Scene(parent));
-            stage.setTitle("Complete orders");
+            stage.setScene(new Scene(root));
         } catch (IOException e) {
             e.printStackTrace();
             showErrorMessage("Unable to load manage complete orders view.");

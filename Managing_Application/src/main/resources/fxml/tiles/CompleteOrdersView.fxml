@@ -3,10 +3,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
-<BorderPane fx:id="mainBorderPane" prefHeight="497.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.complete_orders.CompleteOrdersViewController">
+<?import java.net.URL?>
+<BorderPane fx:id="mainBorderPane" prefHeight="497.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <bottom>
         <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
-            <Button mnemonicParsing="false" onAction="#goBack" text="Return" />
+            <Button fx:id="loginButton" mnemonicParsing="false" onAction="#goBack" text="Return" />
         </HBox>
     </bottom>
     <top>
@@ -27,4 +28,7 @@
             </TableView>
         </ScrollPane>
     </top>
+    <stylesheets>
+        <URL value="@../../css/style.css" />
+    </stylesheets>
 </BorderPane>
