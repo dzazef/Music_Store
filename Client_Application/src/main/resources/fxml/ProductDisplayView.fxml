@@ -7,21 +7,23 @@
 <?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <HBox fx:id="mainDisplayProductsView" xmlns="http://javafx.com/javafx"
-      xmlns:fx="http://javafx.com/fxml">
-    <HBox fx:id="internalMainBox">
-        <VBox fx:id="filtersMenuBox" prefWidth="150" alignment="TOP_CENTER">
+      xmlns:fx="http://javafx.com/fxml" alignment="TOP_LEFT" stylesheets="/css/ProductDisplayViewStyle.css">
+    <HBox fx:id="internalMainBox" alignment="TOP_LEFT">
+        <VBox fx:id="filtersMenuBox" alignment="TOP_CENTER">
             <padding>
                 <Insets top="10"/>
             </padding>
             <Button fx:id="doFilterButton" text="FILTER" onAction="#doFilter"/>
         </VBox>
 
-        <ScrollPane fx:id="productDisplay">
-            <padding>
-                <Insets left="20.0" right="20.0"/>
-            </padding>
-            <TilePane fx:id="tilePaneWithProducts" hgap="20" vgap="20">
-            </TilePane>
-        </ScrollPane>
+        <VBox fx:id="boxForScrollPane" alignment="TOP_CENTER">
+            <ScrollPane fx:id="productDisplay" prefWidth="${boxForScrollPane.prefWidth}">
+                <padding>
+                    <Insets left="20.0" right="20.0"/>
+                </padding>
+                <TilePane fx:id="tilePaneWithProducts" hgap="20" vgap="20">
+                </TilePane>
+            </ScrollPane>
+        </VBox>
     </HBox>
 </HBox>

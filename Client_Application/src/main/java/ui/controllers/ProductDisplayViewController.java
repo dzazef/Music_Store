@@ -28,6 +28,7 @@ public class ProductDisplayViewController {
     private BorderPane stage;
     public HBox mainDisplayProductsView;
     public VBox filtersMenuBox;
+    public VBox boxForScrollPane;
     public HBox internalMainBox;
     public TilePane tilePaneWithProducts;
     public ScrollPane productDisplay;
@@ -37,21 +38,25 @@ public class ProductDisplayViewController {
     private Map<String,String> filters = new HashMap<>();
     //column & user input
     public void initialize() {
-        internalMainBox.prefWidthProperty().bind(mainDisplayProductsView.widthProperty());
-        internalMainBox.prefHeightProperty().bind(mainDisplayProductsView.heightProperty());
+//        internalMainBox.prefWidthProperty().bind(mainDisplayProductsView.prefWidthProperty());
+//        internalMainBox.prefHeightProperty().bind(mainDisplayProductsView.heightProperty());
         filtersMenuBox.prefWidthProperty().bind(mainDisplayProductsView.widthProperty().divide(5));
-        //tilePaneWithProducts.prefColumnsProperty().bind(mainDisplayProductsView.widthProperty().divide(200));
-        tilePaneWithProducts.setPrefColumns(15);
-        tilePaneWithProducts.prefWidthProperty().bind(mainDisplayProductsView.widthProperty().subtract(filtersMenuBox.prefWidthProperty().subtract(40)));
+        boxForScrollPane.prefWidthProperty().bind(mainDisplayProductsView.widthProperty().divide(1.25));
+        //boxForScrollPane.setStyle("-fx-background-color: #445599");
+//        //tilePaneWithProducts.prefColumnsProperty().bind(mainDisplayProductsView.widthProperty().divide(200));
+//        tilePaneWithProducts.setPrefColumns(15);
+//        tilePaneWithProducts.prefWidthProperty().bind(mainDisplayProductsView.prefWidthProperty().subtract(filtersMenuBox.prefWidthProperty().subtract(40)));
         productDisplay.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
     }
 
     public void addFilterTextField(String name, String column) {
         Label label = new Label(name);
         HBox container = new HBox();
+        container.setAlignment(Pos.TOP_CENTER);
         TextField textField = new TextField();
-        textField.prefWidth(150.);
+        textField.prefWidth(150.0);
         ToggleButton toggleButton = new ToggleButton("");
+        toggleButton.prefWidthProperty().bind(toggleButton.heightProperty());
         toggleButton.applyCss();
         EventHandler<ActionEvent> actionEventEventHandler = (actionEvent) -> {
             if (toggleButton.isSelected()) {

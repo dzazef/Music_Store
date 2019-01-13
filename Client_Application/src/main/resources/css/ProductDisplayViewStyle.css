@@ -1,8 +1,17 @@
 .toggle-button {
-     -fx-pref-width: 40.0;
-     -fx-pref-height: 25.0;
-     -fx-background-color: #ff2300;
+     -fx-min-width: 25.0;
+     /*-fx-pref-height: 25.0;*/
+     -fx-base: #ff2300;
+     -fx-border-width: 0;
  }
+.toggle-button:selected,
 .toggle-button:selected:focused {
-    fx-background-color: #20bd00;
+    -fx-background-color: #20bd00;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+}
+.toggle-button:focused {
+    -fx-background-color: #ff2300;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
 }

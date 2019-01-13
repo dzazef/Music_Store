@@ -3,4 +3,16 @@
 }
 .button {
     -fx-background-radius: 0;
+    -fx-background-color: #272727;
+    -fx-text-fill: #FFFFFF;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
 }
+.button:focused {
+    -fx-background-color: #3B3B3B;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+}
+

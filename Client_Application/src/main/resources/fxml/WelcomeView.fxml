@@ -65,8 +65,8 @@
       </HBox>
    </bottom>
    <center>
-       <TilePane fx:id="welcomeTilePane" alignment="TOP_CENTER" hgap="10.0" prefHeight="342.0" prefWidth="476.0"
-                 tileAlignment="TOP_LEFT" vgap="10.0" BorderPane.alignment="CENTER">
+       <TilePane fx:id="welcomeTilePane" alignment="TOP_CENTER" hgap="10.0"
+                 tileAlignment="TOP_LEFT" vgap="10.0" >
            <padding>
                <Insets bottom="10.0" top="10.0"/>
            </padding>
