@@ -25,6 +25,8 @@ public class TileViewController {
             Parent root = loader.load();
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(root));
+            stage.centerOnScreen();
+
         } catch (IOException e) {
             e.printStackTrace();
             showErrorMessage("Unable to load manage browse orders view.");
@@ -40,6 +42,7 @@ public class TileViewController {
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(root));
             stage.setTitle("Complete orders");
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
             showErrorMessage("Unable to load manage complete orders view.");
@@ -54,6 +57,7 @@ public class TileViewController {
             Parent root = loader.load();
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(root));
+            stage.centerOnScreen();
             stage.setTitle("Change storage");
         } catch (IOException e) {
             e.printStackTrace();
@@ -73,6 +77,7 @@ public class TileViewController {
             Parent root = loader.load();
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(root));
+            stage.centerOnScreen();
             stage.setTitle("Payment confirmation");
         } catch (IOException e) {
             e.printStackTrace();
@@ -88,6 +93,7 @@ public class TileViewController {
             Parent root = loader.load();
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(root));
+            stage.centerOnScreen();
         } catch (IOException e) {
             e.printStackTrace();
             showErrorMessage("Unable to load manage complete orders view.");
@@ -106,6 +112,7 @@ public class TileViewController {
                     .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/DeliveryManagementView.fxml")));
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(parent));
+            stage.centerOnScreen();
             stage.setTitle("Manage delivery method");
         } catch (IOException e) {
             e.printStackTrace();
@@ -121,6 +128,7 @@ public class TileViewController {
                     .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/ManageUsersView.fxml")));
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(parent));
+            stage.centerOnScreen();
             stage.setTitle("Manage users");
         } catch (IOException e) {
             e.printStackTrace();
@@ -136,6 +144,7 @@ public class TileViewController {
                     .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/StatusLogsView.fxml")));
             Stage stage = Managing_Application.getStage();
             stage.setScene(new Scene(parent));
+            stage.centerOnScreen();
             stage.setTitle("Status Logs");
         } catch (IOException e) {
             e.printStackTrace();
@@ -152,6 +161,7 @@ public class TileViewController {
             Stage stage = Managing_Application.getStage();
             Scene scene = new Scene(parent);
             stage.setScene(scene);
+            stage.centerOnScreen();
             stage.setTitle("Backup restore");
         } catch (IOException e) {
             e.printStackTrace();

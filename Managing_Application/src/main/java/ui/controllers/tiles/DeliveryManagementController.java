@@ -49,6 +49,7 @@ public class DeliveryManagementController {
         deliveryPriceColumn.prefWidthProperty().bind(tableView.widthProperty().divide(5));
         deliveryTimeColumn.prefWidthProperty().bind(tableView.widthProperty().divide(5));
         removeButtonColumn.prefWidthProperty().bind(tableView.widthProperty().divide(5));
+
         previousPageButton.setVisible(false);
         deliveryIdColumn.setCellValueFactory(new PropertyValueFactory<DeliveryEntity, String>("deliveryId"));
         deliveryNameColumn.setCellValueFactory(new PropertyValueFactory<DeliveryEntity, String>("name"));
@@ -92,7 +93,7 @@ public class DeliveryManagementController {
     }
 
     public void addDeliveryButtonClicked(ActionEvent actionEvent) {
-        if (deliveryNameColumn.getText().isEmpty() || deliveryPriceColumn.getText().isEmpty() || deliveryTimeColumn.getText().isEmpty()) {
+        if (deliveryNameTextField.getText().isEmpty() || priceTextField.getText().isEmpty() || timeTextField.getText().isEmpty()) {
             showErrorAlert("Name, price and expected time cannot be empty!");
             return;
         }
@@ -104,9 +105,9 @@ public class DeliveryManagementController {
         }
         try {
             DeliveryEntity delivery = new DeliveryEntity();
-            delivery.setName(deliveryNameColumn.getText());
-            delivery.setPrice(Double.parseDouble(deliveryPriceColumn.getText()));
-            delivery.setDeliveryTime(Integer.parseInt(deliveryTimeColumn.getText()));
+            delivery.setName(deliveryNameTextField.getText());
+            delivery.setPrice(Double.parseDouble(priceTextField.getText()));
+            delivery.setDeliveryTime(Integer.parseInt(timeTextField.getText()));
             data.add(delivery);
             Session session = LoginManager.getSession();
             session.beginTransaction();
@@ -150,7 +151,7 @@ public class DeliveryManagementController {
                 delivery.getName()+"?\nThis cannot be undone!")) {
             try (Session session = LoginManager.getSession()) {
                 session.beginTransaction();
-                session.remove(delivery);
+                session.remove(session.merge(delivery));
                 session.getTransaction().commit();
                 data.remove(delivery);
             } catch (PersistenceException exception) {

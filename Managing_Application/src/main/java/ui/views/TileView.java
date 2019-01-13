@@ -40,6 +40,7 @@ public class TileView {
         scene.getStylesheets().add("css/style.css");
         Stage stage = Managing_Application.getStage();
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.setTitle("Choose module");
 
         tilePane.getChildren().addAll(createButtons(accessLevel));

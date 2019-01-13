@@ -11,6 +11,7 @@ public class DeliveryEntity {
     private int deliveryTime;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "delivery_id")
     public int getDeliveryId() {
         return deliveryId;
