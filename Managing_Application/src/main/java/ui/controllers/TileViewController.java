@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
 import ui.Managing_Application;
-import ui.controllers.tiles.browse_orders.BrowseOrdersViewController;
 import ui.controllers.tiles.change_storage_levels.ChangeStorageViewController;
 import ui.controllers.tiles.complete_orders.CompleteOrdersViewController;
 import ui.controllers.tiles.manage_orders.ManageOrdersViewController;
@@ -106,7 +105,7 @@ public class TileViewController {
 
     public static void handleManageDeliveryMethods() {
         System.out.println("handleManageDeliveryMethods");
-        @SuppressWarnings("ConstantConditions") final Parent parent;
+        final Parent parent;
         try {
             parent = FXMLLoader
                     .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/DeliveryManagementView.fxml")));
@@ -122,7 +121,7 @@ public class TileViewController {
 
     public static void handleManageUsers() {
         System.out.println("handleManageUsers");
-        @SuppressWarnings("ConstantConditions") final Parent parent;
+        final Parent parent;
         try {
             parent = FXMLLoader
                     .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/ManageUsersView.fxml")));
@@ -138,7 +137,7 @@ public class TileViewController {
 
     public static void handleShowLogs() {
         System.out.println("handleShowLogs");
-        @SuppressWarnings("ConstantConditions") final Parent parent;
+        final Parent parent;
         try {
             parent = FXMLLoader
                     .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/StatusLogsView.fxml")));

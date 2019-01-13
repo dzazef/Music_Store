@@ -1,9 +1,9 @@
-#loginButton {
-    -fx-text-fill: #c4c4c4;
-    -fx-background-color: #343434;
-    -fx-background-radius: 20;
-    -fx-font-size: 15;
-}
+/*#loginButton {*/
+    /*-fx-text-fill: #c4c4c4;*/
+    /*-fx-background-color: #343434;*/
+    /*-fx-background-radius: 20;*/
+    /*-fx-font-size: 15;*/
+/*}*/
 #exitButton {
     -fx-text-fill: #c4c4c4;
     -fx-background-color: #343434;
@@ -12,13 +12,20 @@
 }
 .text-field {
 }
+
+.btn-grad {background-image: linear-gradient(to right, #403B4A 0%, #E7E9BB 51%, #403B4A 100%)}
+.btn-grad:hover { background-position: right center; }
+
 #tile {
     -fx-text-alignment: center;
-    -fx-background-color: "#99ff99";
+    -fx-background-color: linear-gradient(to right, #403B4A 0%, #E7E9BB 51%);
     -fx-background-radius: 10;
     -fx-pref-width: 150;
     -fx-pref-height: 150;
     -fx-wrap-text: true;
+}
+#tile:hover {
+    -fx-background-color: linear-gradient(to left, #403B4A 0%, #E7E9BB 51%);
 }
 
 #loginPane {

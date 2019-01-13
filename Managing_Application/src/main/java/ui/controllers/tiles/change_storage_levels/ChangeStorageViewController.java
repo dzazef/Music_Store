@@ -1,36 +1,37 @@
 package ui.controllers.tiles.change_storage_levels;
 
 import db.LoginManager;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.entities.StorageEntity;
-import org.hibernate.ObjectNotFoundException;
 import org.hibernate.Session;
-import ui.controllers.tiles.order_management.OrdersProductsTable;
-import ui.controllers.tiles.order_management.ProductsViewController;
 import ui.views.TileView;
 
 import javax.persistence.TypedQuery;
+import java.io.IOException;
 import java.util.List;
 
 public class ChangeStorageViewController {
-    public TableView<OrdersProductsTable> tableBrowseOrdersProducts;
-    public TableColumn<OrdersProductsTable, Integer> idColumnProducts;
-    public TableColumn<OrdersProductsTable, String>  manufacturerColumnProducts;
-    public TableColumn<OrdersProductsTable, String>  nameColumnProducts;
-    public TableColumn<OrdersProductsTable, Integer>  quantityProducts;
-    public TableColumn<OrdersProductsTable, Void>  changeStorageLevelsColumn;
-    private static final ObservableList<OrdersProductsTable> dataProducts = FXCollections.observableArrayList();
-    private Session session;
+    public TableView<ChangeStorageTable> tableBrowseOrdersProducts;
+    public TableColumn<ChangeStorageTable, Integer> idColumnProducts;
+    public TableColumn<ChangeStorageTable, String>  manufacturerColumnProducts;
+    public TableColumn<ChangeStorageTable, String>  nameColumnProducts;
+    public TableColumn<ChangeStorageTable, Integer>  quantityProducts;
+    public TableColumn<ChangeStorageTable, Void>  changeStorageLevelsColumn;
+    private static final ObservableList<ChangeStorageTable> dataProducts = FXCollections.observableArrayList();
+    private static Session session;
+    private static Stage stage;
 
     public void goBackProducts() {
+        dataProducts.clear();
         TileView.initialize(LoginManager.getAccessLevel());
     }
 
@@ -40,30 +41,32 @@ public class ChangeStorageViewController {
         runQuery();
     }
 
-    public void insertProducts(OrdersProductsTable ordersProductsTable) {
-        dataProducts.add(ordersProductsTable);
+    public void insertProducts(ChangeStorageTable changeStorageTable) {
+        Platform.runLater(() -> dataProducts.add(changeStorageTable));
     }
 
     private void runQuery() {
-        TypedQuery<StorageEntity> storageEntityTypedQuery = session.createQuery("from StorageEntity ", StorageEntity.class);
-        List<StorageEntity> storageEntityList= storageEntityTypedQuery.getResultList();
-        for (StorageEntity storageEntity : storageEntityList) {
-            if (storageEntity.getAlbumViewEntity()!=null) {
-                insertProducts(new OrdersProductsTable(
-                        storageEntity.getProductId(), storageEntity.getAlbumViewEntity().getName(), storageEntity.getAlbumViewEntity().getTitle(), storageEntity.getProductsAvailable()
-                ));
+        new Thread(() -> {
+            TypedQuery<StorageEntity> storageEntityTypedQuery = session.createQuery("from StorageEntity ", StorageEntity.class);
+            List<StorageEntity> storageEntityList= storageEntityTypedQuery.getResultList();
+            for (StorageEntity storageEntity : storageEntityList) {
+                if (storageEntity.getAlbumViewEntity()!=null) {
+                    insertProducts(new ChangeStorageTable(
+                            storageEntity.getProductId(), storageEntity.getAlbumViewEntity().getName(), storageEntity.getAlbumViewEntity().getTitle(), storageEntity.getProductsAvailable()
+                    ));
+                }
+                else if (storageEntity.getInstrumentViewEntity()!=null) {
+                    insertProducts(new ChangeStorageTable(
+                            storageEntity.getProductId(), storageEntity.getInstrumentViewEntity().getManufacturerName(), storageEntity.getInstrumentViewEntity().getInstrumentName(), storageEntity.getProductsAvailable()
+                    ));
+                }
+                else if (storageEntity.getOtherViewEntity()!=null) {
+                    insertProducts(new ChangeStorageTable(
+                            storageEntity.getProductId(), storageEntity.getOtherViewEntity().getProducer(), storageEntity.getOtherViewEntity().getName(), storageEntity.getProductsAvailable()
+                    ));
+                }
             }
-            else if (storageEntity.getInstrumentViewEntity()!=null) {
-                insertProducts(new OrdersProductsTable(
-                        storageEntity.getProductId(), storageEntity.getInstrumentViewEntity().getManufacturerName(), storageEntity.getInstrumentViewEntity().getInstrumentName(), storageEntity.getProductsAvailable()
-                ));
-            }
-            else if (storageEntity.getOtherViewEntity()!=null) {
-                insertProducts(new OrdersProductsTable(
-                        storageEntity.getProductId(), storageEntity.getOtherViewEntity().getProducer(), storageEntity.getOtherViewEntity().getName(), storageEntity.getProductsAvailable()
-                ));
-            }
-        }
+        }).start();
     }
 
 
@@ -76,20 +79,18 @@ public class ChangeStorageViewController {
                 new PropertyValueFactory<>("manufacturer"));
         nameColumnProducts.setCellValueFactory(
                 new PropertyValueFactory<>("productName"));
-        quantityProducts.setCellValueFactory(
-                new PropertyValueFactory<>("quantity"));
+        quantityProducts.setCellValueFactory(new PropertyValueFactory<>("quantity"));
         changeStorageLevelsColumn.setCellFactory(createButtonCellFactory());
     }
 
-    public Callback<TableColumn<OrdersProductsTable, Void>, TableCell<OrdersProductsTable, Void>> createButtonCellFactory() {
-        return new Callback<TableColumn<OrdersProductsTable, Void>, TableCell<OrdersProductsTable, Void>>() {
+    public Callback<TableColumn<ChangeStorageTable, Void>, TableCell<ChangeStorageTable, Void>> createButtonCellFactory() {
+        return new Callback<TableColumn<ChangeStorageTable, Void>, TableCell<ChangeStorageTable, Void>>() {
             @Override
-            public TableCell<OrdersProductsTable, Void> call(TableColumn<OrdersProductsTable, Void> param) {
-                return new TableCell<OrdersProductsTable, Void>() {
+            public TableCell<ChangeStorageTable, Void> call(TableColumn<ChangeStorageTable, Void> param) {
+                return new TableCell<ChangeStorageTable, Void>() {
                     private Button button = new Button("Change");
                     {
-                        setAlignment(Pos.CENTER);
-                            button.setOnAction((e) -> changeLevels(dataProducts.get(getIndex())));
+                        button.setOnAction((e) -> changeLevelsDialogOpen(dataProducts.get(getIndex())));
                     }
 
                     @Override
@@ -105,6 +106,33 @@ public class ChangeStorageViewController {
         };
     }
 
-    private void changeLevels(OrdersProductsTable ordersProductsTable) {
+    private void changeLevelsDialogOpen(ChangeStorageTable changeStorageTable) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getClassLoader().getResource("fxml/tiles/ChangeStorageDialog.fxml"));
+            final Parent parent = fxmlLoader.load();
+            ((ChangeStorageDialog) fxmlLoader.getController()).setLevel(changeStorageTable);
+            stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Products");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Unable to load manage storage levels view.");
+            alert.showAndWait();
+        }
+    }
+
+    static void changeLevelsDialogClose(int value, ChangeStorageTable changeStorageTable ) {
+        session.beginTransaction();
+        StorageEntity storageEntity = session.load(StorageEntity.class, changeStorageTable.getProductId());
+        storageEntity.setProductsAvailable(value);
+        session.update(storageEntity);
+        session.getTransaction().commit();
+        dataProducts.remove(changeStorageTable);
+        changeStorageTable.setQuantity(value);
+        dataProducts.add(changeStorageTable);
+        stage.close();
     }
 }
