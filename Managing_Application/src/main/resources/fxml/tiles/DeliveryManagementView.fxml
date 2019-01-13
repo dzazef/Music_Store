@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ui.controllers.tiles.DeliveryManagementController"
+            prefHeight="400.0" prefWidth="600.0"
+            fx:id="mainPane">
+    <bottom>
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#goBack" text="Return"/>
+            <Button fx:id="previousPageButton" text="PREVIOUS" onAction="#previousPageClicked"/>
+            <Label fx:id="currentPageNumberLabel" />
+            <Button fx:id="nextPageButton" text="NEXT" onAction="#nextPageClicked"/>
+        </HBox>
+    </bottom>
+    <top>
+        <VBox alignment="TOP_CENTER">
+            <HBox alignment="TOP_CENTER" spacing="10.0">
+                <Label text="Delivery name: "/>
+                <TextField fx:id="deliveryNameTextField" />
+                <Label text="Price: "/>
+                <TextField fx:id="priceTextField" />
+            </HBox>
+            <HBox alignment="TOP_CENTER" spacing="10.0">
+                <Label text="Expected time: "/>
+                <TextField fx:id="timeTextField" />
+                <Button fx:id="addDeliveryButton" text="ADD DELIVERY OPTION" onAction="#addDeliveryButtonClicked"/>
+            </HBox>
+        </VBox>
+    </top>
+    <center>
+        <TableView fx:id="tableView">
+            <columns>
+                <TableColumn fx:id="deliveryIdColumn" text="DELIVERY ID"/>
+                <TableColumn fx:id="deliveryNameColumn" text="DELIVERY NAME"/>
+                <TableColumn fx:id="deliveryPriceColumn" text="PRICE"/>
+                <TableColumn fx:id="deliveryTimeColumn" text="EXPECTED TIME"/>
+                <TableColumn fx:id="removeButtonColumn" text=""/>
+            </columns>
+        </TableView>
+    </center>
+
+</BorderPane>

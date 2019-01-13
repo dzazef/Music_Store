@@ -76,6 +76,17 @@ public class TileViewController {
 
     public static void handleManageDeliveryMethods() {
         System.out.println("handleManageDeliveryMethods");
+        @SuppressWarnings("ConstantConditions") final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/DeliveryManagementView.fxml")));
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Manage delivery method");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load delivery management view.");
+        }
     }
 
     public static void handleManageUsers() {
