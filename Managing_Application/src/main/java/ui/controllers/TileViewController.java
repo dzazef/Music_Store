@@ -66,7 +66,7 @@ public class TileViewController {
     }
 
     public static void handleManageShipments() {
-        System.out.println("handlePaymentConfirmation");
+        System.out.println("handleManageShipments");
         try {
             FXMLLoader loader =  new FXMLLoader(TileViewController.class.getClassLoader().getResource("fxml/tiles/CompleteOrdersView.fxml"));
             loader.setController(new ShipmentManagementViewController());

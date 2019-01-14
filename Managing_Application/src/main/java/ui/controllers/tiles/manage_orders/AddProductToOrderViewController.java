@@ -5,6 +5,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 import model.entities.OrdersProductsEntity;
 import model.entities.ProductsEntity;
 import org.hibernate.Session;
@@ -38,13 +39,16 @@ public class AddProductToOrderViewController {
             ordersProductsEntity.setProductId(Integer.parseInt(productTextField.getText()));
             ordersProductsEntity.setQuantity(quantitySpinner.getValue());
             session.save(ordersProductsEntity);
-            session.getTransaction().commit();
+            try {
+                session.getTransaction().commit();
+            } catch (Exception e2) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Product already in this order");
+                alert.showAndWait();
+            }
+            ((Stage)quantitySpinner.getScene().getWindow()).close();
             ManageProductsViewController.closeAddProductWindow();
-        } catch (ConstraintViolationException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Product already in this order");
-            alert.showAndWait();
         }
         session.close();
     }

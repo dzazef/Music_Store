@@ -6,6 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.BorderPane;
+import javafx.stage.Stage;
 
 public class ProductsViewController {
     public TableView<OrdersProductsTable> tableBrowseOrdersProducts;
@@ -14,6 +16,8 @@ public class ProductsViewController {
     public TableColumn<OrdersProductsTable, String>  nameColumnProducts;
     public TableColumn<OrdersProductsTable, Integer>  quantityProducts;
     private static final ObservableList<OrdersProductsTable> dataProducts = FXCollections.observableArrayList();
+    public BorderPane borderPaneProducts;
+
     public void initialize() {
         dataProducts.clear();
         createOrdersProductsTable();
@@ -39,6 +43,6 @@ public class ProductsViewController {
 
     @FXML
     public void goBackProducts() {
-        ViewController.closeDialogWindow();
+        ((Stage)borderPaneProducts.getScene().getWindow()).close();
     }
 }
