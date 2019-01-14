@@ -28,8 +28,8 @@ public class ChangeStorageViewController {
     public TableColumn<ChangeStorageTable, Integer>  quantityProducts;
     public TableColumn<ChangeStorageTable, Void>  changeStorageLevelsColumn;
     private static final ObservableList<ChangeStorageTable> dataProducts = FXCollections.observableArrayList();
-    private static Stage stage;
 
+    @SuppressWarnings("unused")
     public void goBackProducts() {
         dataProducts.clear();
         TileView.initialize(LoginManager.getAccessLevel());
@@ -112,11 +112,11 @@ public class ChangeStorageViewController {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getClassLoader().getResource("fxml/tiles/ChangeStorageDialog.fxml"));
             final Parent parent = fxmlLoader.load();
-            ((ChangeStorageDialog) fxmlLoader.getController()).setLevel(changeStorageTable);
-            stage = new Stage();
+            ((ChangeStorageDialog) fxmlLoader.getController()).setLevel(changeStorageTable, tableBrowseOrdersProducts);
+            Stage stage = new Stage();
             stage.setScene(new Scene(parent));
             stage.setTitle("Products");
-            stage.show();
+            stage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -124,19 +124,5 @@ public class ChangeStorageViewController {
             alert.setContentText("Unable to load manage storage levels view.");
             alert.showAndWait();
         }
-    }
-
-    static void changeLevelsDialogClose(int value, ChangeStorageTable changeStorageTable ) {
-        Session session = LoginManager.getSession();
-        session.beginTransaction();
-        StorageEntity storageEntity = session.load(StorageEntity.class, changeStorageTable.getProductId());
-        storageEntity.setProductsAvailable(value);
-        session.update(storageEntity);
-        session.getTransaction().commit();
-        session.close();
-        dataProducts.remove(changeStorageTable);
-        changeStorageTable.setQuantity(value);
-        dataProducts.add(changeStorageTable);
-        stage.close();
     }
 }

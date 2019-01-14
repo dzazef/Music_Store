@@ -36,7 +36,6 @@ public class ManageProductsViewController {
     private static final ObservableList<OrdersProductsTable> dataProducts = FXCollections.observableArrayList();
     public TableColumn<OrdersProductsTable, Void> addColumn;
     private static OrdersTable ordersTable;
-    private static Stage stage;
 
     static void insertData(OrdersTable ordersTable) {
         Session session = LoginManager.getSession();
@@ -86,7 +85,6 @@ public class ManageProductsViewController {
     }
 
     public static void closeAddProductWindow() {
-        stage.close();
         dataProducts.clear();
         insertData(ordersTable);
     }
@@ -152,9 +150,8 @@ public class ManageProductsViewController {
         session.getTransaction().commit();
 
 
-        dataProducts.remove(ordersProductsTable);
         ordersProductsTable.setQuantity(ordersProductsTable.getQuantity()+1);
-        dataProducts.add(ordersProductsTable);
+        tableBrowseOrdersProducts.refresh();
         session.close();
     }
 
@@ -170,9 +167,8 @@ public class ManageProductsViewController {
             ordersProductsEntity.setQuantity(ordersProductsEntity.getQuantity()-1);
             session.update(ordersProductsEntity);
             session.getTransaction().commit();
-            dataProducts.remove(ordersProductsTable);
             ordersProductsTable.setQuantity(ordersProductsTable.getQuantity()-1);
-            dataProducts.add(ordersProductsTable);
+            tableBrowseOrdersProducts.refresh();
         } else {
             session.remove(ordersProductsEntity);
             session.getTransaction().commit();
@@ -183,8 +179,7 @@ public class ManageProductsViewController {
 
     @FXML
     public void goBackProducts() {
-        System.out.println("tu");
-        ManageOrdersViewController.closeDialogWindow();
+        ((Stage) scrollPane.getScene().getWindow()).close();
     }
 
     @FXML
@@ -193,7 +188,7 @@ public class ManageProductsViewController {
             FXMLLoader loader = new FXMLLoader(this.getClass().getClassLoader().getResource("fxml/tiles/ManageOrdersAddProducts.fxml"));
             Parent root = loader.load();
             ((AddProductToOrderViewController) loader.getController()).setInfo(ordersTable.getOrderId());
-            stage = new Stage();
+            Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Add product");
             stage.show();

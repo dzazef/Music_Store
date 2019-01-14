@@ -24,7 +24,7 @@ import java.util.List;
 
 @SuppressWarnings("Duplicates")
 public abstract class ViewController {
-    protected static Stage stage;
+    protected Stage stage;
     public ScrollPane scrollPane;
     public TableView<OrdersTable> tableBrowseOrders;
     public TableColumn<OrdersTable, String>  TransactionDocumentColumn;
@@ -154,10 +154,6 @@ public abstract class ViewController {
             }
         }
         session.close();
-    }
-
-    public static void closeDialogWindow() {
-        stage.close();
     }
 
     public void runQuery() {

@@ -36,7 +36,7 @@ public class ManageOrdersViewController extends ViewController {
             Parent root = loader.load();
             ChangeStatusManageController changeStatusManageController = loader.getController();
             ordersTableToEdit = ordersTable;
-            changeStatusManageController.setInfo(ordersTable.getOrderId(), data.indexOf(ordersTable));
+            changeStatusManageController.setInfo(ordersTable, tableBrowseOrders);
             stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Status");
@@ -48,14 +48,6 @@ public class ManageOrdersViewController extends ViewController {
             alert.setContentText("Unable to load manage status view.");
             alert.showAndWait();
         }
-    }
-
-    static void closeDialog(String status, int tableId) {
-        data.remove(ordersTableToEdit);
-        ordersTableToEdit.setCurrentStatus(status);
-        System.out.println(tableId);
-        data.add(ordersTableToEdit);
-        stage.close();
     }
 
     @Override
