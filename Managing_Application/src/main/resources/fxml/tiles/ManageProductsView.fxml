@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ui.controllers.tiles.manage_products.ManageProductsController"
+            prefHeight="400.0" prefWidth="600.0">
+    <top>
+        <TilePane fx:id="toolBox" alignment="TOP_CENTER"  prefColumns="3" hgap="20">
+            <Button fx:id="addingAlbumButton" text="ADD NEW ALBUM" onAction="#loadAddNewAlbum"/>
+            <Button fx:id="addingInstrumentButton" text="ADD NEW INSTRUMENT" onAction="#loadAddNewInstrument"/>
+            <Button fx:id="addingOtherProductButton" text="ADD OTHER PRODUCT" onAction="#loadAddNewOtherProduct"/>
+        </TilePane>
+    </top>
+    <center>
+        <VBox fx:id="mainVBox" alignment="TOP_CENTER" >
+            <HBox  alignment="TOP_CENTER" fx:id="productCategoryButtons" >
+                <Button fx:id="albumsButton" text="SHOW ALBUMS" onAction="#showAlbums"/>
+                <Button fx:id="instrumentsButton" text="SHOW INSTRUMENTS" onAction="#showInstruments"/>
+                <Button fx:id="otherButton" text="SHOW OTHER PRODUCTS" onAction="#showOthers"/>
+            </HBox>
+            <TableView fx:id="tableView" prefWidth="${mainVBox.prefWidth}">
+            </TableView>
+        </VBox>
+    </center>
+    <bottom>
+        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#goBack" text="Return"/>
+            <Button fx:id="previousPageButton" text="PREVIOUS" onAction="#previousPageClicked"/>
+            <Label fx:id="currentPageNumberLabel" />
+            <Button fx:id="nextPageButton" text="NEXT" onAction="#nextPageClicked"/>
+        </HBox>
+    </bottom>
+</BorderPane>

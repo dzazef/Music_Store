@@ -114,6 +114,18 @@ public class TileViewController {
 
     public static void handleManageProducts() {
         System.out.println("handleManageProducts");
+        @SuppressWarnings("ConstantConditions") final Parent parent;
+        try {
+            parent = FXMLLoader
+                    .load(Objects.requireNonNull(LoginView.class.getClassLoader().getResource("fxml/tiles/ManageProductsView.fxml")));
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(parent));
+            stage.centerOnScreen();
+            stage.setTitle("Manage products");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load manage products view.");
+        }
     }
 
     public static void handleManageDeliveryMethods() {

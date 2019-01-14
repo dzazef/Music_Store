@@ -89,7 +89,6 @@ public class DeliveryManagementController {
         query.setFirstResult((pageNumber-1)*maxLogCountOnOnePage);
         data.clear();
         data.addAll((List<DeliveryEntity>)query.getResultList());
-        //currentPageNumber++;
     }
 
     public void addDeliveryButtonClicked(ActionEvent actionEvent) {

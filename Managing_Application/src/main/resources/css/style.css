@@ -1,9 +1,9 @@
-/*#loginButton {*/
-    /*-fx-text-fill: #c4c4c4;*/
-    /*-fx-background-color: #343434;*/
-    /*-fx-background-radius: 20;*/
-    /*-fx-font-size: 15;*/
-/*}*/
+#loginButton {
+    -fx-text-fill: #c4c4c4;
+    -fx-background-color: #343434;
+    -fx-background-radius: 20;
+    -fx-font-size: 15;
+}
 #exitButton {
     -fx-text-fill: #c4c4c4;
     -fx-background-color: #343434;
@@ -12,27 +12,23 @@
 }
 .text-field {
 }
-
-.btn-grad {background-image: linear-gradient(to right, #403B4A 0%, #E7E9BB 51%, #403B4A 100%)}
-.btn-grad:hover { background-position: right center; }
-
 #tile {
     -fx-text-alignment: center;
-    -fx-background-color: linear-gradient(to right, #403B4A 0%, #E7E9BB 51%);
+    -fx-background-color: #8387c1;
     -fx-background-radius: 10;
     -fx-pref-width: 150;
     -fx-pref-height: 150;
     -fx-wrap-text: true;
 }
 #tile:hover {
-    -fx-background-color: linear-gradient(to left, #403B4A 0%, #E7E9BB 51%);
+    -fx-background-color: #7f85ea;
+    -fx-rotate: 5;
 }
-
 #loginPane {
     -fx-background-color: radial-gradient(center 50% 50%, radius 100%, rgba(255,255,255,1) 0%, rgba(80,80,80,1) 100%);
 }
 #TileHBox {
-    -fx-background-color: #555555
+    -fx-background-color: #555555;
 }
 #backupRestoreBorderPane {
     -fx-background-color: #555555
