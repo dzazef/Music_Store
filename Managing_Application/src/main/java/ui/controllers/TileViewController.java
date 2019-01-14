@@ -11,6 +11,7 @@ import ui.controllers.tiles.change_storage_levels.ChangeStorageViewController;
 import ui.controllers.tiles.complete_orders.CompleteOrdersViewController;
 import ui.controllers.tiles.manage_orders.ManageOrdersViewController;
 import ui.controllers.tiles.payment_confirmation.ConfirmPaymentViewController;
+import ui.controllers.tiles.shipments_management.ShipmentManagementViewController;
 import ui.views.LoginView;
 
 import java.io.IOException;
@@ -65,7 +66,19 @@ public class TileViewController {
     }
 
     public static void handleManageShipments() {
-        System.out.println("handleManageShipments");
+        System.out.println("handlePaymentConfirmation");
+        try {
+            FXMLLoader loader =  new FXMLLoader(TileViewController.class.getClassLoader().getResource("fxml/tiles/CompleteOrdersView.fxml"));
+            loader.setController(new ShipmentManagementViewController());
+            Parent root = loader.load();
+            Stage stage = Managing_Application.getStage();
+            stage.setScene(new Scene(root));
+            stage.centerOnScreen();
+            stage.setTitle("Shipments Management");
+        } catch (IOException e) {
+            e.printStackTrace();
+            showErrorMessage("Unable to load shipments management view.");
+        }
     }
 
     public static void handlePaymentConfirmation() {

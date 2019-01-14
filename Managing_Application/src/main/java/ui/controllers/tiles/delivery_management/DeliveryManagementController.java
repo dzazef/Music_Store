@@ -1,4 +1,4 @@
-package ui.controllers.tiles;
+package ui.controllers.tiles.delivery_management;
 
 import db.LoginManager;
 import javafx.beans.property.IntegerProperty;

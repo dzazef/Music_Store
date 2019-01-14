@@ -140,7 +140,6 @@ public class ManageProductsViewController {
         this.ordersTable = ordersTable;
     }
 
-    //TODO: orders products dding
     private void plus(OrdersProductsTable ordersProductsTable) {
         Session session = LoginManager.getSession();
         session.beginTransaction();
