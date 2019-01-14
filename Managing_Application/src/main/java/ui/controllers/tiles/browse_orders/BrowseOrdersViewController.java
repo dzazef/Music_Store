@@ -13,7 +13,6 @@ public class BrowseOrdersViewController extends ViewController {
     @Override
     public void initialize() {
         createTableView();
-        session = LoginManager.getSession();
         runQuery();
     }
 

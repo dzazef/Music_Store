@@ -1,4 +1,4 @@
-package ui.controllers.tiles.payment_confirmation;
+package ui.controllers.tiles.shipments_management;
 
 import db.LoginManager;
 import javafx.scene.control.TableCell;
@@ -14,14 +14,13 @@ import ui.controllers.tiles.order_management.ViewController;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@SuppressWarnings("Duplicates")
-public class ConfirmPaymentViewController extends ViewController {
+public class ShipmentManagementViewController extends ViewController {
     @Override
     public void runQuery() {
         data.clear();
         Session session = LoginManager.getSession();
         TypedQuery<OrdersEntity> completeOrdersQuery = session.
-                createQuery("from OrdersEntity where currentStatus=(:par)", OrdersEntity.class).setParameter("par", Status.waiting_for_payment);
+                createQuery("from OrdersEntity where currentStatus=(:par)", OrdersEntity.class).setParameter("par", Status.prepared_for_sending);
         List<OrdersEntity> ordersEntityList = completeOrdersQuery.getResultList();
         session.close();
         for (OrdersEntity ordersEntity : ordersEntityList) {
@@ -31,7 +30,7 @@ public class ConfirmPaymentViewController extends ViewController {
 
     @Override
     public void initialize() {
-        confirmColumn.setText("Payment");
+        confirmColumn.setText("Shipment");
         createTableView();
         confirmColumn.setCellFactory(callCreateButtonCellFactory(false));
         runQuery();
@@ -49,13 +48,12 @@ public class ConfirmPaymentViewController extends ViewController {
         Query query = session.
                 createSQLQuery("CALL music_store.update_order_status((:orderId), (:newStatus), (:userId))")
                 .setParameter("orderId", ordersTable.getOrderId())
-                .setParameter("newStatus", 1)
+                .setParameter("newStatus", 3)
                 .setParameter("userId", LoginManager.getUsername());
         query.executeUpdate();
         session.getTransaction().commit();
         session.close();
         data.removeAll(ordersTable);
     }
-
 
 }
