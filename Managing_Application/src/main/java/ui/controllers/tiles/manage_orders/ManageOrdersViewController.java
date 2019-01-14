@@ -1,6 +1,5 @@
 package ui.controllers.tiles.manage_orders;
 
-import db.LoginManager;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,13 +15,11 @@ import java.io.IOException;
 
 @SuppressWarnings("Duplicates")
 public class ManageOrdersViewController extends ViewController {
-    private static Stage stage;
     private static OrdersTable ordersTableToEdit;
 
     @Override
     public void initialize() {
         createTableView();
-        session = LoginManager.getSession();
         confirmColumn.setCellFactory(callCreateButtonCellFactory(false));
         runQuery();
     }
@@ -39,7 +36,7 @@ public class ManageOrdersViewController extends ViewController {
             Parent root = loader.load();
             ChangeStatusManageController changeStatusManageController = loader.getController();
             ordersTableToEdit = ordersTable;
-            changeStatusManageController.setInfo(ordersTable.getOrderId(), session);
+            changeStatusManageController.setInfo(ordersTable.getOrderId(), data.indexOf(ordersTable));
             stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Status");
@@ -53,10 +50,32 @@ public class ManageOrdersViewController extends ViewController {
         }
     }
 
-    static void closeDialog(String status) {
+    static void closeDialog(String status, int tableId) {
         data.remove(ordersTableToEdit);
         ordersTableToEdit.setCurrentStatus(status);
+        System.out.println(tableId);
         data.add(ordersTableToEdit);
         stage.close();
+    }
+
+    @Override
+    protected void showProducts(OrdersTable ordersTable) {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(this.getClass().getClassLoader().getResource("fxml/tiles/ManagerOrdersProducts.fxml"));
+            final Parent parent = fxmlLoader.load();
+            ManageProductsViewController manageProductsViewController = fxmlLoader.getController();
+            manageProductsViewController.setInfo(ordersTable);
+            stage = new Stage();
+            stage.setScene(new Scene(parent));
+            stage.setTitle("Products");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("Unable to load manage products view.");
+            alert.showAndWait();
+        }
+        ManageProductsViewController.insertData(ordersTable);
     }
 }

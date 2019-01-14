@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+
+<BorderPane prefHeight="497.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.manage_orders.ManageProductsViewController">
+    <bottom>
+        <HBox alignment="CENTER" prefWidth="970.0" spacing="30.0" BorderPane.alignment="CENTER">
+         <children>
+               <Button mnemonicParsing="false" onAction="#goBackProducts" text="Return" />
+            <Button mnemonicParsing="false" onAction="#addProductButton" text="Add product" />
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="5.0" top="5.0" />
+         </padding>
+        </HBox>
+    </bottom>
+    <top>
+        <ScrollPane fx:id="scrollPane" fitToHeight="true" fitToWidth="true">
+            <TableView fx:id="tableBrowseOrdersProducts" prefHeight="469.0" prefWidth="688.0" BorderPane.alignment="CENTER">
+                <columns>
+                    <TableColumn fx:id="idColumnProducts" prefWidth="62.0" text="ID" />
+                    <TableColumn fx:id="manufacturerColumnProducts" prefWidth="194.0" text="Manufacturer" />
+                    <TableColumn fx:id="nameColumnProducts" prefWidth="196.0" text="Name" />
+               <TableColumn fx:id="quantityProducts" prefWidth="77.0" text="Quantity" />
+               <TableColumn fx:id="removeColumn" prefWidth="75.0" />
+               <TableColumn fx:id="addColumn" prefWidth="75.0" />
+                </columns>
+            </TableView>
+        </ScrollPane>
+    </top>
+</BorderPane>

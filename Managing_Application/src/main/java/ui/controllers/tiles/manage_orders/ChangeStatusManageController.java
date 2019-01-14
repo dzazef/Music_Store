@@ -11,8 +11,8 @@ import org.hibernate.query.Query;
 @SuppressWarnings("Duplicates")
 public class ChangeStatusManageController {
     public ChoiceBox<Status> chooseStatus;
-    private int id;
-    private Session session;
+    private int orderId;
+    private int tableId;
 
     public void initialize() {
         chooseStatus.setItems(FXCollections.observableArrayList(Status.values()));
@@ -23,19 +23,21 @@ public class ChangeStatusManageController {
     public void confirm() {
         int status = 0;
         status = chooseStatus.getValue().ordinal();
+        Session session = LoginManager.getSession();
         session.beginTransaction();
         Query query = session.
                 createSQLQuery("CALL music_store.update_order_status((:orderId), (:newStatus), (:userId))")
-                .setParameter("orderId", id)
+                .setParameter("orderId", orderId)
                 .setParameter("newStatus", status)
                 .setParameter("userId", LoginManager.getUsername());
         query.executeUpdate();
         session.getTransaction().commit();
-        ManageOrdersViewController.closeDialog(chooseStatus.getValue().toString());
+        session.close();
+        ManageOrdersViewController.closeDialog(chooseStatus.getValue().toString(), tableId);
     }
 
-    public void setInfo(int id, Session session) {
-        this.id = id;
-        this.session = session;
+    public void setInfo(int id, int tableId) {
+        this.orderId = id;
+        this.tableId = tableId;
     }
 }
