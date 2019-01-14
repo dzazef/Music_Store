@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.entities.StorageEntity;
 import org.hibernate.Session;
+import ui.controllers.tiles.order_management.OrdersProductsTable;
 import ui.views.TileView;
 
 import javax.persistence.TypedQuery;
@@ -27,7 +28,6 @@ public class ChangeStorageViewController {
     public TableColumn<ChangeStorageTable, Integer>  quantityProducts;
     public TableColumn<ChangeStorageTable, Void>  changeStorageLevelsColumn;
     private static final ObservableList<ChangeStorageTable> dataProducts = FXCollections.observableArrayList();
-    private static Session session;
     private static Stage stage;
 
     public void goBackProducts() {
@@ -37,7 +37,6 @@ public class ChangeStorageViewController {
 
     public void initialize() {
         createTable();
-        session = LoginManager.getSession();
         runQuery();
     }
 
@@ -47,8 +46,10 @@ public class ChangeStorageViewController {
 
     private void runQuery() {
         new Thread(() -> {
+            Session session = LoginManager.getSession();
             TypedQuery<StorageEntity> storageEntityTypedQuery = session.createQuery("from StorageEntity ", StorageEntity.class);
             List<StorageEntity> storageEntityList= storageEntityTypedQuery.getResultList();
+            session.close();
             for (StorageEntity storageEntity : storageEntityList) {
                 if (storageEntity.getAlbumViewEntity()!=null) {
                     insertProducts(new ChangeStorageTable(
@@ -89,6 +90,7 @@ public class ChangeStorageViewController {
             public TableCell<ChangeStorageTable, Void> call(TableColumn<ChangeStorageTable, Void> param) {
                 return new TableCell<ChangeStorageTable, Void>() {
                     private Button button = new Button("Change");
+
                     {
                         button.setOnAction((e) -> changeLevelsDialogOpen(dataProducts.get(getIndex())));
                     }
@@ -125,11 +127,13 @@ public class ChangeStorageViewController {
     }
 
     static void changeLevelsDialogClose(int value, ChangeStorageTable changeStorageTable ) {
+        Session session = LoginManager.getSession();
         session.beginTransaction();
         StorageEntity storageEntity = session.load(StorageEntity.class, changeStorageTable.getProductId());
         storageEntity.setProductsAvailable(value);
         session.update(storageEntity);
         session.getTransaction().commit();
+        session.close();
         dataProducts.remove(changeStorageTable);
         changeStorageTable.setQuantity(value);
         dataProducts.add(changeStorageTable);

@@ -24,8 +24,7 @@ import java.util.List;
 
 @SuppressWarnings("Duplicates")
 public abstract class ViewController {
-    private static Stage stage;
-    public static Session session;
+    protected static Stage stage;
     public ScrollPane scrollPane;
     public TableView<OrdersTable> tableBrowseOrders;
     public TableColumn<OrdersTable, String>  TransactionDocumentColumn;
@@ -111,6 +110,7 @@ public abstract class ViewController {
             alert.showAndWait();
         }
 
+        Session session = LoginManager.getSession();
         TypedQuery<OrdersProductsEntity> ordersProductsEntityTypedQuery =
                 session.createQuery("from OrdersProductsEntity where orderId=(:id)", OrdersProductsEntity.class).setParameter("id", ordersTable.getOrderId());
         List<OrdersProductsEntity> ordersProductsEntityList = ordersProductsEntityTypedQuery.getResultList();
@@ -153,18 +153,20 @@ public abstract class ViewController {
                 e.printStackTrace();
             }
         }
+        session.close();
     }
 
-    static void closeDialogWindow() {
+    public static void closeDialogWindow() {
         stage.close();
-
     }
 
     public void runQuery() {
         data.clear();
+        Session session = LoginManager.getSession();
         TypedQuery<OrdersEntity> completeOrdersQuery = session.
                 createQuery("from OrdersEntity", OrdersEntity.class);
         List<OrdersEntity> ordersEntityList = completeOrdersQuery.getResultList();
+        session.close();
         for (OrdersEntity ordersEntity : ordersEntityList) {
             data.add(new OrdersTable(ordersEntity));
         }
@@ -172,7 +174,6 @@ public abstract class ViewController {
 
     @FXML
     public void goBack() {
-        session.close();
         TileView.initialize(LoginManager.getAccessLevel());
     }
 }
