@@ -59,12 +59,10 @@ public class ProductDisplayViewController {
         toggleButton.prefWidthProperty().bind(toggleButton.heightProperty());
         toggleButton.applyCss();
         EventHandler<ActionEvent> actionEventEventHandler = (actionEvent) -> {
-            if (toggleButton.isSelected()) {
+            if (toggleButton.isSelected())
                 filters.put(column,textField.getText());
-            } else {
-                filters.remove(column);
-            }
         };
+        textField.textProperty().addListener((observable, oldValue, newValue)-> {actionEventEventHandler.handle(new ActionEvent());});
         toggleButton.setOnAction(actionEventEventHandler);
         container.getChildren().addAll(textField,toggleButton);
         filtersMenuBox.getChildren().addAll(label,container);
