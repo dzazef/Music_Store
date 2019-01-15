@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="ui.controllers.tiles.manage_users.ManageUsersController"
@@ -31,4 +32,7 @@
             </columns>
         </TableView>
     </center>
+    <stylesheets>
+        <URL value="@../../css/style.css" />
+    </stylesheets>
 </BorderPane>

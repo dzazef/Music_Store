@@ -11,7 +11,7 @@
 <?import java.net.URL?>
 <Pane fx:id="loginPane" prefHeight="547.0" prefWidth="465.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.LoginViewController">
     <children>
-        <Label layoutX="95.0" layoutY="84.0" text="Welcome!" textFill="#464646">
+        <Label fx:id="welcomeLabel" layoutX="95.0" layoutY="84.0" text="Welcome!" textFill="#464646">
             <font>
                 <Font name="Lato Light Italic" size="64.0" />
             </font>

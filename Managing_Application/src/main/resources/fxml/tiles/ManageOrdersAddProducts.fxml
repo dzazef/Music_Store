@@ -7,16 +7,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="156.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.manage_orders.AddProductToOrderViewController">
-   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="130.0" spacing="10">
+<?import java.net.URL?>
+<VBox fx:id="vbox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="156.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.manage_orders.AddProductToOrderViewController">
+   <HBox fx:id="hbox" alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+      <VBox fx:id="vbox2" alignment="CENTER" prefHeight="200.0" prefWidth="130.0" spacing="10">
          <Label text="Choose product:" />
          <TextField fx:id="productTextField"/>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="200.0" prefWidth="130.0" spacing="10">
+      <VBox fx:id="vbox3" alignment="CENTER" prefHeight="200.0" prefWidth="130.0" spacing="10">
          <Label text="Choose quantity:" />
          <Spinner fx:id="quantitySpinner"/>
       </VBox>
    </HBox>
    <Button mnemonicParsing="false" onAction="#addProductButton" text="Add" />
+   <stylesheets>
+      <URL value="@../../css/style.css" />
+   </stylesheets>
 </VBox>

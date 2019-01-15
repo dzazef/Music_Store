@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -9,8 +11,11 @@
 
 <BorderPane fx:id="borderPaneProducts" prefHeight="497.0" prefWidth="534.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.order_management.ProductsViewController">
     <bottom>
-        <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
+        <HBox fx:id="hbox" alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
             <Button mnemonicParsing="false" onAction="#goBackProducts" text="Return" />
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </BorderPane.margin>
         </HBox>
     </bottom>
     <top>
@@ -25,4 +30,7 @@
             </TableView>
         </ScrollPane>
     </top>
+    <stylesheets>
+        <URL value="@../../css/style.css" />
+    </stylesheets>
 </BorderPane>

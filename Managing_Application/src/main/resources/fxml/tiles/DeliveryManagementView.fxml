@@ -7,13 +7,14 @@
 <?import javafx.scene.layout.*?>
 
 <?import javafx.scene.text.Text?>
+<?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="ui.controllers.tiles.delivery_management.DeliveryManagementController"
             prefHeight="400.0" prefWidth="600.0"
             fx:id="mainPane">
     <bottom>
-        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+        <HBox fx:id="hbox" alignment="CENTER" BorderPane.alignment="CENTER">
             <Button mnemonicParsing="false" onAction="#goBack" text="Return"/>
             <Button fx:id="previousPageButton" text="PREVIOUS" onAction="#previousPageClicked"/>
             <Label fx:id="currentPageNumberLabel" />
@@ -21,14 +22,14 @@
         </HBox>
     </bottom>
     <top>
-        <VBox alignment="TOP_CENTER">
+        <VBox fx:id="vbox" alignment="TOP_CENTER">
             <HBox alignment="TOP_CENTER" spacing="10.0">
                 <Label text="Delivery name: "/>
                 <TextField fx:id="deliveryNameTextField" />
                 <Label text="Price: "/>
                 <TextField fx:id="priceTextField" />
             </HBox>
-            <HBox alignment="TOP_CENTER" spacing="10.0">
+            <HBox fx:id="hbox2" alignment="TOP_CENTER" spacing="10.0">
                 <Label text="Expected time: "/>
                 <TextField fx:id="timeTextField" />
                 <Button fx:id="addDeliveryButton" text="ADD DELIVERY OPTION" onAction="#addDeliveryButtonClicked"/>
@@ -46,5 +47,7 @@
             </columns>
         </TableView>
     </center>
-
+    <stylesheets>
+        <URL value="@../../css/style.css" />
+    </stylesheets>
 </BorderPane>

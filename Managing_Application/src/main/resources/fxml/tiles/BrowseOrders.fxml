@@ -7,10 +7,15 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="497.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.browse_orders.BrowseOrdersViewController">
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<BorderPane fx:id="borderpane" prefHeight="497.0" prefWidth="1094.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.browse_orders.BrowseOrdersViewController">
     <bottom>
-        <HBox alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
+        <HBox fx:id="hbox" alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
             <Button mnemonicParsing="false" onAction="#goBack" text="Return" />
+            <padding>
+                <Insets bottom="5" />
+            </padding>
         </HBox>
     </bottom>
     <top>
@@ -30,4 +35,7 @@
             </TableView>
         </ScrollPane>
     </top>
+    <stylesheets>
+        <URL value="@../../css/style.css" />
+    </stylesheets>
 </BorderPane>

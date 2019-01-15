@@ -8,7 +8,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 
-<BorderPane prefHeight="497.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.manage_orders.ManageProductsViewController">
+<?import java.net.URL?>
+<BorderPane fx:id="borderpane" prefHeight="497.0" prefWidth="686.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.manage_orders.ManageProductsViewController">
     <bottom>
         <HBox alignment="CENTER" prefWidth="970.0" spacing="30.0" BorderPane.alignment="CENTER">
          <children>
@@ -37,4 +38,7 @@
             </TableView>
         </ScrollPane>
     </top>
+    <stylesheets>
+        <URL value="@../../css/style.css" />
+    </stylesheets>
 </BorderPane>

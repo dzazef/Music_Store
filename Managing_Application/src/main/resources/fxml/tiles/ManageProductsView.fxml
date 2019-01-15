@@ -1,39 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="mainPane" xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="ui.controllers.tiles.manage_products.ManageProductsController"
-            prefHeight="400.0" prefWidth="600.0">
+<BorderPane fx:id="mainPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ui.controllers.tiles.manage_products.ManageProductsController">
     <top>
-        <TilePane fx:id="toolBox" alignment="TOP_CENTER"  prefColumns="3" hgap="20">
-            <Button fx:id="addingAlbumButton" text="ADD NEW ALBUM" onAction="#loadAddNewAlbum"/>
-            <Button fx:id="addingInstrumentButton" text="ADD NEW INSTRUMENT" onAction="#loadAddNewInstrument"/>
-            <Button fx:id="addingOtherProductButton" text="ADD OTHER PRODUCT" onAction="#loadAddNewOtherProduct"/>
+        <TilePane fx:id="toolBox" alignment="TOP_CENTER" hgap="20.0" prefColumns="3" vgap="5.0">
+            <Button fx:id="addingAlbumButton" onAction="#loadAddNewAlbum" text="ADD NEW ALBUM" />
+            <Button fx:id="addingInstrumentButton" onAction="#loadAddNewInstrument" text="ADD NEW INSTRUMENT" />
+            <Button fx:id="addingOtherProductButton" onAction="#loadAddNewOtherProduct" text="ADD OTHER PRODUCT" />
+         <BorderPane.margin>
+            <Insets bottom="5.0" top="5.0" />
+         </BorderPane.margin>
         </TilePane>
     </top>
     <center>
-        <VBox fx:id="mainVBox" alignment="TOP_CENTER" >
-            <HBox  alignment="TOP_CENTER" fx:id="productCategoryButtons" >
-                <Button fx:id="albumsButton" text="SHOW ALBUMS" onAction="#showAlbums"/>
-                <Button fx:id="instrumentsButton" text="SHOW INSTRUMENTS" onAction="#showInstruments"/>
-                <Button fx:id="otherButton" text="SHOW OTHER PRODUCTS" onAction="#showOthers"/>
+        <VBox fx:id="mainVBox" alignment="TOP_CENTER">
+            <HBox fx:id="productCategoryButtons" alignment="TOP_CENTER" spacing="5.0">
+                <Button fx:id="albumsButton" onAction="#showAlbums" text="SHOW ALBUMS" />
+                <Button fx:id="instrumentsButton" onAction="#showInstruments" text="SHOW INSTRUMENTS" />
+                <Button fx:id="otherButton" onAction="#showOthers" text="SHOW OTHER PRODUCTS" />
+            <VBox.margin>
+               <Insets bottom="5.0" />
+            </VBox.margin>
             </HBox>
             <TableView fx:id="tableView" prefWidth="${mainVBox.prefWidth}">
             </TableView>
         </VBox>
     </center>
     <bottom>
-        <HBox alignment="CENTER" BorderPane.alignment="CENTER">
-            <Button mnemonicParsing="false" onAction="#goBack" text="Return"/>
-            <Button fx:id="previousPageButton" text="PREVIOUS" onAction="#previousPageClicked"/>
+        <HBox alignment="CENTER" spacing="5.0" BorderPane.alignment="CENTER">
+            <Button mnemonicParsing="false" onAction="#goBack" text="Return" />
+            <Button fx:id="previousPageButton" onAction="#previousPageClicked" text="PREVIOUS" />
             <Label fx:id="currentPageNumberLabel" />
-            <Button fx:id="nextPageButton" text="NEXT" onAction="#nextPageClicked"/>
+            <Button fx:id="nextPageButton" onAction="#nextPageClicked" text="NEXT" />
         </HBox>
     </bottom>
+    <stylesheets>
+        <URL value="@../../css/style.css" />
+    </stylesheets>
 </BorderPane>
