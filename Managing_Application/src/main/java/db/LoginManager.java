@@ -4,6 +4,7 @@ import model.AccessLevel;
 import model.entities.UsersEntity;
 import org.hibernate.Session;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import sh.LoadAlbums;
 
 import javax.persistence.TypedQuery;
 import java.util.List;
@@ -16,9 +17,10 @@ public class LoginManager {
     private static String activeUsername;
 
     public static void connectUserCheck() {
-        currentSessionFactoryManager = new SessionFactoryManager("root", "sqlpass.");
+        currentSessionFactoryManager = new SessionFactoryManager("login", "login");
         currentSessionFactoryManager.buildSessionFactory();
         currentSession = currentSessionFactoryManager.getNewSession();
+//        LoadAlbums.loadAlbums();
     }
 
     /**

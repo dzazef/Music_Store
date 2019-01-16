@@ -8,8 +8,12 @@ DROP USER IF EXISTS 'manager'@'localhost';
 CREATE USER 'manager'@'localhost' IDENTIFIED BY 'manager';
 DROP USER IF EXISTS 'admin'@'localhost';
 CREATE USER 'admin'@'localhost' IDENTIFIED BY 'admin';
+DROP USER IF EXISTS 'login'@'localhost';
+CREATE USER 'login'@'localhost' IDENTIFIED BY 'login';
 
 USE music_store;
+
+GRANT SELECT ON music_store.users TO 'login'@'localhost';
 
 #client
 GRANT SELECT ON music_store.products TO 'client'@'localhost';
