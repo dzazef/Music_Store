@@ -7,11 +7,8 @@ while IFS='' read -r line || [[ -n "$line" ]]; do
     cat test.txt | sed -n 's:.*Featured on \(.*\)<\/a.*:\1:p' | sed 1q | cut -d ">" -f 2 | tr '\n' ';'| sed -e 's/\&\#039\;/'\''/g' | sed -e 's/amp\;//g' | sed -e 's/\&quot\;/\"/g' | sed -r 's/;/#/g'
     #print date
     cat test.txt | sed -n 's:.*datePublished\(.*\)potentialAction.*:\1:p' | cut -d "\"" -f 3 | cut -d "-" -f 1 | tr '\n' ' ' | sed -e 's/\&\#039\;/'\''/g' | sed -e 's/amp\;//g' | sed -e 's/\&quot\;/\"/g' | sed 's/.$//'
-    #print id?
-    id=$(cat test.txt | sed -n 's:.*com\/album\/\(.*\)meta.*:\1:p' | cut -d "\"" -f 1)
-    url=$(cat test.txt | sed -n 's:.*image\(.*\)meta.*:\1:p' | cut -d "\"" -f 1)
-    #print url
-    printf "#%s#" "https://i.scdn.co/image$url"
+    #print url 
+    curl -s 'https://open.spotify.com/album/'$(cat test.txt | sed -n 's:.*com\/album\/\(.*\)meta.*:\1:p' | cut -d "\"" -f 1) | grep -oP '(?<=Spotify.Entity =).*(?<=};)' | jq .images[1].url | sed -e 's/\"/#/g'
     #artist
     cat test.txt | sed -n 's:.*a song by \(.*\) on Spotify.*:\1:p' | sed 1q | tr '\n' '#' | sed -e 's/\&\#039\;/'\''/g' | sed -e 's/amp\;//g' | sed -e 's/\&quot\;/\"/g'
     #print info about license
