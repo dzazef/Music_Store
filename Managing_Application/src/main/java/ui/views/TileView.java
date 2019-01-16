@@ -36,7 +36,7 @@ public class TileView {
         tilePane.setVgap(10);
         tilePane.setOpaqueInsets(new Insets(50, 50, 50, 50));
         mainBox.getChildren().add(tilePane);
-        scene = new Scene(mainBox, 670, 600);
+        scene = new Scene(mainBox, 670, 510);
         scene.getStylesheets().add("css/style.css");
         Stage stage = Managing_Application.getStage();
         stage.setScene(scene);

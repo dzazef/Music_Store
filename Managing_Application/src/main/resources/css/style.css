@@ -98,6 +98,7 @@
     -fx-background-color: #666666;
     -fx-text-fill: whitesmoke;
     -fx-background-radius: 0;
+    -fx-display-caret:true;
 }
 .label {
     -fx-font-family: "Lato Medium";
@@ -105,4 +106,8 @@
 }
 #welcomeLabel {
     -fx-text-fill: #777777;
+}
+.text-area .content {
+    -fx-background-radius: 0;
+    -fx-background-color: #666666;
 }
