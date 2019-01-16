@@ -92,10 +92,12 @@
 .choice-box .menu-item:focused > .label {
     -fx-text-fill: #29292D;
 }
-.text-field {
+.text-field,
+.text-area {
     -fx-font-family: "Lato Medium";
     -fx-background-color: #666666;
     -fx-text-fill: whitesmoke;
+    -fx-background-radius: 0;
 }
 .label {
     -fx-font-family: "Lato Medium";

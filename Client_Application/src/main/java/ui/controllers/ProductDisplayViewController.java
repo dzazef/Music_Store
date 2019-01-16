@@ -61,6 +61,7 @@ public class ProductDisplayViewController {
         EventHandler<ActionEvent> actionEventEventHandler = (actionEvent) -> {
             if (toggleButton.isSelected())
                 filters.put(column,textField.getText());
+            else filters.remove(column);
         };
         textField.textProperty().addListener((observable, oldValue, newValue)-> {actionEventEventHandler.handle(new ActionEvent());});
         toggleButton.setOnAction(actionEventEventHandler);
