@@ -3,6 +3,7 @@ package ui.controllers.tiles.backup_restore;
 import db.LoginManager;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import ui.Managing_Application;
@@ -13,6 +14,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class BackupRestoreViewController {
+    @FXML
+    public Button loginButton;
+
+    public void initialize() {
+        loginButton.setSkin(new MyButtonSkin(loginButton));
+    }
+
     @FXML
     public void backup() {
         DirectoryChooser directoryChooser = new DirectoryChooser();
