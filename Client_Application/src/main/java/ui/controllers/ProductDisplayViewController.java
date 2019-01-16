@@ -94,8 +94,8 @@ public class ProductDisplayViewController {
 //            ImageView imageView = new ImageView(new Image());
 //            imageView.setFitWidth(160.0);
 //            imageView.setFitHeight(140.0);
-            Label titleLabel = new Label(product.getName()+"\nProducer: "+product.getProducer()+
-                    "\nType: "+product.getType()+"\n"+product.getPrice()+"$\n"
+            Label titleLabel = new Label(product.getName()+"\nProducer: \n"+product.getProducer()+
+                    "\nType: \n"+product.getType()+"\n"+product.getPrice()+"$\n"
                     + "Quantity: \n"+product.getStorageEntity().getProductsAvailable());
             Button addDoCartButton = new Button("ADD DO CART");
             addDoCartButton.setOnAction((actionEvent) -> addToCart(product.getProductId(),product.getPrice(),1));
