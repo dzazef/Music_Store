@@ -67,23 +67,26 @@ public class LoginManager {
         if (currentSession !=null) currentSession.close();
         switch (accessLevel) {
             case storekeeper: {
-                currentSessionFactoryManager = new SessionFactoryManager("storekeeper", "storekeeper");
+                currentSessionFactoryManager = new SessionFactoryManager("storagekeeper", "storagekeeper");
                 currentSessionFactoryManager.buildSessionFactory();
+                break;
             }
             case storage_manager: {
-                currentSessionFactoryManager = new SessionFactoryManager("storage_manager", "storage_manager");
+                currentSessionFactoryManager = new SessionFactoryManager("storagemanager", "storagemanager");
                 currentSessionFactoryManager.buildSessionFactory();
+                break;
             }
             case manager: {
                 currentSessionFactoryManager = new SessionFactoryManager("manager", "manager");
                 currentSessionFactoryManager.buildSessionFactory();
+                break;
             }
             case administrator: {
                 currentSessionFactoryManager = new SessionFactoryManager("admin", "admin");
                 currentSessionFactoryManager.buildSessionFactory();
             }
-            currentSession = currentSessionFactoryManager.getNewSession();
         }
+        currentSession = currentSessionFactoryManager.getNewSession();
     }
 
     public static Session getSession() {

@@ -1,9 +1,9 @@
 DROP USER IF EXISTS 'client'@'localhost';
 CREATE USER 'client'@'localhost' IDENTIFIED BY 'client';
-DROP USER IF EXISTS 'storekeeper'@'localhost';
-CREATE USER 'storekeeper'@'localhost' IDENTIFIED BY 'storekeeper';
-DROP USER IF EXISTS 'storage_manager'@'localhost';
-CREATE USER 'storage_manager'@'localhost' IDENTIFIED BY 'storage_manager';
+DROP USER IF EXISTS 'storagekeeper'@'localhost';
+CREATE USER 'storagekeeper'@'localhost' IDENTIFIED BY 'storagekeeper';
+DROP USER IF EXISTS 'storagemanager'@'localhost';
+CREATE USER 'storagemanager'@'localhost' IDENTIFIED BY 'storagemanager';
 DROP USER IF EXISTS 'manager'@'localhost';
 CREATE USER 'manager'@'localhost' IDENTIFIED BY 'manager';
 DROP USER IF EXISTS 'admin'@'localhost';
@@ -31,29 +31,29 @@ GRANT INSERT ON music_store.orders_products TO 'client'@'localhost';
 # GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
 
 #storekeeper
-GRANT SELECT ON music_store.orders TO 'storekeeper'@'localhost';
-GRANT SELECT ON music_store.storage TO 'storekeeper'@'localhost';
-GRANT SELECT ON music_store.products TO 'storekeeper'@'localhost';
-GRANT SELECT ON music_store.albums TO 'storekeeper'@'localhost';
-GRANT SELECT ON music_store.instruments TO 'storekeeper'@'localhost';
-GRANT SELECT ON music_store.other TO 'storekeeper'@'localhost';
-GRANT UPDATE ON music_store.orders TO 'storekeeper'@'localhost';
-GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
-GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
-GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.orders TO 'storagekeeper'@'localhost';
+GRANT SELECT ON music_store.storage TO 'storagekeeper'@'localhost';
+GRANT SELECT ON music_store.products TO 'storagekeeper'@'localhost';
+GRANT SELECT ON music_store.albums TO 'storagekeeper'@'localhost';
+GRANT SELECT ON music_store.instruments TO 'storagekeeper'@'localhost';
+GRANT SELECT ON music_store.other TO 'storagekeeper'@'localhost';
+GRANT UPDATE ON music_store.orders TO 'storagekeeper'@'localhost';
+GRANT SELECT ON music_store.album_view TO 'storagekeeper'@'localhost';
+GRANT SELECT ON music_store.instrument_view TO 'storagekeeper'@'localhost';
+GRANT SELECT ON music_store.other_view TO 'storagekeeper'@'localhost';
 
 #storage_manager
-GRANT SELECT ON music_store.orders TO 'storage_manager'@'localhost';
-GRANT SELECT ON music_store.storage TO 'storage_manager'@'localhost';
-GRANT SELECT ON music_store.products TO 'storage_manager'@'localhost';
-GRANT SELECT ON music_store.albums TO 'storage_manager'@'localhost';
-GRANT SELECT ON music_store.instruments TO 'storage_manager'@'localhost';
-GRANT SELECT ON music_store.other TO 'storage_manager'@'localhost';
-GRANT UPDATE ON music_store.orders TO 'storage_manager'@'localhost';
-GRANT UPDATE ON music_store.storage TO 'storage_manager'@'localhost';
-GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
-GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
-GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.orders TO 'storagemanager'@'localhost';
+GRANT SELECT ON music_store.storage TO 'storagemanager'@'localhost';
+GRANT SELECT ON music_store.products TO 'storagemanager'@'localhost';
+GRANT SELECT ON music_store.albums TO 'storagemanager'@'localhost';
+GRANT SELECT ON music_store.instruments TO 'storagemanager'@'localhost';
+GRANT SELECT ON music_store.other TO 'storagemanager'@'localhost';
+GRANT UPDATE ON music_store.orders TO 'storagemanager'@'localhost';
+GRANT UPDATE ON music_store.storage TO 'storagemanager'@'localhost';
+GRANT SELECT ON music_store.album_view TO 'storagemanager'@'localhost';
+GRANT SELECT ON music_store.instrument_view TO 'storagemanager'@'localhost';
+GRANT SELECT ON music_store.other_view TO 'storagemanager'@'localhost';
 
 #manager
 GRANT SELECT ON music_store.orders TO 'manager'@'localhost';
@@ -71,9 +71,9 @@ GRANT UPDATE, INSERT, DELETE ON music_store.other TO 'manager'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.instruments TO 'manager'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.instrument_manufacturers TO 'manager'@'localhost';
 GRANT UPDATE, INSERT, DELETE ON music_store.delivery TO 'manager'@'localhost';
-GRANT SELECT ON music_store.album_view TO 'client'@'localhost';
-GRANT SELECT ON music_store.instrument_view TO 'client'@'localhost';
-GRANT SELECT ON music_store.other_view TO 'client'@'localhost';
+GRANT SELECT ON music_store.album_view TO 'manager'@'localhost';
+GRANT SELECT ON music_store.instrument_view TO 'manager'@'localhost';
+GRANT SELECT ON music_store.other_view TO 'manager'@'localhost';
 
 #admin
 GRANT ALL PRIVILEGES ON *.* TO 'admin'@'localhost';
