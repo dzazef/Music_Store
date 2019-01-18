@@ -60,9 +60,7 @@ public class OtherEntity {
         if (productId != that.productId) return false;
         if (producer != null ? !producer.equals(that.producer) : that.producer != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
-
-        return true;
+        return type != null ? type.equals(that.type) : that.type == null;
     }
 
     @Override

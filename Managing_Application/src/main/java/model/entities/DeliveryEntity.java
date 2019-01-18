@@ -61,9 +61,7 @@ public class DeliveryEntity {
         if (deliveryId != that.deliveryId) return false;
         if (Double.compare(that.price, price) != 0) return false;
         if (deliveryTime != that.deliveryTime) return false;
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
-
-        return true;
+        return name != null ? name.equals(that.name) : that.name == null;
     }
 
     @Override

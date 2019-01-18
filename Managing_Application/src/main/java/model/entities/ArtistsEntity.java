@@ -48,9 +48,7 @@ public class ArtistsEntity {
 
         if (artistId != that.artistId) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (genre != null ? !genre.equals(that.genre) : that.genre != null) return false;
-
-        return true;
+        return genre != null ? genre.equals(that.genre) : that.genre == null;
     }
 
     @Override

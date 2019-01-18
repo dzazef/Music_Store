@@ -51,9 +51,7 @@ public class ProductsEntity {
 
         if (productId != that.productId) return false;
         if (Double.compare(that.price, price) != 0) return false;
-        if (category != null ? !category.equals(that.category) : that.category != null) return false;
-
-        return true;
+        return category != null ? category.equals(that.category) : that.category == null;
     }
 
     @Override

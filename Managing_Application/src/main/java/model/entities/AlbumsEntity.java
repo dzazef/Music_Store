@@ -108,9 +108,7 @@ public class AlbumsEntity {
         if (title != null ? !title.equals(that.title) : that.title != null) return false;
         if (songsCount != null ? !songsCount.equals(that.songsCount) : that.songsCount != null) return false;
         if (imageLink != null ? !imageLink.equals(that.imageLink) : that.imageLink != null) return false;
-        if (tracklist != null ? !tracklist.equals(that.tracklist) : that.tracklist != null) return false;
-
-        return true;
+        return tracklist != null ? tracklist.equals(that.tracklist) : that.tracklist == null;
     }
 
     @Override

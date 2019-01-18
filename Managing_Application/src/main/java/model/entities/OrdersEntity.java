@@ -130,10 +130,7 @@ public class OrdersEntity {
         if (currentStatus != null ? !currentStatus.equals(that.currentStatus) : that.currentStatus != null)
             return false;
         if (payment != null ? !payment.equals(that.payment) : that.payment != null) return false;
-        if (transactionDocument != null ? !transactionDocument.equals(that.transactionDocument) : that.transactionDocument != null)
-            return false;
-
-        return true;
+        return transactionDocument != null ? transactionDocument.equals(that.transactionDocument) : that.transactionDocument == null;
     }
 
     @Override

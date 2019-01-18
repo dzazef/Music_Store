@@ -135,7 +135,7 @@ public class ManageProductsViewController {
     }
 
     public void setInfo(OrdersTable ordersTable) {
-        this.ordersTable = ordersTable;
+        ManageProductsViewController.ordersTable = ordersTable;
     }
 
     private void plus(OrdersProductsTable ordersProductsTable) {

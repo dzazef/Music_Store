@@ -87,9 +87,7 @@ public class StatusLogsEntity {
         if (logId != that.logId) return false;
         if (dateTime != null ? !dateTime.equals(that.dateTime) : that.dateTime != null) return false;
         if (statusOld != null ? !statusOld.equals(that.statusOld) : that.statusOld != null) return false;
-        if (statusNew != null ? !statusNew.equals(that.statusNew) : that.statusNew != null) return false;
-
-        return true;
+        return statusNew != null ? statusNew.equals(that.statusNew) : that.statusNew == null;
     }
 
     @Override

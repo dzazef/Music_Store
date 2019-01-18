@@ -114,9 +114,7 @@ public class InstrumentViewEntity {
             return false;
         if (instrumentName != null ? !instrumentName.equals(that.instrumentName) : that.instrumentName != null)
             return false;
-        if (type != null ? !type.equals(that.type) : that.type != null) return false;
-
-        return true;
+        return type != null ? type.equals(that.type) : that.type == null;
     }
 
     @Override

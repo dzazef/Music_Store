@@ -36,9 +36,7 @@ public class StorageEntity {
         StorageEntity that = (StorageEntity) o;
 
         if (productId != that.productId) return false;
-        if (productsAvailable != that.productsAvailable) return false;
-
-        return true;
+        return productsAvailable == that.productsAvailable;
     }
 
     @Override

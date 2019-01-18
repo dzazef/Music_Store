@@ -36,9 +36,7 @@ public class OrdersProductsEntityPK implements Serializable {
         OrdersProductsEntityPK that = (OrdersProductsEntityPK) o;
 
         if (orderId != that.orderId) return false;
-        if (productId != that.productId) return false;
-
-        return true;
+        return productId == that.productId;
     }
 
     @Override

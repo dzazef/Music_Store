@@ -51,9 +51,7 @@ public class UsersEntity {
 
         if (userId != null ? !userId.equals(that.userId) : that.userId != null) return false;
         if (password != null ? !password.equals(that.password) : that.password != null) return false;
-        if (accessLevel != null ? !accessLevel.equals(that.accessLevel) : that.accessLevel != null) return false;
-
-        return true;
+        return accessLevel != null ? accessLevel.equals(that.accessLevel) : that.accessLevel == null;
     }
 
     @Override
