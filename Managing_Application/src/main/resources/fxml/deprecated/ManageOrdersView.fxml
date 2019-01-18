@@ -15,7 +15,7 @@
                 <columns>
                     <TableColumn fx:id="idColumn" prefWidth="62.0" text="ID" />
                     <TableColumn fx:id="nameColumn" prefWidth="139.0" text="Name" />
-                    <TableColumn fx:id="addressColumn" prefWidth="140.0" text="Adress" />
+                    <TableColumn fx:id="addressColumn" prefWidth="140.0" text="Address" />
                     <TableColumn fx:id="phoneColumn" prefWidth="124.0" text="Phone number" />
                     <TableColumn fx:id="deliveryColumn" minWidth="0.0" prefWidth="99.0" text="Delivery" />
                     <TableColumn fx:id="statusColumn" minWidth="0.0" prefWidth="164.0" text="Status" />

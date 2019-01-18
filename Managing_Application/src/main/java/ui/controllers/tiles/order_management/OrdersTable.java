@@ -9,7 +9,7 @@ public class OrdersTable {
     private final SimpleIntegerProperty orderId;
     private final SimpleStringProperty deliveryName;
     private final SimpleStringProperty customerName;
-    private final SimpleStringProperty customerAdress;
+    private final SimpleStringProperty customerAddress;
     private final SimpleStringProperty phoneNumber;
     private final SimpleStringProperty currentStatus;
     private final SimpleStringProperty payment;
@@ -18,7 +18,7 @@ public class OrdersTable {
         this.orderId = new SimpleIntegerProperty(ordersEntity.getOrderId());
         this.deliveryName = new SimpleStringProperty(ordersEntity.getDeliveryEntity().getName());
         this.customerName = new SimpleStringProperty(ordersEntity.getDeliveryEntity().getName());
-        this.customerAdress = new SimpleStringProperty(ordersEntity.getCustomerName());
+        this.customerAddress = new SimpleStringProperty(ordersEntity.getCustomerName());
         this.phoneNumber = new SimpleStringProperty(ordersEntity.getPhoneNumber());
         this.currentStatus = new SimpleStringProperty(ordersEntity.getCurrentStatus().toString());
         this.payment = new SimpleStringProperty(ordersEntity.getPayment().toString());
@@ -42,11 +42,11 @@ public class OrdersTable {
     public void setCustomerName(String value) {
         customerName.set(value);
     }
-    public String getCustomerAdress() {
-        return customerAdress.get();
+    public String getCustomerAddress() {
+        return customerAddress.get();
     }
-    public void setCustomerAdress(String value) {
-        customerAdress.set(value);
+    public void setCustomerAddress(String value) {
+        customerAddress.set(value);
     }
     public String getPhoneNumber() {
         return phoneNumber.get();

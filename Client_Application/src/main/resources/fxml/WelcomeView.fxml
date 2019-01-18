@@ -27,7 +27,7 @@
                        <!--<String fx:value="Other" />-->
                    <!--</ChoiceBox>-->
                    <TextField fx:id="searchTextField" prefHeight="25.0" prefWidth="240.0"/>
-                   <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="lupa" onAction="#SearchClicked"/>
+                   <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="45.0" text="SEARCH" onAction="#SearchClicked"/>
                </HBox>
                <Label fx:id="priceLabel" text="0.00$" >
                    <padding>

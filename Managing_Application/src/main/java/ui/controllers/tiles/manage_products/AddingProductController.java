@@ -83,7 +83,7 @@ public class AddingProductController {
                                 ":tracklist,  :duration )")
                         .setParameter("price",Double.parseDouble(priceField.getText()))
                         .setParameter("title",titleField.getText())
-                        .setParameter("realease_year",Integer.parseInt(releaseYearField.getText()))
+                        .setParameter("release_year",Integer.parseInt(releaseYearField.getText()))
                         .setParameter("img_link",imageLinkField.getText())
                         .setParameter("artist_name",artistNameField.getText())
                         .setParameter("artist_genre",artistGenreField.getText())

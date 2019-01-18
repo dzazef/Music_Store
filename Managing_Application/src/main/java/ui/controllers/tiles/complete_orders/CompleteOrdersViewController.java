@@ -14,7 +14,6 @@ import ui.controllers.tiles.order_management.ViewController;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-@SuppressWarnings("Duplicates")
 public class CompleteOrdersViewController extends ViewController {
     @Override
     public void runQuery() {

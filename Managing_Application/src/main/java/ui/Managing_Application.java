@@ -50,6 +50,7 @@ public class Managing_Application extends Application {
         primaryStage.getIcons().add(new Image(ui.Managing_Application.class.getResourceAsStream("../graphics/icon.png")));
         LoginView.initialize();
         stage.show();
+        stage.setOnCloseRequest(e -> LoginManager.clean());
         //stage.setOnCloseRequest(e -> System.exit(0)); //TODO: zrobić to po ludzku
     }
 

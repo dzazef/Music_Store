@@ -12,7 +12,7 @@ public class OrdersEntity {
     private int orderId;
 //    private int deliveryId;
     private String customerName;
-    private String customerAdress;
+    private String customerAddress;
     private String phoneNumber;
     @Enumerated(EnumType.STRING)
     private Status currentStatus;
@@ -66,13 +66,13 @@ public class OrdersEntity {
     }
 
     @Basic
-    @Column(name = "customer_adress")
-    public String getCustomerAdress() {
-        return customerAdress;
+    @Column(name = "customer_address")
+    public String getCustomerAddress() {
+        return customerAddress;
     }
 
-    public void setCustomerAdress(String customerAdress) {
-        this.customerAdress = customerAdress;
+    public void setCustomerAddress(String customerAddress) {
+        this.customerAddress = customerAddress;
     }
 
     @Basic
@@ -124,7 +124,7 @@ public class OrdersEntity {
 
         if (orderId != that.orderId) return false;
         if (customerName != null ? !customerName.equals(that.customerName) : that.customerName != null) return false;
-        if (customerAdress != null ? !customerAdress.equals(that.customerAdress) : that.customerAdress != null)
+        if (customerAddress != null ? !customerAddress.equals(that.customerAddress) : that.customerAddress != null)
             return false;
         if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
         if (currentStatus != null ? !currentStatus.equals(that.currentStatus) : that.currentStatus != null)
@@ -140,7 +140,7 @@ public class OrdersEntity {
     public int hashCode() {
         int result = orderId;
         result = 31 * result + (customerName != null ? customerName.hashCode() : 0);
-        result = 31 * result + (customerAdress != null ? customerAdress.hashCode() : 0);
+        result = 31 * result + (customerAddress != null ? customerAddress.hashCode() : 0);
         result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         result = 31 * result + (currentStatus != null ? currentStatus.hashCode() : 0);
         result = 31 * result + (payment != null ? payment.hashCode() : 0);

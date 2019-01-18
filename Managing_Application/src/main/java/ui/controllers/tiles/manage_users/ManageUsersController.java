@@ -52,14 +52,6 @@ public class ManageUsersController {
         passwordColumn.setCellValueFactory(new PropertyValueFactory<UsersEntity, String>("password"));
         accessLevelColumn.setCellValueFactory(new PropertyValueFactory<UsersEntity, String>("accessLevel"));
         removeButtonsColumn.setCellFactory(createButtonCellFactory());
-//
-//        UsersEntity usersEntity = new UsersEntity();
-//        usersEntity.setPassword("pies");
-//        usersEntity.setUserId("Tanja");
-//        usersEntity.setAccessLevel(AccessLevel.storekeeper);
-//        List<UsersEntity> users = new LinkedList<>();
-//        users.add(usersEntity);
-//        showUsersInTable(users);
     }
 
     private Callback<TableColumn<UsersEntity, Void>, TableCell<UsersEntity, Void>> createButtonCellFactory() {

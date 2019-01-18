@@ -48,7 +48,7 @@ public abstract class ViewController {
         nameColumn.setCellValueFactory(
                 new PropertyValueFactory<>("customerName"));
         addressColumn.setCellValueFactory(
-                new PropertyValueFactory<>("customerAdress"));
+                new PropertyValueFactory<>("customerAddress"));
         phoneColumn.setCellValueFactory(
                 new PropertyValueFactory<>("phoneNumber"));
         deliveryColumn.setCellValueFactory(

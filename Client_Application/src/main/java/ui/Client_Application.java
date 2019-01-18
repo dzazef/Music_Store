@@ -16,22 +16,6 @@ public class Client_Application extends Application {
     private static Stage stage;
     public static void main(String[] args) {
         launch(args);
-        try {
-//            SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
-//                    .addAnnotatedClass(DeliveryEntity.class).buildSessionFactory();
-//            Session session = factory.openSession();
-//            DeliveryEntity deliveryEntity = new DeliveryEntity();
-//            deliveryEntity.setDeliveryTime(10);
-//            deliveryEntity.setName("kotgg");
-//            deliveryEntity.setPrice(10f);
-//            session.beginTransaction();
-//            session.save(deliveryEntity);
-//            session.getTransaction().commit();
-//            session.close();
-//            factory.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public static Stage getStage() {
@@ -48,24 +32,6 @@ public class Client_Application extends Application {
         primaryStage.getIcons().add(new Image(Client_Application.class.getResourceAsStream("../images/icon.png")));
         primaryStage.show();
         SessionFactoryManager.buildSessionFactory();
-//        primaryStage.setOnCloseRequest((event) -> SessionFactoryManager.closeFactory());
-//        primaryStage.getScene().getWindow().setOnCloseRequest((event -> SessionFactoryManager.closeFactory()));
-//        Configuration cfg = new Configuration();
-//        cfg.configure();
-//        System.setProperty("hibernate.connection.password","123");
-////        System.setProperty("hibernate.connection.username","client");
-//        cfg.setProperties(System.getProperties());
-//        SessionFactory sessionFactory = cfg.buildSessionFactory();
-//        Session session = sessionFactory.openSession();
-//        DeliveryEntity deliveryEntity = new DeliveryEntity();
-//        deliveryEntity.setDeliveryTime(5);
-//        deliveryEntity.setName("niewolnik z listem");
-//        deliveryEntity.setPrice(10f);
-//        session.beginTransaction();
-//        session.save(deliveryEntity);
-//        session.getTransaction().commit();
-//        session.close();
-
     }
 
     @Override

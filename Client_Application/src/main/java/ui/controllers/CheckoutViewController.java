@@ -57,7 +57,7 @@ public class CheckoutViewController {
 
             cartManager.total.setValue(cartManager.total.getValue()+deliveryEntity.getPrice());
 
-            order.setCustomerAdress(clientAddressField.getText());
+            order.setCustomerAddress(clientAddressField.getText());
             order.setCustomerName(clientNameField.getText());
             order.setPhoneNumber(phoneNumberField.getText());
             session.beginTransaction();

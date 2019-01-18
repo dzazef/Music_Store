@@ -17,9 +17,9 @@ public class BackupRestoreViewController {
     @FXML
     public Button loginButton;
 
-    public void initialize() {
-        loginButton.setSkin(new MyButtonSkin(loginButton));
-    }
+//    public void initialize() {
+//        loginButton.setSkin(new MyButtonSkin(loginButton));
+//    }
 
     @FXML
     public void backup() {

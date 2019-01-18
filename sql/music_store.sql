@@ -96,7 +96,7 @@ CREATE TABLE orders
   order_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
   delivery_id INT NOT NULL,
   customer_name VARCHAR(50) NOT NULL,
-  customer_adress VARCHAR(80) NOT NULL,
+  customer_address VARCHAR(80) NOT NULL,
   phone_number VARCHAR(15) NOT NULL,
   current_status VARCHAR(30) NOT NULL,
   payment VARCHAR(30) NOT NULL,

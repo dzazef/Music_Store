@@ -1,5 +1,5 @@
 package model;
 
-public enum AccesLevel {
+public enum AccessLevel {
     storekeeper, storage_manager, manager, administrator
 }

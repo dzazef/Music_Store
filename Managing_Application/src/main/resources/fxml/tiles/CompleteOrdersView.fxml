@@ -11,7 +11,7 @@
 
 <BorderPane fx:id="mainBorderPane" prefHeight="497.0" prefWidth="1217.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <bottom>
-        <HBox fx:id="hboox" alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
+        <HBox fx:id="hBox" alignment="CENTER" prefWidth="970.0" BorderPane.alignment="CENTER">
             <Button fx:id="loginButton" mnemonicParsing="false" onAction="#goBack" text="Return" />
             <padding>
             <Insets bottom="5.0" />
@@ -24,7 +24,7 @@
                 <columns>
                     <TableColumn fx:id="idColumn" minWidth="62.0" text="ID" />
                     <TableColumn fx:id="nameColumn" minWidth="139.0" text="Name" />
-                    <TableColumn fx:id="addressColumn" minWidth="140.0" text="Adress" />
+                    <TableColumn fx:id="addressColumn" minWidth="140.0" text="Address" />
                     <TableColumn fx:id="phoneColumn" minWidth="124.0" text="Phone number" />
                     <TableColumn fx:id="deliveryColumn" minWidth="99.0" text="Delivery" />
                     <TableColumn fx:id="statusColumn" minWidth="164.0" text="Status" />
